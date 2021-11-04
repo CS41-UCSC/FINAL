@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Co-WMS/style/deptManageTask_style.css?<?php echo time(); ?>" type="text/css">
-    <link rel="stylesheet" href="../Co-WMS/style/nav_style.css" type="text/css">
-    <script language="javascript" src="../Co-WMS/views/navigation.js"></script>
+    <link rel="stylesheet" href="../style/deptManageTask_style.css?<?php echo time(); ?>" type="text/css">
+    <link rel="stylesheet" href="../style/nav_style.css" type="text/css">
+    <script language="javascript" src="../resource/navigation.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -38,7 +38,7 @@
         <button class="header-button" id="btnNav" type="button">
             <i class="fa fa-bars fa-lg"></i>
         </button>
-        <img src="../Co-WMS/Asserts/logo.jpg" alt="" class="open-img">
+        <img src="../Asserts/logo.jpg" alt="" class="open-img">
         <label for="" class="date"> <?php
                                     $day;
                                     if (date("d") == 1) {
@@ -57,7 +57,7 @@
         </label>
         <div class="notification"><a href="#"><i class="fa fa-bell fa-lg"></i></a></div>
         <span class="user-login"><?php echo $_SESSION['login_user'] ?></span>
-        <img class="img-rounded-circle" src="../Co-WMS/Asserts/<?php if ($_SESSION['user_img']) {
+        <img class="img-rounded-circle" src="../Asserts/<?php if ($_SESSION['user_img']) {
                                                                     echo $_SESSION['user_img'];
                                                                 } else {
                                                                     echo 'avator.jpg';
@@ -74,16 +74,16 @@
         <a href="http://localhost/Co-WMS/admin/adminHome" class="nav-link" id="manage_access">
                 <i class="fa fa-pencil-square-o fa-lg"><span>Manage Access</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/landingpage" class="nav-link" id="dashboard">
+            <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="dashboard">
                 <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/landingpage" class="nav-link" id="d_dashboard">
+			<a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
             </a>
 			<a href="http://localhost/Co-WMS/teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg" ><span>Department Progress</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/myprofile" class="nav-link" id="my_profile">
+            <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
                 <i class="fa fa-user fa-lg" ><span>My Profile</span></i>
             </a>
 			<a href="http://localhost/Co-WMS/myProgressAccepted" class="nav-link" id="my_progress">
@@ -95,7 +95,7 @@
 			<a href="http://localhost/Co-WMS/employeeWorkProgress" class="nav-link" id="emp_progress">
                 <i class="fa fa-users fa-lg" ><span>Employee Progress</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/deptManageTask" class="nav-link nav-link-active" id="manage_task_dpt">
+            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link nav-link-active" id="manage_task_dpt">
                 <i class="fa fa-tasks fa-lg" ><span>Manage Tasks</span></i>
             </a>
 			<a href="http://localhost/Co-WMS/leaderManageTask" class="nav-link" id="manage_task_leader">
@@ -127,11 +127,11 @@
     <main id="main">
 
         <div class="item1" id="item1">
-            <a href="deptManageTask" class="activelink">
+            <a href="showpage_deptManageTask" class="activelink">
                 <span>Add Task</span>
             </a>
-            <a href="assignTasksTeam" class="">
-                <span>Assign Task</span>
+            <a href="showpage_assignTasksTeam" class="">
+                <span>Task Progress</span>
             </a>
         </div>
 
@@ -141,11 +141,6 @@
 
                 <div class="searching">
 
-                    <!--<datalist id="suggestions">
-                        <option>Team A</option>
-                        <option>Team B</option>
-                        <option>Team C</option>
-                    </datalist>-->
                     <input autoComplete="on" list="suggestions" class="searchbar">
                     <div class="btn"><input type="submit" value="Search" class="button"></div>
 
@@ -173,7 +168,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!--<tr id="1">
+                                <!--<tr id="1">
                                     <td class="row-data">Graphic</td>
                                     <td class="row-data">Graphic</td>
                                     <td class="row-data">certificate</td>
@@ -336,7 +331,7 @@
     <script type="text/javascript">
         function addtask() {
 
-            document.addform.action = "deptManageTask/addTask";
+            document.addform.action = "Task/addTask";
 
         }
     </script>

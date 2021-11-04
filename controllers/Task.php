@@ -18,16 +18,16 @@ class Task extends controller{
         $this->view->render('assignTasksTeam');
     }
 
-    function showpage_assignTasksMember(){
+    function showpage_taskProgress(){
         $this->view->users = $this->model->getTaskProgress($_SESSION['teamID']);
-        $this->view->render('assignTasksMember');
+        $this->view->render('taskProgress');
     }
     
     function addTask(){
         
         $this->model->insertTask();
 
-        header('location: http://localhost/FINAL/manager/showpage_deptManageTask');
+        header('location: http://localhost/FINAL/Task/showpage_deptManageTask');
 
     }
 
@@ -35,7 +35,7 @@ class Task extends controller{
 
         $_SESSION['teamID'] = $teamId;
 
-        header('location: http://localhost/FINAL/Task/showpage_assignTasksMember');
+        header('location: http://localhost/FINAL/Task/showpage_taskProgress');
         
         
     }

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../FINAL/style/AssignTasksMember_style.css?<?php echo time(); ?>" type="text/css">
-    <link rel="stylesheet" href="../FINAL/style/nav_style.css?<?php echo time(); ?>" type="text/css">
-    <script language="javascript" src="../FINAL/resource/navigation.js"></script>
+    <link rel="stylesheet" href="../style/taskProgress_style.css?<?php echo time(); ?>" type="text/css">
+    <link rel="stylesheet" href="../style/nav_style.css?<?php echo time(); ?>" type="text/css">
+    <script language="javascript" src="../resource/navigation.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <title>Document</title>
@@ -20,7 +20,7 @@
         <button class="header-button" id="btnNav" type="button">
             <i class="fa fa-bars fa-lg"></i>
         </button>
-        <img src="../FINAL/Asserts/logo.jpg" alt="" class="open-img">
+        <img src="../Asserts/logo.jpg" alt="" class="open-img">
         <label for="" class="date"> <?php
                                     $day;
                                     if (date("d") == 1) {
@@ -39,11 +39,11 @@
         </label>
         <div class="notification"><a href="#"><i class="fa fa-bell fa-lg"></i></a></div>
         <span class="user-login"><?php echo $_SESSION['login_user'] ?></span>
-        <img class="img-rounded-circle" src="../FINAL/Asserts/<?php if ($_SESSION['user_img']) {
-                                                                    echo $_SESSION['user_img'];
-                                                                } else {
-                                                                    echo 'avator.jpg';
-                                                                } ?>" alt="">
+        <img class="img-rounded-circle" src="../Asserts/<?php if ($_SESSION['user_img']) {
+                                                            echo $_SESSION['user_img'];
+                                                        } else {
+                                                            echo 'avator.jpg';
+                                                        } ?>" alt="">
 
     </header>
 
@@ -105,13 +105,13 @@
     <main>
 
         <div class="item1" id="item1">
-            <a href="deptManageTask">
+            <a href="showpage_deptManageTask">
                 <span>Add Task</span>
             </a>
-            <a href="assignTasksTeam" class="activelink">
-                <span>Assign Task</span>
+            <a href="showpage_assignTasksTeam" class="activelink">
+                <span>Task Progress</span>
             </a>
-            <a href="assignTasksTeam">
+            <a href="showpage_assignTasksTeam">
                 <span>Back</span>
             </a>
         </div>
@@ -210,33 +210,16 @@
 
         <form action="" class="form-popup" id="form-popup">
 
-            <!--<label for="dep" id="ltid">Task ID</label>
-            <input type="text" name="tid" id="tid" value="" readonly><br>-->
-            <label for="" id="ltname">Task Name</label>
-            <input type="text" name="tname" id="tname" value=""><br>
-            <label for="task" id="latime">Assigned Time</label>
-            <input type="text" name="atime" id="atime" value="" readonly><br>
-            <label for="task" id="lato">Assigned To</label>
-            <input type="text" name="ato" id="ato" value=""><br>
-            <!--<label for="task" id="laby">Assigned By</label>
-            <input type="text" name="aby" id="aby" value=""><br>-->
+
             <label for="task" id="lrtime">Required Time</label>
             <input type="text" name="rtime" id="rtime" value=""><br>
             <label for="task" id="lddate">Due Date</label>
             <input type="text" name="ddate" id="ddate" value=""><br>
             <label for="" name="lstts">Status</label>
-            <!--<input type="text" name="stts" id="stts" value=""><br>-->
             <select name="stts" id="stts">
                 <option value="volvo">Aproved</option>
                 <option value="saab">ReAssigned</option>
             </select>
-            <progress id="file" value="32" max="100"></progress><br>
-            <label for="" id="lacdate">Accepted Date</label>
-            <input type="date" name="acdate" id="acdate" value="" readonly><br>
-            <label for="" id="lcdate">Completed Date</label>
-            <input type="date" name="cdate" id="cdate" value="" readonly><br>
-            <label for="" id="lapdate">Approved Date</label>
-            <input type="date" name="apdate" id="apdate" value="" readonly><br>
 
             <div class="btn">
                 <input type="submit" value="Save Changes" class="button">
@@ -260,7 +243,7 @@
             <textarea rows="4" cols="50" name="comment" form="usrform" readonly></textarea>
             <div class="remarks">
                 <button type="button" class="remarkd" onclick="Reject()">Reject</button>
-            
+
                 <button type="button" class="remarka" onclick="Accept()">Accept</button>
             </div>
         </div>
@@ -325,30 +308,15 @@
             /*returns array of all elements with 
             "row-data" class within the row with given id*/
 
-            /*var id = data[0].innerHTML;*/
-            var name = data[1].innerHTML;
-            var atime = data[2].innerHTML;
-            var ato = data[3].innerHTML;
-            /*var aby = data[4].innerHTML;*/
             var rtime = data[5].innerHTML;
             var ddate = data[6].innerHTML;
             var status = data[7].innerHTML;
-            var acdate = data[8].innerHTML;
-            var cdate = data[9].innerHTML;
-            var apdate = data[10].innerHTML;
 
-            /*document.getElementById("tid").value = id;*/
-            document.getElementById("tname").value = name;
-            document.getElementById("atime").value = atime;
-            document.getElementById("ato").value = ato;
-            /*document.getElementById("aby").value = aby*/
+
             document.getElementById("rtime").value = rtime;
             document.getElementById("ddate").value = ddate;
             document.getElementById("stts").value = status;
-            document.getElementById("file").style.display = "none";
-            document.getElementById("acdate").value = acdate;
-            document.getElementById("cdate").value = cdate;
-            document.getElementById("apdate").value = apdate;
+
 
             document.getElementById("myForm").style.display = "block";
             document.getElementById("container").style.filter = "grayscale(100%)";
@@ -368,6 +336,7 @@
             document.getElementById("container").style.filter = "none";
 
         }
+        
     </script>
 
 </body>

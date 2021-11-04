@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Co-WMS/style/AssignTasksTeam_style.css" type="text/css">
-    <link rel="stylesheet" href="../Co-WMS/style/nav_style.css" type="text/css">
-    <script language="javascript" src="../Co-WMS/views/navigation.js"></script>
+    <link rel="stylesheet" href="../style/AssignTasksTeam_style.css" type="text/css">
+    <link rel="stylesheet" href="../style/nav_style.css" type="text/css">
+    <script language="javascript" src="../resource/navigation.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <title>Document</title>
@@ -20,7 +20,7 @@
         <button class="header-button" id="btnNav" type="button">
             <i class="fa fa-bars fa-lg"></i>
         </button>
-        <img src="../Co-WMS/Asserts/logo.jpg" alt="" class="open-img">
+        <img src="../Asserts/logo.jpg" alt="" class="open-img">
         <label for="" class="date"> <?php
                                     $day;
                                     if (date("d") == 1) {
@@ -39,7 +39,7 @@
         </label>
         <div class="notification"><a href="#"><i class="fa fa-bell fa-lg"></i></a></div>
         <span class="user-login"><?php echo $_SESSION['login_user'] ?></span>
-        <img class="img-rounded-circle" src="../Co-WMS/Asserts/<?php if ($_SESSION['user_img']) {
+        <img class="img-rounded-circle" src="../Asserts/<?php if ($_SESSION['user_img']) {
                                                                     echo $_SESSION['user_img'];
                                                                 } else {
                                                                     echo 'avator.jpg';
@@ -54,16 +54,16 @@
         <a href="http://localhost/Co-WMS/admin/adminHome" class="nav-link" id="manage_access">
                 <i class="fa fa-pencil-square-o fa-lg"><span>Manage Access</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/landingpage" class="nav-link" id="dashboard">
+            <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="dashboard">
                 <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/landingpage" class="nav-link" id="d_dashboard">
+            <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
             </a>
 			<a href="http://localhost/Co-WMS/teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg" ><span>Department Progress</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/myprofile" class="nav-link" id="my_profile">
+            <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
                 <i class="fa fa-user fa-lg" ><span>My Profile</span></i>
             </a>
 			<a href="http://localhost/Co-WMS/myProgressAccepted" class="nav-link" id="my_progress">
@@ -75,7 +75,7 @@
 			<a href="http://localhost/Co-WMS/employeeWorkProgress" class="nav-link" id="emp_progress">
                 <i class="fa fa-users fa-lg" ><span>Employee Progress</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/deptManageTask" class="nav-link nav-link-active" id="manage_task_dpt">
+            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link nav-link-active" id="manage_task_dpt">
                 <i class="fa fa-tasks fa-lg" ><span>Manage Tasks</span></i>
             </a>
 			<a href="http://localhost/Co-WMS/leaderManageTask" class="nav-link" id="manage_task_leader">
@@ -106,11 +106,11 @@
     <main>
 
         <div class="item1" id="item1">
-            <a href="deptManageTask">
+            <a href="showpage_deptManageTask">
                 <span>Add Task</span>
             </a>
-            <a href="assignTasksTeam" class="activelink">
-                <span>Assign Task</span>
+            <a href="showpage_assignTasksTeam" class="activelink">
+                <span>Task Progress</span>
             </a>
         </div>
 
@@ -156,7 +156,7 @@
                                 echo '<td>' . $row['1'] . '</td>';
                                 echo '<td>' . $row['2'] . '</td>';
                                 echo '<td>' . $row['3'] . '</td>';
-                                echo '<td><a href="assignTasksMember/load/' . $row["0"] . ' " class="add"><i class="fa fa-plus fa-lg"></i></a></td>';
+                                echo '<td><a href="../Task/loadTeam/' . $row["0"] . ' " class="add"><i class="fa fa-plus fa-lg"></i></a></td>';
                                 echo '</tr>';
                             }
 

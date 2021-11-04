@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Co-WMS/style/AssignTasksMember_style.css" type="text/css">
-    <link rel="stylesheet" href="../Co-WMS/style/nav_style.css" type="text/css">
-    <script language="javascript" src="../Co-WMS/views/navigation.js"></script>
+    <link rel="stylesheet" href="../style/AssignTasksMember_style.css" type="text/css">
+    <link rel="stylesheet" href="../style/nav_style.css" type="text/css">
+    <script language="javascript" src="../views/navigation.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <title>Document</title>
@@ -20,7 +20,7 @@
         <button class="header-button" id="btnNav" type="button">
             <i class="fa fa-bars fa-lg"></i>
         </button>
-        <img src="../Co-WMS/Asserts/logo.jpg" alt="" class="open-img">
+        <img src="../Asserts/logo.jpg" alt="" class="open-img">
         <label for="" class="date"> <?php
                                     $day;
                                     if (date("d") == 1) {
@@ -39,7 +39,7 @@
         </label>
         <div class="notification"><a href="#"><i class="fa fa-bell fa-lg"></i></a></div>
         <span class="user-login"><?php echo $_SESSION['login_user'] ?></span>
-        <img class="img-rounded-circle" src="../Co-WMS/Asserts/avator.jpg" alt="">
+        <img class="img-rounded-circle" src="../Asserts/avator.jpg" alt="">
 
     </header>
 
@@ -70,7 +70,7 @@
 			<a href="http://localhost/Co-WMS/employeeWorkProgress" class="nav-link" id="emp_progress">
                 <i class="fa fa-users fa-lg" ><span>Employee Progress</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/deptManageTask" class="nav-link" id="manage_task_dpt">
+            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link" id="manage_task_dpt">
                 <i class="fa fa-tasks fa-lg" ><span>Manage Tasks</span></i>
             </a>
 			<a href="http://localhost/Co-WMS/leaderManageTask" class="nav-link nav-link-active" id="manage_task_leader">
