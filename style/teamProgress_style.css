@@ -1,0 +1,246 @@
+table,td,th {
+    border-collapse: collapse;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    text-align: left;
+    border: 1px solid rgb(255, 255, 255);
+} 
+
+tr{ 
+    border-top: 2px solid #ddd;  
+    color: black;
+}
+
+#mytable{
+    width: 100%;
+}
+
+#Pending {
+    background: #777676;
+    text-align: center;
+    color: white;
+}
+
+#InProgress {
+    background: #1b80df;
+    text-align: center;
+    color: white;
+}
+
+#Completed {
+    background: #f5e721;
+    text-align: center;
+    color: white;
+}
+
+#Approved {
+    background: #1ab841;
+    text-align: center;
+    color: white;
+}
+
+#ReAssigned {
+    background: #d3660d;
+    text-align: center;
+    color: white;
+}
+
+#Overdue {
+    background: #cc3131;
+    text-align: center;
+    color: white;
+}
+
+#add{
+    width: 50px;
+}
+
+.add{
+    border: none;
+    background-color: transparent;
+}
+
+.add i{
+    color: rgb(167, 167, 168);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.member{
+    width: 100%;
+    height: 50px;
+    border-top:2px solid white;
+    border-bottom:2px solid white;
+    display: flex;
+    flex-direction: row;
+    background-color: #9ac3f8;
+    margin: auto;
+}
+
+.member > div {
+    flex: 1 1 0px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.member:hover{
+    background-color: #9ac3f888;
+}
+
+.view{
+    background-size:cover;
+    width: 25px;
+    height: 25px;
+    background-image: url('../Asserts/avator.jpg');
+    cursor:pointer;
+    border: none;
+    border-radius: 10px;
+}
+
+@media (min-width: 800px) {
+
+    main{
+        margin-top: 75px;  
+    }
+
+    table{
+        width: 85%;
+    }
+
+    .item2 { grid-area: left; }
+
+    .container {
+        margin-bottom: 50px;
+        display: grid;
+        grid-template-areas:
+        'left';
+        height: max-content;
+        background-color: #ffffff;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .containerN {
+        margin-bottom: 50px;
+        display: grid;
+        grid-template-areas:
+        'left';
+        height: max-content;
+        background-color: #ffffff;
+        margin-left: 244px;
+        margin-right: 20px;
+        
+    }
+
+    .item2{
+        display: block;
+        width: 80%;
+        border: #d3d2d2;
+        box-shadow: 1px solid #d3d2d2; 
+        margin: auto;
+    }
+
+    .popup {
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        background-color: rgba(50, 50, 50, 0.808);
+    }
+
+    .form-popup {
+        margin:100px auto;
+        background-color: #f5f5f5;
+        border: 3px solid #f1f1f1;
+        border-radius: 5px;
+        padding: 10px;
+        width: 600px;
+    }
+    
+    .popup .button{
+        float: right;
+        background-size:cover;
+        width: 25px;
+        height: 25px;
+        /*background-image: url('../Asserts/close.jpg');*/
+        cursor:pointer;
+        border: none;
+        background-color: transparent;
+    }
+
+    .popup .button span{
+        font-size: 18pt;
+        color: gray;
+    }
+}
+
+@media (max-width: 799px) {
+
+    main{
+        margin-top: 75px;  
+    }
+
+    table{
+        margin: auto;
+        width: 600px;
+    }
+
+    .item2{
+        overflow-x: auto;
+    }
+
+    .item2 { grid-area: left; }
+
+    .container {
+        margin-bottom: 50px;
+        display: grid;
+        grid-template-areas:
+        'left';
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .item2{
+        width: 100%;
+        margin: auto;
+    }
+
+    .popup {
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        background-color: rgba(50, 50, 50, 0.808);
+    }
+
+    .form-popup {
+        background-color: #f5f5f5;
+        border: 3px solid #f1f1f1;
+        border-radius: 5px;
+        width: fit-content;
+        padding: 5px;
+        margin: 100px auto;
+    }
+    
+    .popup .button{
+        float: right;
+        background-size:cover;
+        width: 25px;
+        height: 25px;
+        /*background-image: url('../Asserts/close.jpg');*/
+        cursor:pointer;
+        border: none;
+        background-color: transparent;
+    }
+
+    .popup .button span{
+        font-size: 18pt;
+        color: gray;
+    }
+
+}
