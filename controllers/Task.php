@@ -23,6 +23,18 @@ class Task extends controller{
         $this->view->render('taskProgress');
     }
     
+    function showpage_teamProgress(){
+        $this->view->users = $this->model->getTeamProgress();
+        $this->view->render('teamProgress');
+    }
+
+    function getEmployeeProgress(){
+        $eid = $_POST['empid'];
+        $task = $this->model->getEmployeeProgress($eid);
+        
+        echo json_encode(count($task)==0 ? null : $task);
+    }
+
     function addTask(){
         
         $this->model->insertTask();

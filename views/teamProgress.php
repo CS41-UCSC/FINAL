@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/teamProgress_style.css" type="text/css">
     <link rel="stylesheet" href="../style/nav_style.css" type="text/css">
-    <script language="javascript" src="../views/navigation.js"></script>
+    <script language="javascript" src="../resource/navigation.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -60,7 +60,7 @@
 			<a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/teamProgress" class="nav-link nav-link-active" id="d_progress">
+			<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link nav-link-active" id="d_progress">
                 <i class="fa fa-tachometer fa-lg" ><span>Department Progress</span></i>
             </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
@@ -69,7 +69,7 @@
 			<a href="http://localhost/Co-WMS/myProgressAccepted" class="nav-link" id="my_progress">
                 <i class="fa fa-user fa-lg" ><span>My Progress</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/teamProgress" class="nav-link nav-link-active" id="t_progress">
+			<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link nav-link-active" id="t_progress">
                 <i class="fa fa-users fa-lg" ><span>Team Progress</span></i>
             </a>
 			<a href="http://localhost/Co-WMS/employeeWorkProgress" class="nav-link" id="emp_progress">
@@ -117,6 +117,7 @@
 
                         echo '<div class="member">
                         <div id="eid" value=' . $row['0'] . '>' . $row['0'] . '</div>
+                        <div>' . $row['1'] . ' h</div>
                         <div><progress id="file" value=' . $row['1'] . ' max="160">' . $row['1'] . '</progress></div>
                         <div id=' . $row['0'] . '><input type="button" class="view"  onclick="loadTask()" ></div>
                         </div>';
@@ -182,7 +183,7 @@
            
             data.append("empid", b);
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "teamProgress/getTask");
+            xhr.open("POST", "getEmployeeProgress");
 
             xhr.onload = function() {
 

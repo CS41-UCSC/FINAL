@@ -55,7 +55,7 @@
 			<a href="http://localhost/Co-WMS/landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/teamProgress" class="nav-link" id="d_progress">
+			<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg" ><span>Department Progress</span></i>
             </a>
             <a href="http://localhost/Co-WMS/myprofile" class="nav-link" id="my_profile">
@@ -64,7 +64,7 @@
 			<a href="http://localhost/Co-WMS/myProgressAccepted" class="nav-link" id="my_progress">
                 <i class="fa fa-user fa-lg" ><span>My Progress</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/teamProgress" class="nav-link" id="t_progress">
+			<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="t_progress">
                 <i class="fa fa-users fa-lg" ><span>Team Progress</span></i>
             </a>
 			<a href="http://localhost/Co-WMS/employeeWorkProgress" class="nav-link" id="emp_progress">
