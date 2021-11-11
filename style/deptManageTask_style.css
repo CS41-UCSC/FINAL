@@ -32,6 +32,7 @@ tr{
 
 .searching{
     width: 100%;
+    height: 30px;
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
@@ -44,6 +45,7 @@ tr{
 }
 
 .searching input{
+    padding-left: 10px;
     border-radius: 5px;
     background-color: #ffffff;
 }
@@ -247,7 +249,7 @@ tr{
         display: inline-block;
     }
 
-    .popup input{
+    .popup input,select{
         width: 210px;
         height: 30px; 
         border: 1px solid #2B65EC;
@@ -256,7 +258,7 @@ tr{
         border-radius: 5px;
     }
 
-    .popup input:focus{
+    .popup input:focus, select:focus{
         outline: none !important;
     }
 

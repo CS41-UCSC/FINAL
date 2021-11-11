@@ -110,7 +110,7 @@ class Task_Model extends Model{
     
                 if ($this->db->query($sql) == TRUE) {
                     $_SESSION['addTask'] = "yes";
-                  } else {
+                } else {
                     $_SESSION['addTask'] = "no";
                 }
                 
@@ -120,5 +120,28 @@ class Task_Model extends Model{
         }
                 
     }
+
+    function EditTask($tid,$tteam,$ttitle){
+
+        $sql = "UPDATE task SET TeamID='$tteam', TaskName='$ttitle' WHERE TaskID='$tid' ";
+
+        if ($this->db->query($sql) == TRUE) {
+            return true;
+          } else {
+            return false;
+          }
+    }
+
+    function DeleteTask($tid){
+
+        $sql = "DELETE FROM task WHERE TaskID='$tid' ";
+
+        if ($this->db->query($sql) == TRUE) {
+            return true;
+          } else {
+            return false;
+          }
+    }
+
 
 }

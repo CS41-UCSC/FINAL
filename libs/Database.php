@@ -15,4 +15,5 @@ class Database extends PDO {
         return $stmt->fetchAll();
     }
 
+    
 }

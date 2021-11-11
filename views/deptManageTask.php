@@ -58,10 +58,10 @@
         <div class="notification"><a href="#"><i class="fa fa-bell fa-lg"></i></a></div>
         <span class="user-login"><?php echo $_SESSION['login_user'] ?></span>
         <img class="img-rounded-circle" src="../Asserts/<?php if ($_SESSION['user_img']) {
-                                                                    echo $_SESSION['user_img'];
-                                                                } else {
-                                                                    echo 'avator.jpg';
-                                                                } ?>" alt="">
+                                                            echo $_SESSION['user_img'];
+                                                        } else {
+                                                            echo 'avator.jpg';
+                                                        } ?>" alt="">
 
 
     </header>
@@ -71,53 +71,53 @@
     <nav class="nav">
         <div class="nav-links">
 
-        <a href="http://localhost/Co-WMS/admin/adminHome" class="nav-link" id="manage_access">
+            <a href="http://localhost/Co-WMS/admin/adminHome" class="nav-link" id="manage_access">
                 <i class="fa fa-pencil-square-o fa-lg"><span>Manage Access</span></i>
             </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="dashboard">
-                <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
+                <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-			<a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
-                <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
+            <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
+                <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-			<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
-                <i class="fa fa-tachometer fa-lg" ><span>Department Progress</span></i>
+            <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
+                <i class="fa fa-tachometer fa-lg"><span>Department Progress</span></i>
             </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
-                <i class="fa fa-user fa-lg" ><span>My Profile</span></i>
+                <i class="fa fa-user fa-lg"><span>My Profile</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/myProgressAccepted" class="nav-link" id="my_progress">
-                <i class="fa fa-user fa-lg" ><span>My Progress</span></i>
+            <a href="http://localhost/Co-WMS/myProgressAccepted" class="nav-link" id="my_progress">
+                <i class="fa fa-user fa-lg"><span>My Progress</span></i>
             </a>
-			<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="t_progress">
-                <i class="fa fa-users fa-lg" ><span>Team Progress</span></i>
+            <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="t_progress">
+                <i class="fa fa-users fa-lg"><span>Team Progress</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/employeeWorkProgress" class="nav-link" id="emp_progress">
-                <i class="fa fa-users fa-lg" ><span>Employee Progress</span></i>
+            <a href="http://localhost/Co-WMS/employeeWorkProgress" class="nav-link" id="emp_progress">
+                <i class="fa fa-users fa-lg"><span>Employee Progress</span></i>
             </a>
             <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link nav-link-active" id="manage_task_dpt">
-                <i class="fa fa-tasks fa-lg" ><span>Manage Tasks</span></i>
+                <i class="fa fa-tasks fa-lg"><span>Manage Tasks</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leaderManageTask" class="nav-link" id="manage_task_leader">
-                <i class="fa fa-tasks fa-lg" ><span>Manage Tasks</span></i>
+            <a href="http://localhost/Co-WMS/leaderManageTask" class="nav-link" id="manage_task_leader">
+                <i class="fa fa-tasks fa-lg"><span>Manage Tasks</span></i>
             </a>
             <a href="http://localhost/Co-WMS/manageEmployee" class="nav-link" id="manage_emp">
-                <i class="fa fa-pencil-square-o fa-lg" ><span>Manage Employee</span></i>
+                <i class="fa fa-pencil-square-o fa-lg"><span>Manage Employee</span></i>
             </a>
             <a href="http://localhost/Co-WMS/leave/myleaveApproved" class="nav-link" id="my_leave">
-                <i class="fa fa-list-alt fa-lg" ><span>My Leave</span></i>
+                <i class="fa fa-list-alt fa-lg"><span>My Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leave/teamLeave" class="nav-link" id="t_leave">
-                <i class="fa fa-list-alt fa-lg" ><span>Team Leave</span></i>
+            <a href="http://localhost/Co-WMS/leave/teamLeave" class="nav-link" id="t_leave">
+                <i class="fa fa-list-alt fa-lg"><span>Team Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leave/dptleaveApproved" class="nav-link" id="d_leave">
-                <i class="fa fa-list-alt fa-lg" ><span>Department Leave</span></i>
+            <a href="http://localhost/Co-WMS/leave/dptleaveApproved" class="nav-link" id="d_leave">
+                <i class="fa fa-list-alt fa-lg"><span>Department Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leave/empLeave" class="nav-link" id="emp_leave">
-                <i class="fa fa-list-alt fa-lg" ><span>Employee Leave</span></i>
+            <a href="http://localhost/Co-WMS/leave/empLeave" class="nav-link" id="emp_leave">
+                <i class="fa fa-list-alt fa-lg"><span>Employee Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/logout" class="nav-link" id="logout">
-                <i class="fa fa-list-alt fa-lg" ><span>Logout</span></i>
+            <a href="http://localhost/Co-WMS/logout" class="nav-link" id="logout">
+                <i class="fa fa-list-alt fa-lg"><span>Logout</span></i>
             </a>
         </div>
 
@@ -139,10 +139,10 @@
 
             <div class="item2">
 
+                <h3>Remaining Tasks</h3>
                 <div class="searching">
 
-                    <input autoComplete="on" list="suggestions" class="searchbar">
-                    <div class="btn"><input type="submit" value="Search" class="button"></div>
+                    <input type="text" id="search" name="search" class="searchbar" placeholder="Searching" onkeyup="search()">
 
                 </div>
 
@@ -151,6 +151,7 @@
 
                     <table id="mytable">
 
+                        <col id="tid">
                         <col id="teamid">
                         <col id="team">
                         <col id="task">
@@ -159,6 +160,7 @@
 
                         <thead>
                             <tr>
+                                <th>Task ID</th>
                                 <th>Team ID</th>
                                 <th>Team</th>
                                 <th>Tasks</th>
@@ -168,7 +170,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                                <!--<tr id="1">
+                            <!--<tr id="1">
                                     <td class="row-data">Graphic</td>
                                     <td class="row-data">Graphic</td>
                                     <td class="row-data">certificate</td>
@@ -178,9 +180,10 @@
                                 </tr>-->
 
                             <?php
-                            $i=0;
+                            $i = 0;
                             foreach ($result as $row) {
                                 echo '<tr id= ' . $i . '>';
+                                echo '<td class="row-data" >' . $row['3'] . '</td>';
                                 echo '<td class="row-data" >' . $row['0'] . '</td>';
                                 echo '<td class="row-data" >' . $row['1'] . '</td>';
                                 echo '<td class="row-data" >' . $row['2'] . '</td>';
@@ -188,7 +191,7 @@
                                 echo '<td><button type="button" class="pen" onclick="editshow();"><i class="fa fa-pencil fa-lg"></i></button></td>';
                                 echo '</tr>';
 
-                                $i=$i+1;
+                                $i = $i + 1;
                             }
 
                             ?>
@@ -224,21 +227,33 @@
 
         </div>
 
+        <?php
+        $res = $this->deptteams;
+        ?>
 
     </main>
 
     <div class="popup" id="editForm">
 
-        <form action="" class="form-popup" id="form-popup" name="editdata">
+        <form action="" method="POST" class="form-popup" id="form-popup" name="editform">
 
-            <label for="dep">Team ID</label>
-            <input type="text" name="tid" id="ttid" value=""><br>
-            <label for="dep">Team </label>
-            <input type="text" name="tname" id="tteam" value=""><br>
+            <label for="Tname">Task ID</label>
+            <input type="text" name="ttid" id="ttid" value="" readonly><br>
+            <label for="Tname">Team ID</label>
+            <input type="text" name="tteam" id="tteam" value="">
+            <select name="team" id="stteam">
+                <?php
+                $i = 0;
+                foreach ($res as $row) {
+                    echo '<option value="' . $row[0] . '">' . $row[1] . '</option>';
+                    $i = $i + 1;
+                } ?>
+
+            </select><br>
             <label for="task">Task title</label>
-            <input type="text" name="tasktitle" id="ttitle" value=""><br>
+            <input type="text" name="ttitle" id="ttitle" value=""><br>
 
-            <div class="btn"><input type="submit" value="Save Changes" class="button">
+            <div class="btn"><input type="submit" value="Save Changes" class="button" onclick="EditTask();">
                 <button type="button" class="button" onclick="closeForm()">Close</button>
             </div>
 
@@ -248,12 +263,13 @@
 
     <div class="popup" id="deleteForm">
 
-        <form action="" class="form-popup" id="form-popup" name="deltedata">
+        <form method="POST" class="form-popup" id="form-popup" name="deletedata">
 
             <h4> Do you want to delete?</h4>
 
             <div class="btnd">
-                <input type="submit" value="Yes" class="yes">
+                <input type="text" id="delid" name="delid" value="" hidden>
+                <input type="submit" value="Yes" class="yes" onclick="deleteTask()">
                 <button type="button" class="no" value="" onclick="closedelete()">No</button>
             </div>
 
@@ -281,7 +297,10 @@
         });
     </script>
 
+
     <script>
+        var del;
+
         function editshow() {
 
             var rowId = event.target.parentNode.parentNode.parentNode.id;
@@ -292,13 +311,18 @@
             /*returns array of all elements with 
             "row-data" class within the row with given id*/
 
-            var id = data[0].innerHTML;
+            var tid = data[0].innerHTML;
             var name = data[1].innerHTML;
-            var title = data[2].innerHTML;
+            var title = data[3].innerHTML;
+            var select = document.getElementById("stteam");
+            var input = document.getElementById("tteam");
 
-            document.getElementById("ttid").value = id;
+            document.getElementById("ttid").value = tid;
             document.getElementById("tteam").value = name;
             document.getElementById("ttitle").value = title;
+            select.onchange = function() {
+                input.value = select.value;
+            }
 
             document.getElementById("editForm").style.display = "block";
             document.getElementById("container").style.filter = "grayscale(100%)";
@@ -307,6 +331,10 @@
         }
 
         function deleteshow() {
+
+            var rowId = event.target.parentNode.parentNode.parentNode.id;
+            var data = document.getElementById(rowId).querySelectorAll(".row-data");
+            del = data[0].innerHTML;
 
             document.getElementById("deleteForm").style.display = "block";
             document.getElementById("container").style.filter = "grayscale(100%)";
@@ -326,13 +354,53 @@
 
         }
 
-    </script>
-
-    <script type="text/javascript">
         function addtask() {
 
-            document.addform.action = "Task/addTask";
+            document.addform.action = "addTask";
 
+        }
+
+        function EditTask() {
+
+            document.editform.action = "EditTask";
+
+        }
+
+        function deleteTask() {
+
+            document.getElementById("delid").value = del;
+
+            document.deletedata.action = "DeleteTask";
+
+        }
+
+        function search() {
+            
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("mytable");
+            
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                
+                for (j = 0; j < 4; j++) {
+                   
+                    td = tr[i].getElementsByTagName("td")[j];
+
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+
+            }
         }
     </script>
 
