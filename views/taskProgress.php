@@ -119,15 +119,10 @@
         <div class="container" id="container">
 
             <div class="item2">
-                <!--<div class="searching">
-                                   
-                    <input type="text" name="search" id="search" class="search">
-                    <input type="submit" value="Search" class="button">
-
-                </div>-->
+                
                 <form>
-                    <input type="date" id="date" name="bdaymonth" class="search">
-                    <input type="submit" class="button" value="Submit" onclick="getsearch();">
+                    <input type="month" id="date" name="bdaymonth" class="search">
+                    <input type="submit" class="button" value="Search" onclick="getsearch();">
                 </form>
 
             </div>
@@ -150,6 +145,7 @@
 
                         <thead>
                             <tr>
+
                                 <th>Task ID</th>
                                 <th>Task Name</th>
                                 <th>Assigned Time</th>
@@ -157,9 +153,9 @@
                                 <th>Required Time</th>
                                 <th>Due Date</th>
                                 <th>Status</th>
-                                <th>view</th>
+                                <th>View</th>
                                 <th>Edit</th>
-
+                                <th>Remarks</th>
 
                             </tr>
                         </thead>
@@ -172,6 +168,7 @@
 
 
                             foreach ($result as $row) {
+
                                 echo '<tr id= ' . $row['1'] . '>';
                                 echo '<td class="row-data">' . $row['1'] . '</td>';
                                 echo '<td class="row-data">' . $row['0'] . '</td>';
@@ -186,7 +183,9 @@
                                 echo '<td class="row-data" style="display:none" >' . $row['11'] . '</td>';
                                 echo '<td><button type="button" class="pen" onclick="viewshow();"><i class="fa fa-eye fa-lg"></i></button></td>';
                                 echo '<td><button type="button" class="pen" onclick="show();"><i class="fa fa-pencil fa-lg"></i></button></td>';
+                                echo '<td><button type="button" class="pen" onclick="viewRemarks();"><i class="fa fa-book fa-lg"></i></button></td>';
                                 echo '</tr>';
+                       
                             }
 
                             ?>
@@ -208,21 +207,22 @@
 
     <div class="popup" id="myForm">
 
-        <form action="" class="form-popup" id="form-popup">
+        <form action="editAssignTask" method="POST" class="form-popup" id="form-popup">
 
 
+            <input type="text" name="tid" id="task" value="" hidden><br>
             <label for="task" id="lrtime">Required Time</label>
             <input type="text" name="rtime" id="rtime" value=""><br>
             <label for="task" id="lddate">Due Date</label>
             <input type="text" name="ddate" id="ddate" value=""><br>
             <label for="" name="lstts">Status</label>
             <select name="stts" id="stts">
-                <option value="volvo">Aproved</option>
-                <option value="saab">ReAssigned</option>
+                <option value="Approved">Approved</option>
+                <option value="ReAssigned">ReAssigned</option>
             </select>
 
             <div class="btn">
-                <input type="submit" value="Save Changes" class="button">
+                <input type="submit" value="Save Changes"  class="button">
                 <button type="button" class="button" onclick="closeForm()">Close</button>
             </div>
 
@@ -276,6 +276,7 @@
 
 
     <script>
+
         function viewshow() {
 
             var rowId = event.target.parentNode.parentNode.parentNode.id;
@@ -298,6 +299,8 @@
 
         }
 
+        //edit 
+
         function show() {
 
             var rowId = event.target.parentNode.parentNode.parentNode.id;
@@ -308,11 +311,12 @@
             /*returns array of all elements with 
             "row-data" class within the row with given id*/
 
+            var id = data[0].innerHTML;
             var rtime = data[5].innerHTML;
             var ddate = data[6].innerHTML;
             var status = data[7].innerHTML;
-
-
+            
+            document.getElementById("task").value = id;
             document.getElementById("rtime").value = rtime;
             document.getElementById("ddate").value = ddate;
             document.getElementById("stts").value = status;
@@ -321,6 +325,13 @@
             document.getElementById("myForm").style.display = "block";
             document.getElementById("container").style.filter = "grayscale(100%)";
 
+        }
+
+        function viewRemarks(){
+
+            var tid = event.target.parentNode.parentNode.parentNode.id;
+
+            window.location.href="http://localhost/FINAL/Task/showpage_checkRemarks?TaskID="+tid ;
         }
 
         function closeviewForm() {
