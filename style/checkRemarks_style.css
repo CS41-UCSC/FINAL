@@ -1,0 +1,85 @@
+.item1{
+    margin:50px auto 0px;
+}
+
+.item1 h3{
+    color: rgb(14, 14, 104);
+    font-size: 16pt;
+    font-weight: 200;
+}
+
+.item2{
+    margin: auto;
+    border: 1px solid rgb(106, 69, 207);
+    border-radius: 7px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.item2 .empid, .adddate, .accdate, .remarks{
+    display: block;
+    text-align: left;
+    width: 500px;
+    font-size: 14pt;
+    line-height: 30px;
+    padding-left: 20px;
+}
+
+.item2 input{
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+}
+
+.empid{
+    color: rgb(10, 10, 155);
+}
+
+.adddate{
+    color: rgb(124, 17, 224);
+}
+
+.accdate{
+    color: rgb(101, 25, 201);
+}
+
+.remarks{
+    border: 1px solid rgb(193, 192, 197);
+    border-radius: 7px;
+}
+
+.status{
+    display: flex;
+    text-align: left;
+    font-size: 14pt;
+    line-height: 40px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.status label{
+    margin-right: 40px;
+}
+
+.status .accept{
+    color: rgb(29, 180, 29);
+}
+
+.status .reject{
+    color: red;
+}
+
+.status .btn{
+    width: 60px;
+    height: 30px;
+    background-color: rgb(46, 46, 165);
+    color: white;
+    border-radius: 5px;
+    border: transparent;
+    cursor: pointer;
+}
+
+.status .btn:hover{
+    background-color: rgb(31, 31, 109);
+    color: white;
+}
