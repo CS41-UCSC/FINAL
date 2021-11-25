@@ -143,5 +143,35 @@ class Task_Model extends Model{
           }
     }
 
+    function editAssignTask($id,$rtime,$ddate,$stts){
+
+        $sql = "UPDATE task_assign SET RequiredTime='$rtime' , DueDate='$ddate'  , TaskStatus='$stts' WHERE TaskID='$id' ";
+
+        if ($this->db->query($sql) == TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function getTaskRemarks($id){
+
+        $sql = "SELECT * FROM remark WHERE TaskID='$id' ";
+
+        return $this->db->runQuery($sql);
+    }
+
+    function editTaskRemarks($id,$st){
+        
+        $sql = "UPDATE remark SET RStatus='$st' WHERE RemarkID='$id'";
+
+        if ($this->db->query($sql) == TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    
+    }
 
 }
