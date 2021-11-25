@@ -32,6 +32,14 @@ class Task extends controller{
         $this->view->render('teamProgress');
     }
 
+    function showpage_checkRemarks(){
+
+        $taskid = $_GET['TaskID'];
+        $this->view->tname=$_GET['Name'];
+        $this->view->users = $this->model->getTaskRemarks($taskid);
+        $this->view->render('checkRemarks');
+    }
+
     function getEmployeeProgress(){
         $eid = $_POST['empid'];
         $task = $this->model->getEmployeeProgress($eid);
@@ -96,4 +104,46 @@ class Task extends controller{
         
         
     }
+
+    function editAssignTask(){
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $id = $_POST['tid'];
+            $rtime = $_POST['rtime'];
+            $ddate = $_POST['ddate'];
+            $stts = $_POST['stts'];
+
+            $edit = $this->model->editAssignTask($id,$rtime,$ddate,$stts);
+
+            if($edit == true){
+                echo '<script>alert("Changed Successfully");
+                window.location.href="http://localhost/FINAL/Task/showpage_taskProgress" ;</script>';
+            }else{
+                echo '<script>alert("Failed! Not changed");
+                window.location.href="http://localhost/FINAL/Task/showpage_taskProgress" ;</script>';
+            }
+
+        }
+
+    }
+
+    function editRemarks(){
+
+        $id = $_GET['RemarkID'];
+        $st = $_GET['Status'];
+
+        $edit = $this->model->editTaskRemarks($id,$st);
+
+        if($edit == true){
+            echo '<script>alert("Changed Successfully");
+            window.location.href="http://localhost/FINAL/Task/showpage_taskProgress" ;</script>';
+        }else{
+            echo '<script>alert("Failed! Not changed");
+            window.location.href="http://localhost/FINAL/Task/showpage_taskProgress" ;</script>';
+        }
+
+    }
+
+    
 }
