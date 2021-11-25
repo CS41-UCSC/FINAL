@@ -330,8 +330,10 @@
         function viewRemarks(){
 
             var tid = event.target.parentNode.parentNode.parentNode.id;
+            var data = document.getElementById(tid).querySelectorAll(".row-data");
+            var name = data[1].innerHTML;
 
-            window.location.href="http://localhost/FINAL/Task/showpage_checkRemarks?TaskID="+tid ;
+            window.location.href="http://localhost/FINAL/Task/showpage_checkRemarks?TaskID="+tid+"&Name="+name ;
         }
 
         function closeviewForm() {
