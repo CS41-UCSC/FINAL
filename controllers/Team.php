@@ -27,6 +27,13 @@ class Team extends Controller{
 
     }
 
+    function getTeamMembers($tid){
+
+        $models = new Team_Model();
+        $res = $models->getTeamMembers($tid);
+        return $res;
+
+    }
 
 }
 
