@@ -119,7 +119,7 @@
         <div class="container" id="container">
 
             <div class="item2">
-                
+
                 <form>
                     <input type="month" id="date" name="bdaymonth" class="search">
                     <input type="submit" class="button" value="Search" onclick="getsearch();">
@@ -181,11 +181,10 @@
                                 echo '<td class="row-data" style="display:none" >' . $row['9'] . '</td>';
                                 echo '<td class="row-data" style="display:none" >' . $row['10'] . '</td>';
                                 echo '<td class="row-data" style="display:none" >' . $row['11'] . '</td>';
-                                echo '<td><button type="button" class="pen" onclick="viewshow();"><i class="fa fa-eye fa-lg"></i></button></td>';
+                                echo '<td><button type="button" class="pen" id="viewbtn" onclick="viewshow();"><i class="fa fa-eye fa-lg"></i></button></td>';
                                 echo '<td><button type="button" class="pen" onclick="show();"><i class="fa fa-pencil fa-lg"></i></button></td>';
                                 echo '<td><button type="button" class="pen" onclick="viewRemarks();"><i class="fa fa-book fa-lg"></i></button></td>';
                                 echo '</tr>';
-                       
                             }
 
                             ?>
@@ -222,7 +221,7 @@
             </select>
 
             <div class="btn">
-                <input type="submit" value="Save Changes"  class="button">
+                <input type="submit" value="Save Changes" class="button">
                 <button type="button" class="button" onclick="closeForm()">Close</button>
             </div>
 
@@ -237,15 +236,10 @@
             <div class="btn">
                 <button type="button" class="buttonx" onclick="closeviewForm()">X</button>
             </div>
-            <h3>Sub Task Progress</h3>
-            <progress id="file" value="32" max="100"></progress><br>
+            <h3 id="title">Sub Task Progress - completed</h3>
+            <progress id="file" value="" max="100"></progress><br>
             <div id="details"></div>
-            <textarea rows="4" cols="50" name="comment" form="usrform" readonly></textarea>
-            <div class="remarks">
-                <button type="button" class="remarkd" onclick="Reject()">Reject</button>
 
-                <button type="button" class="remarka" onclick="Accept()">Accept</button>
-            </div>
         </div>
 
     </div>
@@ -275,11 +269,51 @@
     </script>
 
 
-    <script>
-
+    <script type="text/javascript">
         function viewshow() {
 
             var rowId = event.target.parentNode.parentNode.parentNode.id;
+
+            var data = new FormData();
+
+            data.append("taskid", rowId);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "getSubTasks");
+
+            xhr.onload = function() {
+
+                let search = JSON.parse(this.response);
+
+                let progress = document.getElementById("file");
+
+
+                if (search !== null) {
+                    for (let s of search) {
+
+                        if (s.TaskID == rowId) {
+
+                            //when status = 0 , after it when click anither view button, it also hide these tow fields. avoid it add these lines
+                            progress.style.display = "block";
+                            document.getElementById("title").style.display = "block";
+
+                            var total = s.tasks;
+                            var comp = s.completed;
+                            var res = (comp / total * 100);
+                            progress.value = res;
+                            break;
+
+                        } else {
+                            progress.style.display = "none";
+                            document.getElementById("title").style.display = "none";
+                        }
+
+                    }
+                }
+
+                
+            };
+
+            xhr.send(data);
 
             var data = document.getElementById(rowId).querySelectorAll(".row-data");
 
@@ -315,7 +349,7 @@
             var rtime = data[5].innerHTML;
             var ddate = data[6].innerHTML;
             var status = data[7].innerHTML;
-            
+
             document.getElementById("task").value = id;
             document.getElementById("rtime").value = rtime;
             document.getElementById("ddate").value = ddate;
@@ -327,19 +361,20 @@
 
         }
 
-        function viewRemarks(){
+        function viewRemarks() {
 
             var tid = event.target.parentNode.parentNode.parentNode.id;
             var data = document.getElementById(tid).querySelectorAll(".row-data");
             var name = data[1].innerHTML;
 
-            window.location.href="http://localhost/FINAL/Task/showpage_checkRemarks?TaskID="+tid+"&Name="+name ;
+            window.location.href = "http://localhost/FINAL/Task/showpage_checkRemarks?TaskID=" + tid + "&Name=" + name;
         }
 
         function closeviewForm() {
 
             document.getElementById("viewForm").style.display = "none";
             document.getElementById("container").style.filter = "none";
+            document.getElementById("file").value = 0;
 
         }
 
@@ -349,7 +384,6 @@
             document.getElementById("container").style.filter = "none";
 
         }
-        
     </script>
 
 </body>
