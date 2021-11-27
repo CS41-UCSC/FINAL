@@ -1,0 +1,231 @@
+@media (min-width: 800px) {
+
+    main{
+        margin-top: 50px;  
+    }
+
+    .item1{
+        text-align: right;
+        margin-bottom: 30px;
+        padding-right: 50px;
+    }
+
+    .item1 a{
+        display: inline-block;
+        width: 150px;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .item1 span{
+        font-weight: 500;
+        font-size: 15pt;
+        color: #2B65EC;
+        font-family:sans-serif;
+    }
+
+    .activelink span{
+        font-weight: 550;
+    }
+
+    
+    .item1 a:hover{
+        border-bottom:3px solid #7cb3f1;
+    }
+
+    .item2 {grid-area: two;}
+    .item3 {grid-area: three;}
+    .item4 {grid-area: four;}
+    .item5 {grid-area: five;}
+    .item6 {grid-area: six;}
+
+
+    .container {
+        margin-bottom: 50px;
+        display: grid;
+        grid-template-areas:
+        'two two two'
+        'three three four'
+        'five six six';
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+        height: max-content;
+        background-color: #ffffff;
+    }
+
+    .containerN {
+        margin-bottom: 50px;
+        padding-left: 15px;
+        display: grid;
+        grid-template-areas:
+        'two two two'
+        'three three four'
+        'five six six';
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+        height: max-content;
+        background-color: #ffffff;
+        margin-left: 244px;
+    }
+
+    .item2{
+        margin: auto;
+    }
+
+    .searching{
+        display: flex;
+        flex-direction: row;
+        column-gap: 10px;
+    }
+
+    .searchbar{
+        width: 250px;
+        height: 30px;
+        padding-left: 20px;
+        border-radius: 5px;
+        border: 1px solid #686868;
+    }
+
+    .searchbar:focus{
+        outline: none !important;
+    }
+
+    .submitidbtn{
+        width: 50px;
+        height: 30px;
+        border-radius: 5px;
+        border: transparent;
+        background-color: #2B65EC;
+        color: white;
+        font-size: 12pt;
+        cursor: pointer;
+    }
+
+    .submitidbtn:hover{
+        background-color: #0a2e63;
+        color: white;
+    }
+
+    h3{
+        text-align: center;
+        color: #2b85ec;
+        font-weight: 200;
+        font-size: 15pt;
+    }
+
+    .item3{
+        margin: auto;
+    }
+
+    .item4{
+
+    }
+
+    .item5{
+        margin: auto;
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+        padding: 20px;
+    }
+
+    h4{
+        text-align: center;
+        color: #13365f;
+        font-weight: 200;
+        font-size: 15pt;
+    }
+
+    .data-form label{
+        text-align: left;
+        width: 180px;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .input-fields{
+        width: 220px; 
+        padding: 7px; 
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 12pt;  
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+    }
+
+    .input-fields:focus{
+        outline: none !important;
+        border: 1px solid #2B65EC;
+    }
+
+    .btn{
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .submit{
+        height: 30px;
+        width: 80px;
+        text-align: center;
+        background-color: #2B65EC;
+        color: white;
+        border-radius: 5px;
+        border: transparent;
+        font-size: 12pt;
+        cursor: pointer;
+    }
+
+    .submit:hover{
+        background-color: #0a2e63;
+        color: white;
+    }
+
+    .item6{
+        margin-right: 15px;
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+        padding: 20px;
+    }
+
+}
+
+@media (max-width: 799px) {
+
+    main{
+        margin-top: 40px;  
+    }
+
+    .item2 { grid-area: top; }
+    .item3 { grid-area: bottom;}
+
+    .container {
+        margin-bottom: 50px;
+        display: grid;
+        grid-template-areas:
+        'top'
+        'bottom';
+    }
+
+    .item1{
+        justify-content: space-evenly;
+        margin-bottom: 30px;
+        display: flex;
+    }
+
+    .item1 a{
+        text-decoration: none;
+    }
+
+    .item1 span{
+        font-weight: 400;
+        font-size: 11pt;
+        color: #2B65EC;
+        font-family:sans-serif;
+    }
+
+    .activelink span{
+        font-weight: 550;
+    }
+
+
+  
+   
+}
