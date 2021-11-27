@@ -174,4 +174,14 @@ class Task_Model extends Model{
     
     }
 
+    function getSubTasks($taskid){
+
+        //$sql = "SELECT COUNT(CASE WHEN subtask.status = 'Completed' THEN 1 END) AS completed, COUNT (TaskID) FROM subtask WHERE TaskID = '$taskid' " ;
+
+        $sql = "SELECT TaskID, COUNT(SubTaskID) as tasks, COUNT(CASE WHEN subtask.status = 'Completed' THEN 1 END) AS completed
+        FROM subtask GROUP BY TaskID  " ;
+
+        return $this->db->runQuery($sql);
+    }
+
 }
