@@ -7,5 +7,9 @@ class Manager extends controller{
         parent::__construct();
         session_start();
     }
+
+    function showpage_assignTasksMember(){
+        $this->view->render("assignTasksMember");
+    }
     
 }
