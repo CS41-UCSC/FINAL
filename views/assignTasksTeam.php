@@ -110,7 +110,7 @@
                 <span>Add Task</span>
             </a>
             <a href="showpage_assignTasksTeam" class="activelink">
-                <span>Task Progress</span>
+                <span>Team Progress</span>
             </a>
         </div>
 
@@ -157,6 +157,7 @@
                                 echo '<td>' . $row['2'] . '</td>';
                                 echo '<td>' . $row['3'] . '</td>';
                                 echo '<td><a href="../Task/loadTeam/' . $row["0"] . ' " class="add"><i class="fa fa-plus fa-lg"></i></a></td>';
+                                echo '<td><a href="../Task/loadMembers/' . $row["0"] . ' " class="add"><i class="fa fa-user fa-lg"></i></a></td>';
                                 echo '</tr>';
                             }
 
