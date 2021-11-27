@@ -26,6 +26,12 @@ class Task extends controller{
         $this->view->users = $this->model->getTaskProgress($_SESSION['teamID']);
         $this->view->render('taskProgress');
     }
+
+    function showpage_assignTasksMember(){
+        $team = new Team();
+        $this->view->members = $team->getTeamMembers($_SESSION['teamID']);
+        $this->view->render('assignTasksMember');
+    }
     
     function showpage_teamProgress(){
         $this->view->users = $this->model->getTeamProgress();
@@ -101,8 +107,15 @@ class Task extends controller{
         $_SESSION['teamID'] = $teamId;
 
         header('location: http://localhost/FINAL/Task/showpage_taskProgress');
-        
-        
+           
+    }
+
+    function loadMembers($teamId){
+
+        $_SESSION['teamID'] = $teamId;
+
+        header('location: http://localhost/FINAL/Task/showpage_assignTasksMember');
+
     }
 
     function editAssignTask(){
@@ -145,5 +158,16 @@ class Task extends controller{
 
     }
 
-    
+    function getSubTasks(){
+
+        $tid = $_POST['taskid'];
+        $subtask = $this->model->getSubTasks($tid);
+        
+        echo json_encode(count($subtask)==0 ? null : $subtask);
+
+        /* $eid = $_POST['empid'];
+        $task = $this->model->getEmployeeProgress($eid);
+        
+        echo json_encode(count($task)==0 ? null : $task);*/
+    }
 }
