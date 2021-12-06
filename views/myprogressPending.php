@@ -142,86 +142,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        <tr>
-                            <td data-label="Task Id">3</td>
-                            <td data-label="Task Name">Collect verify the all the customer details</td>
-                            <td data-label="Assigned On">10/07/2021</td>
-                            <td data-label="Due On">12/07/2021</td>
-                            <td data-label="Required Time">5 hrs</td>
-                            <!-- <td data-label="View"><a href="#"><i class="fa fa-eye fa-2x" style="color:black;" aria-hidden="true"></i></a></td> -->
-                            <td data-label="View">
-                                <button class="button" data-modal="modalOne1"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></button>
-                            </td>
-                            <td data-label="Accept"><a href="#"><i class="fa fa-check-circle-o fa-2x" style="color:gray;"  aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
+                        <?php
+                            $result = $this->users;
+                            // print_r($result);
+                            foreach ($result as $row) {
+                                echo '<tr>';
+                                echo '<td>' . $row['TaskID'] . '</td>';
+                                echo '<td>' . $row['TaskName'] . '</td>';
+                                echo '<td>' . $row['AssignedTime'] . '</td>';
+                                echo '<td>' . $row['DueDate'] . '</td>';
+                                echo '<td>' . $row['RequiredTime'] . '</td>';
+                                echo '<td data-label="View">
+                                        <button class="button" data-modal="modalOne1"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></button>
+                                    </td>';
+                                echo '<td data-label="Accept"><a href="#"><i class="fa fa-check-circle-o fa-2x" style="color:gray;"  aria-hidden="true"></i></a></td>';
+                                echo '<td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>';
+                                echo '</tr>';
+                            }
 
-                        <tr>
-                            <td data-label="Task Id">5</td>
-                            <td data-label="Task Name">Order prerequisite software</td>
-                            <td data-label="Assigned On">10/09/2021</td>
-                            <td data-label="Due On">12/09/2021</td>
-                            <td data-label="Required Time">7 hrs</td>
-                            <!-- <td data-label="View"><a href="#"><i class="fa fa-eye fa-2x" style="color:black;" aria-hidden="true"></i></a></td> -->
-                            <td data-label="View">
-                                <button class="button" data-modal="modalOne1"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></button>
-                            </td>
-                            <td data-label="Accept"><a href="#"><i class="fa fa-check-circle-o fa-2x" style="color:gray;"  aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">6</td>
-                            <td data-label="Task Name">Implement distributed data feeds in the production environment</td>
-                            <td data-label="Assigned On">12/08/2021</td>
-                            <td data-label="Due On">21/08/2021</td>
-                            <td data-label="Required Time">21 hrs</td>
-                            <!-- <td data-label="View"><a href="#"><i class="fa fa-eye fa-2x" style="color:black;" aria-hidden="true"></i></a></td> -->
-                            <td data-label="View">
-                                <button class="button" data-modal="modalOne1"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></button>
-                            </td>
-                            <td data-label="Accept"><a href="#"><i class="fa fa-check-circle-o fa-2x" style="color:gray;"  aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">8</td>
-                            <td data-label="Task Name">Process documentation</td>
-                            <td data-label="Assigned On">10/02/2021</td>
-                            <td data-label="Due On">12/02/2021</td>
-                            <td data-label="Required Time">3 hrs</td>
-                            <!-- <td data-label="View"><a href="#"><i class="fa fa-eye fa-2x" style="color:black;" aria-hidden="true"></i></a></td> -->
-                            <td data-label="View">
-                                <button class="button" data-modal="modalOne1"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></button>
-                            </td>
-                            <td data-label="Accept"><a href="#"><i class="fa fa-check-circle-o fa-2x" style="color:gray;"  aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">10</td>
-                            <td data-label="Task Name">Troubleshoot network issues</td>
-                            <td data-label="Assigned On">10/11/2021</td>
-                            <td data-label="Due On">20/11/2021</td>
-                            <td data-label="Required Time">17 hrs</td>
-                            <!-- <td data-label="View"><a href="#"><i class="fa fa-eye fa-2x" style="color:black;" aria-hidden="true"></i></a></td> -->
-                            <td data-label="View">
-                                <button class="button" data-modal="modalOne1"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></button>
-                            </td>
-                            <td data-label="Accept"><a href="#"><i class="fa fa-check-circle-o fa-2x" style="color:gray;"  aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">11</td>
-                            <td data-label="Task Name">organize a client meeting with ZOOM and collect details</td>
-                            <td data-label="Assigned On">01/05/2021</td>
-                            <td data-label="Due On">04/05/2021</td>
-                            <td data-label="Required Time">3 hrs</td>
-                            <!-- <td data-label="View"><a href="#"><i class="fa fa-eye fa-2x" style="color:black;" aria-hidden="true"></i></a></td> -->
-                            <td data-label="View">
-                                <button class="button" data-modal="modalOne1"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></button>
-                            </td>
-                            <td data-label="Accept"><a href="#"><i class="fa fa-check-circle-o fa-2x" style="color:gray;"  aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
+                        ?>
 
                     
                     </tbody>

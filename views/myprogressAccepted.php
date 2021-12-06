@@ -138,78 +138,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td data-label="Task Id">17</td>
-                            <td data-label="Task Name">organize a client meeting with ZOOM and collect details</td>
-                            <td data-label="Assigned On">10/07/2021</td>
-                            <td data-label="Due On">18/07/2021</td>
-                            <td data-label="Required Time">5 hrs</td>
-                            <td data-label="View"><a href="http://localhost/FINAL/Member/showpage_myprogressInprogressSelect"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">18</td>
-                            <td data-label="Task Name">Design the solution</td>
-                            <td data-label="Assigned On">15/07/2021</td>
-                            <td data-label="Due On">10/07/2021</td>
-                            <td data-label="Required Time">12 hrs</td>
-                            <td data-label="View"><a href="http://localhost/FINAL/Member/showpage_myprogressInprogressSelect"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">19</td>
-                            <td data-label="Task Name">Implement a business system in the test/QA environment</td>
-                            <td data-label="Assigned On">21/05/2021</td>
-                            <td data-label="Due On">22/05/2021</td>
-                            <td data-label="Required Time">2 hrs</td>
-                            <td data-label="View"><a href="http://localhost/FINAL/Member/showpage_myprogressInprogressSelect"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">15</td>
-                            <td data-label="Task Name">Collect verify the all the customer details</td>
-                            <td data-label="Assigned On">11/09/2021</td>
-                            <td data-label="Due On">12/09/2021</td>
-                            <td data-label="Required Time">3 hrs</td>
-                            <td data-label="View"><a href="http://localhost/FINAL/Member/showpage_myprogressInprogressSelect"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">12</td>
-                            <td data-label="Task Name">Install new software or hardware</td>
-                            <td data-label="Assigned On">10/10/2021</td>
-                            <td data-label="Due On">23/10/2021</td>
-                            <td data-label="Required Time">28 hrs</td>
-                            <td data-label="View"><a href="#"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">21</td>
-                            <td data-label="Task Name">Process documentation</td>
-                            <td data-label="Assigned On">10/04/2021</td>
-                            <td data-label="Due On">12/04/2021</td>
-                            <td data-label="Required Time">4 hrs</td>
-                            <td data-label="View"><a href="#"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">24</td>
-                            <td data-label="Task Name">Collect verify the all the customer details</td>
-                            <td data-label="Assigned On">10/03/2021</td>
-                            <td data-label="Due On">15/03/2021</td>
-                            <td data-label="Required Time">6 hrs</td>
-                            <td data-label="View"><a href="#"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">17</td>
-                            <td data-label="Task Name">Troubleshoot network issues</td>
-                            <td data-label="Assigned On">13/07/2021</td>
-                            <td data-label="Due On">21/07/2021</td>
-                            <td data-label="Required Time">16 hrs</td>
-                            <td data-label="View"><a href="#"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                        </tr>
+                        <?php
+                            $result = $this->users;
+                            // print_r($result);
+                            foreach ($result as $row) {
+                                echo '<tr>';
+                                echo '<td>' . $row['TaskID'] . '</td>';
+                                echo '<td>' . $row['TaskName'] . '</td>';
+                                echo '<td>' . $row['AssignedTime'] . '</td>';
+                                echo '<td>' . $row['DueDate'] . '</td>';
+                                echo '<td>' . $row['RequiredTime'] . '</td>';
+                                echo '<td data-label="View"><a href="myprogressInprogressSelect"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>';
+                                echo '<td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>';
+                                echo '</tr>';
+                            }
+
+                        ?> 
                         
                         
                     </tbody>

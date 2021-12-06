@@ -140,56 +140,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td data-label="Task Id">5</td>
-                            <td data-label="Task Name">Research and procure IT hardware and supplies.</td>
-                            <td data-label="Assigned On">10/10/2021</td>
-                            <td data-label="Due On">15/10/2021</td>
-                            <td data-label="Done On">16/10/2021</td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                            <td data-label="Reason Status">Reject</td>
-                        </tr>
+                        <?php
+                            $result = $this->users;
+                            // print_r($result);
+                            foreach ($result as $row) {
+                                echo '<tr>';
+                                echo '<td>' . $row['TaskID'] . '</td>';
+                                echo '<td>' . $row['TaskName'] . '</td>';
+                                echo '<td>' . $row['AssignedTime'] . '</td>';
+                                echo '<td>' . $row['DueDate'] . '</td>';
+                                echo '<td>' . $row['CompletedDate'] . '</td>';
+                                echo '<td data-label="Reason"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>';
+                                echo '<td>' . $row['TaskStatus'] . '</td>';
+                                echo '</tr>';
+                            }
 
-                        <tr>
-                            <td data-label="Task Id">7</td>
-                            <td data-label="Task Name">Assist in backup and recovery of digital assets.</td>
-                            <td data-label="Assigned On">11/10/2021</td>
-                            <td data-label="Due On">16/10/2021</td>
-                            <td data-label="Done On">18/10/2021</td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                            <td data-label="Reason Status">Approve</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Task Id">11</td>
-                            <td data-label="Task Name">Troubleshoot network issues</td>
-                            <td data-label="Assigned On">12/10/2021</td>
-                            <td data-label="Due On">17/10/2021</td>
-                            <td data-label="Done On">19/10/2021</td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                            <td data-label="Reason Status">Reject</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Task Id">13</td>
-                            <td data-label="Task Name">Process documentation.</td>
-                            <td data-label="Assigned On">14/10/2021</td>
-                            <td data-label="Due On">19/10/2021</td>
-                            <td data-label="Done On">22/10/2021</td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                            <td data-label="Reason Status">Approve</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">15</td>
-                            <td data-label="Task Name">Participate in IT inventory asset management.</td>
-                            <td data-label="Assigned On">17/10/2021</td>
-                            <td data-label="Due On">20/10/2021</td>
-                            <td data-label="Done On">22/10/2021</td>
-                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
-                            <td data-label="Reason Status">Approve</td>
-                        </tr>
-
-                        
+                        ?>
                         
                     </tbody>
                 </table>
