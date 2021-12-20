@@ -113,7 +113,7 @@
             $result = $this->users;
 
             echo '<div class="item1">';
-            echo '<h3>'.$name.'</h3>';
+            echo '<h3>' . $name . '</h3>';
             echo '</div>';
 
             foreach ($result as $row) {
@@ -152,8 +152,14 @@
             }
 
             ?>
+            
         </div>
 
+        <div class="remark">
+            <script>
+                document.write('<a href="' + document.referrer + '" class="backbtn" >Go Back</a>');
+            </script>
+        </div>
 
     </main>
 
