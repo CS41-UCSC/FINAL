@@ -1,3 +1,72 @@
+table,td,th {
+    border-collapse: collapse;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+    border: 1px solid rgb(255, 255, 255);
+} 
+
+tr{ 
+    border-top: 2px solid #ddd;  
+    color: black;
+}
+
+#del{
+    width: 70px;
+}
+
+.minus{
+    border: none;
+    background-color: transparent;
+}
+
+.minus i{
+    color: rgb(167, 167, 168);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.minus i:hover{
+    color: #cc3131;
+}
+
+#Pending {
+    background: #777676;
+    text-align: center;
+    color: white;
+}
+
+#InProgress {
+    background: #1b80df;
+    text-align: center;
+    color: white;
+}
+
+#Completed {
+    background: #f5e721;
+    text-align: center;
+    color: white;
+}
+
+#Approved {
+    background: #1ab841;
+    text-align: center;
+    color: white;
+}
+
+#ReAssigned {
+    background: #d3660d;
+    text-align: center;
+    color: white;
+}
+
+#Overdue {
+    background: #cc3131;
+    text-align: center;
+    color: white;
+}
+
 @media (min-width: 800px) {
 
     main{
@@ -42,10 +111,11 @@
 
     .container {
         margin-bottom: 50px;
+        padding-left: 15px;
         display: grid;
         grid-template-areas:
         'two two two'
-        'three three four'
+        'three four four'
         'five six six';
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 10px;
@@ -59,7 +129,7 @@
         display: grid;
         grid-template-areas:
         'two two two'
-        'three three four'
+        'three four four'
         'five six six';
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 10px;
@@ -114,18 +184,29 @@
     }
 
     .item3{
+        height: 400px;
         margin: auto;
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
     }
 
     .item4{
+        height: 400px;
+        margin-right: 15px;
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+    }
 
+    .chart{
+        margin: auto;
+        width: 65%;
     }
 
     .item5{
         margin: auto;
         border-radius: 5px;
         border: 1px solid #c0bfbf;
-        padding: 20px;
+        padding: 35px;
     }
 
     h4{
@@ -133,6 +214,13 @@
         color: #13365f;
         font-weight: 200;
         font-size: 15pt;
+    }
+
+    h5{
+        text-align: center;
+        color: #0c6aa0;
+        font-weight: 200;
+        font-size: 12pt;
     }
 
     .data-form label{
@@ -149,11 +237,22 @@
         font-size: 12pt;  
         border-radius: 5px;
         border: 1px solid #c0bfbf;
+        margin-bottom: 20px;
     }
 
-    .input-fields:focus{
+    .input-fields:focus, .textarea-fields:focus{
         outline: none !important;
         border: 1px solid #2B65EC;
+    }
+
+    .textarea-fields{
+        width: 400px; 
+        padding: 7px; 
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 12pt;  
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+        margin-bottom: 20px;
     }
 
     .btn{
@@ -183,6 +282,69 @@
         border-radius: 5px;
         border: 1px solid #c0bfbf;
         padding: 20px;
+    }
+
+    .item6-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .popupdel {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        padding-right: 10px;
+        object-fit: contain;
+
+    }
+
+    .form-popup {
+        /*position: absolute;*/
+        background-color: #f5f5f5;
+        border: 3px solid #f1f1f1;
+        border-radius: 5px;
+        padding: 20px;
+        width: max-content;
+        margin: 100px auto;
+        top: 10%;
+    }
+
+    .btnd{
+        width: 250px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .btnd .yes{
+        width: 80px;
+        border: 2px solid #19c536;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btnd .yes:hover{
+        background-color:#19c536 ;
+        color: #ffffff;
+    }
+
+    .btnd .no{
+        height: 30px;
+        width: 80px;
+        border: 2px solid #db3737;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btnd .no:hover{
+        background-color:#db3737;
+        color: #ffffff;
     }
 
 }
@@ -225,7 +387,50 @@
         font-weight: 550;
     }
 
+    .popup {
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        background-color: rgba(50, 50, 50, 0.808);
+        padding-top: 50px;
+    }
 
+    .form-popup {
+        background-color: #f5f5f5;
+        border: 3px solid #f1f1f1;
+        border-radius: 5px;
+        width: max-content;
+        padding: 5px;
+        margin: auto;
+    }
+
+    .btnd{
+        width: 250px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    .btnd .yes{
+        width: 80px;
+        border: 2px solid #19c536;
+        cursor: pointer;
+    }
+    
+    .btnd .yes:hover{
+        background-color:#19c536 ;
+        color: #ffffff;
+    }
+    
+    .btnd .no{
+        height: 30px;
+        width: 80px;
+        border: 2px solid #db3737;
+        border-radius: 5px;
+        cursor: pointer;
+    }
   
    
 }
