@@ -58,7 +58,29 @@ class Systemuser_Model extends Model{
 
     function getData($empID){
 
-        return $this->db->runQuery("SELECT * from SystemUser WHERE EmpID in ('$empID')");
+        $res1 =null ;
+
+        if($_SESSION['emprole'] == "Dept_Manager"){
+
+            $sql1= "SELECT StartDate FROM dept_manager  WHERE EmpID='$_SESSION[login_user]' ";
+            $res1 = $this->db->runQuery($sql1);
+
+        }
+        else if($_SESSION['emprole'] == "Team_Leader"){
+
+            $sql1= "SELECT StartDate FROM team_leader  WHERE EmpID='$_SESSION[login_user]' ";
+            $res1 = $this->db->runQuery($sql1);
+
+        }else if($_SESSION['emprole'] == "Team_Member"){
+
+            $sql1= "SELECT StartDate FROM team_member  WHERE EmpID='$_SESSION[login_user]' ";
+            $res1 = $this->db->runQuery($sql1);
+
+        }
+
+        $res2 = $this->db->runQuery("SELECT * from SystemUser WHERE EmpID in ('$empID')");
+
+        return array_merge($res2, $res1);
 
     }
 
