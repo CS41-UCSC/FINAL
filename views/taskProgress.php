@@ -165,11 +165,11 @@
                             <?php
 
                             $result = $this->users;
-
+                            $i = 1;
 
                             foreach ($result as $row) {
 
-                                echo '<tr id= ' . $row['1'] . '>';
+                                echo '<tr id= ' . $i++ . '>';
                                 echo '<td class="row-data">' . $row['1'] . '</td>';
                                 echo '<td class="row-data">' . $row['0'] . '</td>';
                                 echo '<td class="row-data">' . $row['3'] . '</td>';
@@ -181,9 +181,10 @@
                                 echo '<td class="row-data" style="display:none" >' . $row['9'] . '</td>';
                                 echo '<td class="row-data" style="display:none" >' . $row['10'] . '</td>';
                                 echo '<td class="row-data" style="display:none" >' . $row['11'] . '</td>';
+                                echo '<td class="row-data" style="display:none" >' . $row['12'] . '</td>';
                                 echo '<td><button type="button" class="pen" id="viewbtn" onclick="viewshow();"><i class="fa fa-eye fa-lg"></i></button></td>';
-                                echo '<td><button type="button" class="pen" onclick="show();"><i class="fa fa-pencil fa-lg"></i></button></td>';
-                                echo '<td><button type="button" class="pen" onclick="viewRemarks();"><i class="fa fa-book fa-lg"></i></button></td>';
+                                echo '<td><button type="button" class="pen" id="editbtn" onclick="show();"><i class="fa fa-pencil fa-lg"></i></button></td>';
+                                echo '<td><button type="button" class="pen" id="remarkbtn" onclick="viewRemarks();"><i class="fa fa-book fa-lg"></i></button></td>';
                                 echo '</tr>';
                             }
 
@@ -204,20 +205,21 @@
 
     </main>
 
+    <!--edit data submit form -->
+
     <div class="popup" id="myForm">
 
         <form action="editAssignTask" method="POST" class="form-popup" id="form-popup">
 
-
             <input type="text" name="tid" id="task" value="" hidden><br>
+            <input type="text" name="assignedmember" id="assignedmember" value="" hidden><br>
             <label for="task" id="lrtime">Required Time</label>
             <input type="text" name="rtime" id="rtime" value=""><br>
             <label for="task" id="lddate">Due Date</label>
-            <input type="text" name="ddate" id="ddate" value=""><br>
+            <input type="date" name="ddate" id="ddate" value="" min=""><br>
             <label for="" name="lstts">Status</label>
             <select name="stts" id="stts">
-                <option value="Approved">Approved</option>
-                <option value="ReAssigned">ReAssigned</option>
+
             </select>
 
             <div class="btn">
@@ -229,6 +231,8 @@
 
     </div>
 
+    <!-- view click data with sub task progress .. -->
+
     <div class="viewdata" id="viewForm">
 
         <div class="data">
@@ -236,8 +240,15 @@
             <div class="btn">
                 <button type="button" class="buttonx" onclick="closeviewForm()">X</button>
             </div>
-            <h3 id="title">Sub Task Progress - completed</h3>
+            <h3 id="tname" style="color:#4169E1;font-weight:normal;text-align:center;"></h3>
+            <h3 id="title" style="color:#191970;font-weight:normal;">Sub Task Progress</h3>
             <progress id="file" value="" max="100"></progress><br>
+            <div id="subtasks">
+                <h4 style="color:salmon;font-weight:normal;" id="topicp">Pending</h4>
+                <div id="pending"></div>
+                <h4 style="color:seagreen;font-weight:normal;" id="topicc">Completed</h4>
+                <div id="completed"></div>
+            </div>
             <div id="details"></div>
 
         </div>
@@ -270,13 +281,34 @@
 
 
     <script type="text/javascript">
+
+        document.getElementById("ddate").onclick = function() {
+
+            today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd;
+
+            var input = document.getElementById("ddate");
+            input.setAttribute("min", today);
+        }
+
         function viewshow() {
 
             var rowId = event.target.parentNode.parentNode.parentNode.id;
+            var data = document.getElementById(rowId).querySelectorAll(".row-data");
 
+            taskid = data[0].innerHTML;
+            assignedmember = data[3].innerHTML;
+            tname = data[1].innerHTML;
+
+            document.getElementById("tname").innerHTML = tname;
             var data = new FormData();
 
-            data.append("taskid", rowId);
+            data.append("taskid", taskid);
+            data.append("assignedmember", assignedmember);
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "getSubTasks");
 
@@ -284,33 +316,73 @@
 
                 let search = JSON.parse(this.response);
 
+                let count = 0;
+                let complete = 0;
+
                 let progress = document.getElementById("file");
 
+                let subtaskp = document.getElementById("pending");
+                subtaskp.innerHTML = " ";
+
+                let subtaskc = document.getElementById("completed");
+                subtaskc.innerHTML = " ";
 
                 if (search !== null) {
+
+                    progress.style.display = "block";
+                    document.getElementById("title").style.display = "block";
+                    document.getElementById("topicc").style.display = "block";
+                    document.getElementById("topicp").style.display = "block";
+
                     for (let s of search) {
 
-                        if (s.TaskID == rowId) {
-
-                            //when status = 0 , after it when click anither view button, it also hide these tow fields. avoid it add these lines
-                            progress.style.display = "block";
-                            document.getElementById("title").style.display = "block";
-
-                            var total = s.tasks;
-                            var comp = s.completed;
-                            var res = (comp / total * 100);
-                            progress.value = res;
-                            break;
-
-                        } else {
-                            progress.style.display = "none";
-                            document.getElementById("title").style.display = "none";
+                        if (s.Status == "Completed") {
+                            complete++;
+                            subtaskc.innerHTML += s.SubTaskName + "<br>";
+                        } else if (s.Status == "Pending") {
+                            subtaskp.innerHTML += s.SubTaskName + "<br>";
                         }
 
+                        count++;
+
                     }
+
+                    var res = (complete / count * 100);
+                    progress.value = res;
+
+                } else {
+                    
+                    progress.style.display = "none";
+                    document.getElementById("title").style.display = "none";
+                    document.getElementById("topicc").style.display = "none";
+                    document.getElementById("topicp").style.display = "none";
+
                 }
 
-                
+                /* if (search !== null) {
+                     for (let s of search) {
+
+                         if (s.TaskID == rowId) {
+
+                             //when status = 0 , after it when click anither view button, it also hide these tow fields. avoid it add these lines
+                             progress.style.display = "block";
+                             document.getElementById("title").style.display = "block";
+
+                             var total = s.tasks;
+                             var comp = s.completed;
+                             var res = (comp / total * 100);
+                             progress.value = res;
+                             break;
+
+                         } else {
+                             progress.style.display = "none";
+                             document.getElementById("title").style.display = "none";
+                         }
+
+                     }
+                 }*/
+
+
             };
 
             xhr.send(data);
@@ -320,12 +392,14 @@
             var acdate = data[8].innerHTML;
             var cdate = data[9].innerHTML;
             var apdate = data[10].innerHTML;
+            var desc = data[11].innerHTML;
 
             document.getElementById("details").innerHTML = "";
 
-            document.getElementById("details").innerHTML += '<br> Accepted Date<br>' + acdate + '<br>';
+            document.getElementById("details").innerHTML += '<br> Accepted Date <br>' + acdate + '<br>';
             document.getElementById("details").innerHTML += '<br> Completed Date<br>' + cdate + '<br>';
             document.getElementById("details").innerHTML += '<br> Approved Date<br>' + apdate + '<br>';
+            document.getElementById("details").innerHTML += '<br> <h4 style="color:orange; font-weight:400;">Description </h4>' + desc + '<br>';
             document.getElementById("details").innerHTML += '<br>';
 
             document.getElementById("viewForm").style.display = "block";
@@ -333,7 +407,7 @@
 
         }
 
-        //edit 
+        //edit task function
 
         function show() {
 
@@ -346,15 +420,41 @@
             "row-data" class within the row with given id*/
 
             var id = data[0].innerHTML;
+            var assignedmember = data[3].innerHTML;
             var rtime = data[5].innerHTML;
             var ddate = data[6].innerHTML;
             var status = data[7].innerHTML;
 
             document.getElementById("task").value = id;
+            document.getElementById("assignedmember").value = assignedmember;
             document.getElementById("rtime").value = rtime;
             document.getElementById("ddate").value = ddate;
-            document.getElementById("stts").value = status;
 
+            //attach click task sttaus to option tags, before that clear previous options
+
+            select = document.getElementById('stts');
+            var length = select.options.length;
+            for (i = length - 1; i >= 0; i--) {
+                select.options[i] = null;
+            }
+
+            var opt = document.createElement('option');
+            opt.value = status;
+            opt.innerHTML = status;
+
+            select.appendChild(opt);
+
+            //append approved and reassigne options
+
+            var opt1 = document.createElement('option');
+            opt1.value = "Approved";
+            opt1.innerHTML = "Approved";
+            select.appendChild(opt1);
+
+            var opt2 = document.createElement('option');
+            opt2.value = "ReAssigned";
+            opt2.innerHTML = "ReAssigned";
+            select.appendChild(opt2);
 
             document.getElementById("myForm").style.display = "block";
             document.getElementById("container").style.filter = "grayscale(100%)";
