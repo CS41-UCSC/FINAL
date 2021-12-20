@@ -31,6 +31,18 @@ tr{
     cursor: pointer;
 }
 
+#viewbtn i:hover{
+    color: green;
+}
+
+#editbtn i:hover{
+    color: blue;
+}
+
+#remarkbtn i:hover{
+    color: orangered;
+}
+
 #Pending {
     background: #777676;
     text-align: center;
@@ -205,7 +217,7 @@ tr{
         padding: 10px;
         width: 500px;
         height: fit-content;
-        margin: 100px auto;
+        margin:10px auto;
     }
 
     .data .btn{
