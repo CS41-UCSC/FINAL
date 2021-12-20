@@ -149,7 +149,8 @@
                         </tr>-->
                             <?php
                             $result = $this->users;
-                            
+                            $res = $this->members;
+
                             foreach ($result as $row) {
                                 echo '<tr id= ' . $row['0'] . '>';
                                 echo '<td>' . $row['0'] . '</td>';
@@ -157,8 +158,22 @@
                                 echo '<td>' . $row['2'] . '</td>';
                                 echo '<td>' . $row['3'] . '</td>';
                                 echo '<td><a href="../Task/loadTeam/' . $row["0"] . ' " class="add"><i class="fa fa-plus fa-lg"></i></a></td>';
-                                echo '<td><a href="../Task/loadMembers/' . $row["0"] . ' " class="add"><i class="fa fa-user fa-lg"></i></a></td>';
                                 echo '</tr>';
+
+                                foreach ($res as $row2) {
+                                    if($row2['2'] == $row['0']){
+
+                                        echo '<tr id= ' . $row2['0'] . ' >';
+                                        echo '<td class="subtd"></td>';
+                                        echo '<td class="subtd"></td>';
+                                        echo '<td class="subtd">' . $row2['0'] . '</td>';
+                                        echo '<td class="subtd">' . $row2['1'] . '</td>';
+                                        echo '<td class="subtd"><a href="../Task/loadMembers/' . $row2["0"] . '/'. $row["0"].' " class="user"><i class="fa fa-user fa-lg"></i></a></td>';
+                                        echo '</tr>';
+
+                                    }
+                                    
+                                }
                             }
 
                             ?>
