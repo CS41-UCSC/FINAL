@@ -144,69 +144,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td data-label="Task Id">1</td>
-                            <td data-label="Task Name">Design the solution</td>
-                            <td data-label="Done On">10/07/2021</td>
-                            <td data-label="Approved On">13/07/2021</td>
-                            <td data-label="Covered Hours">5 hrs</td>
-                        </tr>
+                        <?php
+                            $result = $this->users;
+                            // print_r($result);
+                            foreach ($result as $row) {
+                                echo '<tr>';
+                                echo '<td>' . $row['TaskID'] . '</td>';
+                                echo '<td>' . $row['TaskName'] . '</td>';
+                                echo '<td>' . $row['CompletedDate'] . '</td>';
+                                echo '<td>' . $row['ApprovedDate'] . '</td>';
+                                echo '<td>' . $row['RequiredTime'] . '</td>';
+                                echo '</tr>';
+                            }
 
-                        <tr>
-                            <td data-label="Task Id">2</td>
-                            <td data-label="Task Name">Install the product in the test/QA environment</td>
-                            <td data-label="Done On">11/06/2021</td>
-                            <td data-label="Approved On">27/06/2021</td>
-                            <td data-label="Covered Hours">25 hrs</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Task Id">3</td>
-                            <td data-label="Task Name">Implement a business system in the test/QA environment</td>
-                            <td data-label="Done On">10/07/2021</td>
-                            <td data-label="Approved On">15/07/2021</td>
-                            <td data-label="Covered Hours">5 hrs</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Task Id">4</td>
-                            <td data-label="Task Name">Prepare the production environment</td>
-                            <td data-label="Done On">10/09/2021</td>
-                            <td data-label="Approved On">14/09/2021</td>
-                            <td data-label="Covered Hours">12 hrs</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">6</td>
-                            <td data-label="Task Name">Implement distributed data feeds in the production environment</td>
-                            <td data-label="Done On">19/05/2021</td>
-                            <td data-label="Approved On">23/05/2021</td>
-                            <td data-label="Covered Hours">17 hrs</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Task Id">8</td>
-                            <td data-label="Task Name">Schedule jobs</td>
-                            <td data-label="Done On">10/08/2020</td>
-                            <td data-label="Approved On">14/08/2020</td>
-                            <td data-label="Covered Hours">10 hrs</td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Task Id">10</td>
-                            <td data-label="Task Name">Order prerequisite software</td>
-                            <td data-label="Done On">23/09/2021</td>
-                            <td data-label="Approved On">27/09/2021</td>
-                            <td data-label="Covered Hours">6 hrs</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Task Id">14</td>
-                            <td data-label="Task Name">Collect verify the all the customer details</td>
-                            <td data-label="Done On">10/01/2021</td>
-                            <td data-label="Approved On">17/01/2021</td>
-                            <td data-label="Covered Hours">17 hrs</td>
-                        </tr>
-
-                        
+                        ?>  
                         
                     </tbody>
                 </table>
