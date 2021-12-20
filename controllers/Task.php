@@ -19,6 +19,8 @@ class Task extends controller{
 
     function showpage_assignTasksTeam(){
         $this->view->users = $this->model->getTeam($_SESSION['login_user']);
+        $team = new Team();
+        $this->view->members = $team->getTeamMembers();
         $this->view->render('assignTasksTeam');
     }
 
@@ -28,8 +30,8 @@ class Task extends controller{
     }
 
     function showpage_assignTasksMember(){
-        $team = new Team();
-        $this->view->members = $team->getTeamMembers($_SESSION['teamID']);
+        $this->view->teamTasks = 
+        $this->view->tasks = $this->model->getAssignTasksforMember($_SESSION['memberID']);
         $this->view->render('assignTasksMember');
     }
     
@@ -102,6 +104,15 @@ class Task extends controller{
         
     }
 
+    function showsubtaskview(){
+
+        $taskid = $_POST['taskid'];
+        $result = $this->model->showsubtaskview($taskid);
+
+        echo json_encode(count($result)==0 ? null : $result);
+
+    }
+
     function loadTeam($teamId){
 
         $_SESSION['teamID'] = $teamId;
@@ -110,11 +121,11 @@ class Task extends controller{
            
     }
 
-    function loadMembers($teamId){
+    function loadMembers($memberId, $memberteamId){
 
-        $_SESSION['teamID'] = $teamId;
-
-        header('location: http://localhost/FINAL/Task/showpage_assignTasksMember');
+        $_SESSION['memberID'] = $memberId;
+        $_SESSION['memberteamID'] = $memberteamId;
+        header('location: http://localhost/FINAL/Manager/showpage_assignTasksMember');
 
     }
 
@@ -123,11 +134,12 @@ class Task extends controller{
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $id = $_POST['tid'];
+            $assignedmember = $_POST['assignedmember'];
             $rtime = $_POST['rtime'];
             $ddate = $_POST['ddate'];
             $stts = $_POST['stts'];
 
-            $edit = $this->model->editAssignTask($id,$rtime,$ddate,$stts);
+            $edit = $this->model->editAssignTask($id,$assignedmember,$rtime,$ddate,$stts);
 
             if($edit == true){
                 echo '<script>alert("Changed Successfully");
@@ -161,13 +173,38 @@ class Task extends controller{
     function getSubTasks(){
 
         $tid = $_POST['taskid'];
-        $subtask = $this->model->getSubTasks($tid);
+        $assignedmember = $_POST['assignedmember'];
+        $subtask = $this->model->getSubTasks($tid,$assignedmember);
         
         echo json_encode(count($subtask)==0 ? null : $subtask);
 
-        /* $eid = $_POST['empid'];
-        $task = $this->model->getEmployeeProgress($eid);
-        
-        echo json_encode(count($task)==0 ? null : $task);*/
     }
+
+    function getAssignTasksforMember(){
+
+        $empid = $_POST['empid'];
+        $assignTask = $this->model->getAssignTasksforMember($empid);
+
+        echo json_encode(count($assignTask) == 0 ? null : $assignTask);
+    }
+
+    function AssignTasksforMember(){
+        
+        $empid = $_SESSION['memberID'];
+        $taskid = $_POST['taskname'];
+        $ddate = $_POST['ddate'];
+        $rhours = $_POST['rhours'];
+
+        $result = 0;
+        
+        if($empid == NULL){
+            $result = 0;
+        }else{
+            $result = $this->model->AssignTasksforMember($empid, $taskid, $ddate, $rhours);
+        }
+
+        echo json_encode($result==0 ? "false" : "true"); 
+
+    }
+
 }
