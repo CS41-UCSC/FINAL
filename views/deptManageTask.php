@@ -160,33 +160,27 @@
 
                         <thead>
                             <tr>
-                                <th>Task ID</th>
-                                <th>Team ID</th>
-                                <th>Team</th>
-                                <th>Tasks</th>
+                                <!--<th>Task ID</th>-->
+                                <!--<th>Team ID</th>-->
+                                <th>Team Name</th>
+                                <th>Task Title</th>
+                                <th>More</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            <!--<tr id="1">
-                                    <td class="row-data">Graphic</td>
-                                    <td class="row-data">Graphic</td>
-                                    <td class="row-data">certificate</td>
-                                    <td><button type="button" class="minus"><i class="fa fa-minus-circle fa-lg"></i></button></td>
-                                    <td><button type="button" class="pen" onclick="show();"><i class="fa fa-pencil fa-lg"></i></button></td>
-
-                                </tr>-->
 
                             <?php
                             $i = 0;
                             foreach ($result as $row) {
                                 echo '<tr id= ' . $i . '>';
-                                echo '<td class="row-data" >' . $row['3'] . '</td>';
-                                echo '<td class="row-data" >' . $row['0'] . '</td>';
+                                echo '<td class="row-data" hidden>' . $row['3'] . '</td>';
+                                echo '<td class="row-data" hidden>' . $row['0'] . '</td>';
                                 echo '<td class="row-data" >' . $row['1'] . '</td>';
                                 echo '<td class="row-data" >' . $row['2'] . '</td>';
+                                echo '<td><button type="button" class="view"  onclick="subtaskshow();"  ><i class="fa fa-list fa-lg"></i></button></td>';
                                 echo '<td><button type="button" class="minus" onclick="deleteshow();"><i class="fa fa-minus-circle fa-lg"></i></button></td>';
                                 echo '<td><button type="button" class="pen" onclick="editshow();"><i class="fa fa-pencil fa-lg"></i></button></td>';
                                 echo '</tr>';
@@ -206,12 +200,21 @@
 
             <div class="item3">
 
-
                 <h3>Add new task</h3>
                 <form method="POST" class="data-form" id="data-form" name="addform">
 
                     <label for="dep">Team ID </label>
-                    <input type="text" name="tid" id="tid" value=""><br>
+                    <!--<input type="text" name="tid" id="tid" value=""><br>-->
+                    <select name="tid" id="tid">
+                        <?php
+                        $res = $this->deptteams;
+
+                        foreach ($res as $row) {
+                            echo '<option value=" ' . $row[0] . ' ">' . $row[1] . '</option>';
+                        }
+
+                        ?>
+                    </select><br>
                     <label for="task">Task title</label>
                     <input type="text" name="tname" value=""><br>
                     <h4>Sub Tasks</h4>
@@ -227,9 +230,6 @@
 
         </div>
 
-        <?php
-        $res = $this->deptteams;
-        ?>
 
     </main>
 
@@ -265,8 +265,8 @@
 
         <form method="POST" class="form-popup" id="form-popup" name="deletedata">
 
-            <h4> Do you want to delete?</h4>
-
+            <h4>Do you want to delete?</h4>
+            <h4 id="title" style="color: darkblue; font-weight:normal;"></h4>
             <div class="btnd">
                 <input type="text" id="delid" name="delid" value="" hidden>
                 <input type="submit" value="Yes" class="yes" onclick="deleteTask()">
@@ -277,6 +277,19 @@
 
     </div>
 
+    <div class="popup" id="subtaskForm">
+
+        <div class="form-popup">
+            <div class="btnx">
+                <button type="button" class="buttonx" onclick="closesubtaskview()">X</button>
+            </div>
+            <h4 id="taskname"></h4>
+            <div class="subtasks" id="subtasks" style="color: darkblue; font-weight:normal;">
+
+            </div>
+        </div>
+
+    </div>
 
 
 
@@ -336,6 +349,7 @@
             var data = document.getElementById(rowId).querySelectorAll(".row-data");
             del = data[0].innerHTML;
 
+            document.getElementById("title").innerHTML = data[3].innerHTML
             document.getElementById("deleteForm").style.display = "block";
             document.getElementById("container").style.filter = "grayscale(100%)";
 
@@ -374,18 +388,64 @@
 
         }
 
+        function subtaskshow() {
+
+            var rowId = event.target.parentNode.parentNode.parentNode.id;
+            var data = document.getElementById(rowId).querySelectorAll(".row-data");
+            id = data[0].innerHTML;
+
+            document.getElementById("taskname").innerHTML = data[3].innerHTML;
+
+            var data = new FormData();
+
+            data.append("taskid", id);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "showsubtaskview");
+
+            xhr.onload = function() {
+
+                let search = JSON.parse(this.response);
+
+                let res = document.getElementById("subtasks");
+                res.innerHTML = ""
+
+                if (search !== null) {
+
+                    for (let s of search) {
+                        res.innerHTML += s.SubTaskName + "<br>"
+                    }
+                }else{
+                    res.innerHTML = "No sub-tasks"
+                }
+            };
+
+            xhr.send(data);
+
+            document.getElementById("subtaskForm").style.display = "block";
+
+            document.getElementById("container").style.filter = "grayscale(100%)";
+
+        }
+
+        function closesubtaskview() {
+
+            document.getElementById("subtaskForm").style.display = "none";
+            document.getElementById("container").style.filter = "none";
+
+        }
+
         function search() {
-            
+
             input = document.getElementById("search");
             filter = input.value.toUpperCase();
             table = document.getElementById("mytable");
-            
+
             tr = table.getElementsByTagName("tr");
 
             for (i = 0; i < tr.length; i++) {
-                
+
                 for (j = 0; j < 4; j++) {
-                   
+
                     td = tr[i].getElementsByTagName("td")[j];
 
                     if (td) {
