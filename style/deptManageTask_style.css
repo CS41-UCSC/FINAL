@@ -13,21 +13,55 @@ tr{
     border-top: 2px solid #ddd;  
     color: black;
 }
+.btnx{
+   display: flex;
+   float: right;
+}
 
+.buttonx{
+    float: right;
+    background-size:cover;
+    width: 25px;
+    height: 25px;
+    font-size: 20[x];
+    cursor:pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.buttonx:hover{
+    color: red;
+}
 
 #del, #edit{
     width: 70px;
 }
 
-.minus, .pen{
+.minus, .pen, .view{
     border: none;
     background-color: transparent;
 }
 
-.minus i, .pen i{
+.view{
+    width: 10%;
+}
+
+.minus i, .pen i, .view i{
     color: rgb(167, 167, 168);
     border-radius: 5px;
     cursor: pointer;
+}
+
+.minus i:hover{
+    color: #cc3131;
+}
+
+.pen i:hover{
+    color: rgb(211, 133, 15);
+}
+
+.view i:hover{
+    color: green;
 }
 
 .searching{
@@ -196,7 +230,7 @@ tr{
         background-color: #f5f5f5;
         border: 3px solid #f1f1f1;
         border-radius: 5px;
-        padding: 20px;
+        padding: 5px;
         width: max-content;
         margin: 100px auto;
         top: 10%;
