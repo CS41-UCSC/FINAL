@@ -1,0 +1,183 @@
+.calender-container {
+  height: 70px;
+}
+
+.calender {
+  padding-top: 20px;
+}
+
+.month-year-container {
+  width: 100%;
+  background-color: rgb(0, 119, 255);
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  height: 50px;
+}
+
+.month-year-container svg {
+  cursor: pointer;
+}
+
+.month-year-container span {
+  margin: auto 0;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.pre-nxt-month-btn {
+  width: 35px;
+  height: 35px;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 254, 254);
+  cursor: pointer;
+}
+
+.days-container {
+  height: calc(100% - 50px);
+  border-radius: 10px 10px 0 0;
+
+}
+
+.days-name, .days {
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.days-name {
+  width: 100%;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+  color: rgba(0, 0, 0, 0.404);
+}
+
+.days {
+  width: 100%;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.d-name, .date {
+  width: calc(60% / 7);
+}
+
+.d-name {
+  padding-left: 6px;
+  padding-right: 6px;
+  text-align: center;
+  font-size: 1em;
+}
+
+.date {
+  height: calc(82% / 7);
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  color: rgba(78, 78, 78, 0.548);
+}
+
+.badge {
+  background-color: rgb(17, 202, 42);
+  height: 15px;
+  width: 15px;
+  text-align: center;
+  font-size: .6em;
+  line-height: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+}
+
+.leavedays{
+  background-color: rgb(216, 132, 35);
+  height: 12px;
+  width: 12px;
+  text-align: center;
+  font-size: .6em;
+  line-height: 16px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  border-radius: 50%;
+}
+
+.today {
+  background-color:  rgba(114, 160, 230, 0.514);
+  font-weight: bold;
+}
+
+.currentMonthday {
+  color: #000;
+}
+
+.range {
+  background-color: rgba(255, 127, 80, 0.068);
+  color: #000;
+  box-sizing: border-box;
+}
+
+.range-start {
+  background-color: coral;
+  color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.range-end {
+  background-color: coral;
+  color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.popup {
+  display: none;
+  width: 500px;
+  height: 30px;
+  margin: auto; 
+  left: 520px;  
+  position: fixed;
+}
+
+.data {
+  background-color: #6996db;
+  border: 3px solid #f1f1f1;
+  border-radius: 5px;
+  width: 500px;
+  padding: 10px;
+}
+
+.data .btn{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.buttonx{
+  padding-top: 10px;
+  float: right;
+  background-size:cover;
+  width: 25px;
+  height: 25px;
+  font-size: 15pt;
+  font-weight: bold;
+  cursor:pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.buttonx:hover{
+  color: red;
+}
