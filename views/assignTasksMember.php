@@ -113,7 +113,7 @@
 
 
         <div class="item1" id="item1">
-            <a href="showpage_deptManageTask">
+            <a href="../TASK/showpage_deptManageTask">
                 <span>Add Task</span>
             </a>
             <a href="showpage_assignTasksMembers" class="activelink">
@@ -188,12 +188,25 @@
 
                 <script defer>
                     let calender = new Calender("calender", "eventpopup");
-                    calender.addleaverange("2021", "11", "25", "2021", "12", "2")
+
+                    //calender.addleaverange("2021", "11", "25", "2021", "12", "2")
                     //calender.addallEvents(2021,12,20,"logo design", "zincat comapny");
                     //calender.init();
                 </script>
 
                 <?php
+
+                $leaveset = $this->leave;
+
+                foreach ($leaveset as $row) {
+                    $sdate = $row[0];
+                    $str_arr = explode("-", $sdate);
+                    $edate = $row[1];
+                    $end_arr = explode("-", $edate);
+                    echo '<script type="text/javascript">calender.addleaverange(\'' . $str_arr[0] . '\',\'' . $str_arr[1] . '\',
+                    \'' . $str_arr[2] . '\',\'' . $end_arr[0] . '\', \'' . $end_arr[1] . '\',\'' . $end_arr[2] . '\')</script>';
+                }
+                
                 $result = $this->tasks;
 
                 foreach ($result as $row) {
@@ -214,7 +227,7 @@
 
             <div class="item4">
 
-                <h3>Progress Chart  vs Chart</h3>
+                <h3>Progress Chart vs Hours</h3>
                 <div class="chart">
                     <canvas id="myChart"></canvas>
                 </div>
@@ -413,19 +426,19 @@
 
             var xhr = new XMLHttpRequest();
 
-            xhr.open("POST", "AssignTasksforMember");
+            xhr.open("POST", "AssignTasksforMember", true);
 
             xhr.onload = function() {
 
                 let submit = JSON.parse(this.response);
 
-                if (xhr.status == 200) {
+                if (submit == true) {
                     alert("Succesfully added new task to Member");
                     //window.location.reload();
                     window.location.reload(false);
                 } else {
                     alert("Failed! Try Aggain");
-                    window.location.reload();
+                    //window.location.reload();
                     window.location.reload(false);
                 }
             }

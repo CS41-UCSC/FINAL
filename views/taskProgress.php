@@ -120,20 +120,23 @@
 
             <div class="item2">
 
-                <form>
-                    <input type="month" id="date" name="bdaymonth" class="search">
-                    <input type="submit" class="button" value="Search" onclick="getsearch();">
-                </form>
+                <input type="text" id="search" name="search" class="search" placeholder="Searching" onkeyup="search()">
+                <input type="month" id="monthyear" onkeyup="searchbymonth()">
 
             </div>
 
+            <div class="month">
+                <label for="" id="monthname"><?php if(isset($_SESSION['monthname'])){echo $_SESSION['monthname'];} else {echo date('F');} ?></label>
+            </div>
+
             <div class="item3">
+
+                
 
                 <div class="result" id="result" style="overflow-x:auto;">
 
                     <table id="mytable">
 
-                        <col id="taskid">
                         <col id="taskname">
                         <col id="asstime">
                         <col id="assto">
@@ -142,11 +145,12 @@
                         <col id="status">
                         <col id="view">
                         <col id="edit">
+                        <col id="remark">
 
                         <thead>
                             <tr>
 
-                                <th>Task ID</th>
+                                <!--<th>Task ID</th>-->
                                 <th>Task Name</th>
                                 <th>Assigned Time</th>
                                 <th>Assigned To</th>
@@ -170,7 +174,7 @@
                             foreach ($result as $row) {
 
                                 echo '<tr id= ' . $i++ . '>';
-                                echo '<td class="row-data">' . $row['1'] . '</td>';
+                                echo '<td class="row-data" hidden>' . $row['1'] . '</td>';
                                 echo '<td class="row-data">' . $row['0'] . '</td>';
                                 echo '<td class="row-data">' . $row['3'] . '</td>';
                                 echo '<td class="row-data">' . $row['4'] . '</td>';
@@ -281,7 +285,6 @@
 
 
     <script type="text/javascript">
-
         document.getElementById("ddate").onclick = function() {
 
             today = new Date();
@@ -351,7 +354,7 @@
                     progress.value = res;
 
                 } else {
-                    
+
                     progress.style.display = "none";
                     document.getElementById("title").style.display = "none";
                     document.getElementById("topicc").style.display = "none";
@@ -484,6 +487,14 @@
             document.getElementById("container").style.filter = "none";
 
         }
+
+        function searchbymonth() {
+
+            var monthyear = document.getElementById("monthyear").value;
+            window.location.href = "http://localhost/FINAL/Task/monthfilter?Date=" + monthyear;
+
+        }
+
     </script>
 
 </body>

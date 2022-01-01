@@ -25,7 +25,7 @@ class Task extends controller{
     }
 
     function showpage_taskProgress(){
-        $this->view->users = $this->model->getTaskProgress($_SESSION['teamID']);
+        $this->view->users = $this->model->getTaskProgress($_SESSION['teamID'],$_SESSION['startmonthyear'],$_SESSION['endmonthyear']);
         $this->view->render('taskProgress');
     }
 
@@ -113,12 +113,35 @@ class Task extends controller{
 
     }
 
-    function loadTeam($teamId){
+    function loadTeam($teamId,$date){
 
         $_SESSION['teamID'] = $teamId;
+        $ts = strtotime($date);
+        $startmonthyear = date('Y-m-01',$ts);
+        $_SESSION['startmonthyear'] = $startmonthyear;
+        $endmonthyear = date('Y-m-t' ,$ts);
+        $_SESSION['endmonthyear'] = $endmonthyear;
 
         header('location: http://localhost/FINAL/Task/showpage_taskProgress');
            
+    }
+
+    function monthfilter(){
+
+        $date = $_GET['Date'];
+        $date_arr = explode("-", $date);
+        $month_num = $date_arr[1];
+        $month_name = date("F", mktime(0, 0, 0, $month_num, 10));
+        $_SESSION['monthname'] = $month_name;
+
+        $ts = strtotime($date);
+
+        $startmonthyear = date('Y-m-01',$ts);
+        $_SESSION['startmonthyear'] = $startmonthyear;
+        $endmonthyear = date('Y-m-t' ,$ts);
+        $_SESSION['endmonthyear'] = $endmonthyear;
+
+        header('location: http://localhost/FINAL/Task/showpage_taskProgress');
     }
 
     function loadMembers($memberId, $memberteamId){

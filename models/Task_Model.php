@@ -38,9 +38,10 @@ class Task_Model extends Model{
 
     }
 
-    function getTaskProgress($teamid){
+    function getTaskProgress($teamid,$startdate,$enddate){
 
-        $sql="SELECT T.TaskName,  T.TaskID,  TA.* FROM Task T LEFT JOIN Task_Assign TA ON TA.TaskID = T.TaskID WHERE T.TeamID = $teamid; ";
+        $sql="SELECT T.TaskName,  T.TaskID,  TA.* FROM Task T LEFT JOIN Task_Assign TA ON TA.TaskID = T.TaskID WHERE T.TeamID = '$teamid'
+        AND TA.DueDate BETWEEN '$startdate' AND '$enddate'  ORDER BY TA.DueDate DESC ";
 
         return $this->db->runQuery($sql);
     }
@@ -92,6 +93,11 @@ class Task_Model extends Model{
             $_SESSION['addTask'] = "no";
         }
 
+        $gettaskid = "SELECT TaskID FROM task WHERE TaskName='$name' ";
+        $taskid = $this->db->runQuery($gettaskid);
+
+        $tid = $taskid[0][0];
+
         $a = array();
         $sub1 = $_POST['sub1'];
         $sub2 = $_POST['sub2'];
@@ -104,9 +110,9 @@ class Task_Model extends Model{
 
             if($a[$i]){
                 
-                echo $a[$i];
+                //echo $a[$i];
 
-                $sql = "INSERT INTO subtask (TaskID, SubTaskName) VALUES ('$id', '$a[$i]')" ;
+                $sql = "INSERT INTO subtask (TaskID, SubTaskName) VALUES ('$tid', '$a[$i]')" ;
     
                 if ($this->db->query($sql) == TRUE) {
                     $_SESSION['addTask'] = "yes";
@@ -120,6 +126,8 @@ class Task_Model extends Model{
         }
                 
     }
+
+
 
     function EditTask($tid,$tteam,$ttitle){
 
