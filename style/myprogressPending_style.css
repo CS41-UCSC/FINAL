@@ -76,6 +76,7 @@
     backdrop-filter: blur(1px);*/
 
     .flex-container {
+      flex-direction: column;
         display: flex;
         margin-top: 70px;
         margin-left: 2%;
@@ -87,6 +88,8 @@
       }
 
       .flex-container1 .text{
+        margin-top: 40px;
+        margin-left: -1140px;
         color: #5a5858;
         font-size: 25px;
         font-weight: 400;
