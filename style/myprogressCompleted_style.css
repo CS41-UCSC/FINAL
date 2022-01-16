@@ -78,6 +78,7 @@
 
     .flex-container {
         display: flex;
+        flex-direction: column;
         margin-top: 70px;
         margin-left: 2%;
         margin-right: 2%;
@@ -89,13 +90,17 @@
 
     .flex-container1 {
         margin-top: -10px;
-        width: 90%;
+        width: 100%;
         display: flex;
-        flex-wrap: nowrap;
+        /* flex-wrap: nowrap; */
+
+        flex-direction: column;
         background-color: #ffffff;
       }
 
       .flex-container1 .text{
+        margin-top: 40px;
+        margin-left: 0px;
         color: #5a5858;
         font-size: 25px;
         font-weight: 400;
@@ -103,7 +108,6 @@
       }
       
       .flex-container1 > div {
-
         background-color: #ffffff;
         width: 100%;
         margin: 10px;
@@ -112,9 +116,10 @@
         font-size: 70px;
       }
       input[type=date], select {
+        
         width: 100%;
         padding: 12px 20px;
-        margin: 8px 0;
+        margin: 10px 0;
         display: inline-block;
         border: 1px solid #ccc;
         border-radius: 4px;
