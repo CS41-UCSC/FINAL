@@ -64,7 +64,7 @@
 
                                     ?>
         </label>
-        <div class="notification">
+        <!--<div class="notification">
             <button class="icon"><i class="fa fa-bell fa-lg"></i>
                 <span class="badge">3</span>
             </button>
@@ -74,7 +74,7 @@
                 <a href="#">Revoke all access from </a>
                 <a href="#">10 Hours Pending to Complete</a>
             </div>
-        </div>
+        </div>-->
         <span class="user-login"><?php echo $_SESSION['login_user'] ?></span>
         <img class="img-rounded-circle" src="../Asserts/<?php if ($result[0]['Userimg']) {
                                                                     echo $result[0]['Userimg'];
