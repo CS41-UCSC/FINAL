@@ -96,7 +96,7 @@
 			<a href="http://localhost/Co-WMS/leave/empLeave" class="nav-link" id="emp_leave">
                 <i class="fa fa-list-alt fa-lg" ><span>Employee Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/logout" class="nav-link" id="logout">
+			<a href="http://localhost/FINAL/login/logout" class="nav-link" id="logout">
                 <i class="fa fa-list-alt fa-lg" ><span>Logout</span></i>
             </a>
         </div>
