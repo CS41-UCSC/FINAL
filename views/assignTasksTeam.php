@@ -95,7 +95,7 @@
             <a href="http://localhost/Co-WMS/leave/empLeave" class="nav-link" id="emp_leave">
                 <i class="fa fa-list-alt fa-lg"><span>Employee Leave</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/logout" class="nav-link" id="logout">
+            <a href="http://localhost/FINAL/login/logout" class="nav-link" id="logout">
                 <i class="fa fa-list-alt fa-lg"><span>Logout</span></i>
             </a>
         </div>
@@ -162,12 +162,21 @@
                                 echo '<td><a href="../Task/loadTeam/' . $row["0"] . '/' . $month . ' " class="add"><i class="fa fa-plus fa-lg"></i></a></td>';
                                 echo '</tr>';
 
+                                echo '<tr  >';
+                                        echo '<td class="hname">Assigned Hours</td>';
+                                        echo '<td class="hname">Progress Bar</td>';
+                                        echo '<td class="hname">Emp-ID</td>';
+                                        echo '<td class="hname">Emp-Name</td>';
+                                        echo '<td class="hname"></td>';
+                                echo '</tr>';
+
                                 foreach ($res as $row2) {
+
                                     if ($row2['2'] == $row['0']) {
 
                                         echo '<tr id= ' . $row2['0'] . ' >';
-                                        echo '<td class="subtd"></td>';
-                                        echo '<td class="subtd"></td>';
+                                        echo '<td class="subtd">' . $row2['3'] . ' h</td>';
+                                        echo '<td class="subtd"><progress id="file" value=' . $row2['3'] . ' max="160"></progress></td>';
                                         echo '<td class="subtd">' . $row2['0'] . '</td>';
                                         echo '<td class="subtd">' . $row2['1'] . '</td>';
                                         echo '<td class="subtd"><a href="../Task/loadMembers/' . $row2["0"] . '/' . $row["0"] . ' " class="user"><i class="fa fa-user fa-lg"></i></a></td>';
