@@ -356,15 +356,21 @@ tr{
         margin-top: 40px;  
     }
 
-    .item2 { grid-area: top; }
-    .item3 { grid-area: bottom;}
+    .item2 {grid-area: two;}
+    .item3 {grid-area: three;}
+    .item4 {grid-area: four;}
+    .item5 {grid-area: five;}
+    .item6 {grid-area: six;}
 
     .container {
         margin-bottom: 50px;
         display: grid;
         grid-template-areas:
-        'top'
-        'bottom';
+        'two'
+        'three' 
+        'four'
+        'five' 
+        'six';
     }
 
     .item1{
@@ -386,6 +392,138 @@ tr{
 
     .activelink span{
         font-weight: 550;
+    }
+
+    .item2{
+        margin: auto;
+    }
+
+    h3{
+        text-align: center;
+        color: #2b85ec;
+        font-weight: 200;
+        font-size: 15pt;
+    }
+
+    .item3{
+        height: 400px;
+        margin: auto;
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+    }
+
+    .item4{
+        height: 400px;
+        margin-right: 15px;
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+    }
+
+    .chart{
+        margin: auto;
+        width: 65%;
+    }
+    .item5{
+        margin: auto;
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+        padding: 35px;
+    }
+
+    h4{
+        text-align: center;
+        color: #13365f;
+        font-weight: 200;
+        font-size: 15pt;
+    }
+
+    h5{
+        text-align: center;
+        color: #0c6aa0;
+        font-weight: 200;
+        font-size: 12pt;
+    }
+
+    .data-form label{
+        text-align: left;
+        width: 180px;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .input-fields{
+        width: 220px; 
+        padding: 7px; 
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 12pt;  
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+        margin-bottom: 20px;
+    }
+
+    .input-fields:focus, .textarea-fields:focus{
+        outline: none !important;
+        border: 1px solid #2B65EC;
+    }
+
+    .textarea-fields{
+        width: 400px; 
+        padding: 7px; 
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 12pt;  
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+        margin-bottom: 20px;
+    }
+
+    .btn{
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .submit{
+        height: 30px;
+        width: 80px;
+        text-align: center;
+        background-color: #2B65EC;
+        color: white;
+        border-radius: 5px;
+        border: transparent;
+        font-size: 12pt;
+        cursor: pointer;
+    }
+
+    .submit:hover{
+        background-color: #0a2e63;
+        color: white;
+    }
+
+    .item6{
+        margin-right: 15px;
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+        padding: 20px;
+    }
+
+    .item6-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .popupdel {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        padding-right: 10px;
+        object-fit: contain;
+
     }
 
     .popup {
