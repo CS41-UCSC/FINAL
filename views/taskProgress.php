@@ -95,7 +95,7 @@
             <a href="http://localhost/Co-WMS/leave/empLeave" class="nav-link" id="emp_leave">
                 <i class="fa fa-list-alt fa-lg"><span>Employee Leave</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/logout" class="nav-link" id="logout">
+            <a href="http://localhost/FINAL/login/logout" class="nav-link" id="logout">
                 <i class="fa fa-list-alt fa-lg"><span>Logout</span></i>
             </a>
         </div>
@@ -126,12 +126,16 @@
             </div>
 
             <div class="month">
-                <label for="" id="monthname"><?php if(isset($_SESSION['monthname'])){echo $_SESSION['monthname'];} else {echo date('F');} ?></label>
+                <label for="" id="monthname"><?php if (isset($_SESSION['monthname'])) {
+                                                    echo $_SESSION['monthname'];
+                                                } else {
+                                                    echo date('F');
+                                                } ?></label>
             </div>
 
             <div class="item3">
 
-                
+
 
                 <div class="result" id="result" style="overflow-x:auto;">
 
@@ -297,6 +301,38 @@
             var input = document.getElementById("ddate");
             input.setAttribute("min", today);
         }
+
+        function search() {
+
+            input = document.getElementById("search");
+
+            filter = input.value.toUpperCase();
+            table = document.getElementById("mytable");
+
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+
+                for (j = 1; j < 8; j ++) {
+
+                    td = tr[i].getElementsByTagName("td")[j];
+
+                    if (td) {
+
+                        txtValue = td.textContent || td.innerText;
+
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+
+            }
+        }
+
 
         function viewshow() {
 
@@ -494,7 +530,6 @@
             window.location.href = "http://localhost/FINAL/Task/monthfilter?Date=" + monthyear;
 
         }
-
     </script>
 
 </body>
