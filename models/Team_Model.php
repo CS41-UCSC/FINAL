@@ -35,8 +35,13 @@ class Team_Model extends Model{
 
         return array_merge($res1, $res2);*/
 
-        $sql1 = "SELECT systemuser.EmpID, systemuser.EmpName, team_member.TeamID FROM systemuser INNER JOIN team_member ON systemuser.EmpID = team_member.EmpID";
-        $sql2 = "SELECT systemuser.EmpID, systemuser.EmpName, team_leader.TeamID FROM systemuser INNER JOIN team_leader ON systemuser.EmpID = team_leader.EmpID";
+        $sql1 = "SELECT systemuser.EmpID, systemuser.EmpName, team_member.TeamID,SUM(task_assign.RequiredTime ) AS totaltime 
+        FROM systemuser LEFT JOIN task_assign ON systemuser.EmpID=task_assign.AssignedTo 
+        INNER JOIN team_member ON systemuser.EmpID = team_member.EmpID GROUP BY systemuser.EmpID";
+
+        $sql2 = "SELECT systemuser.EmpID, systemuser.EmpName, team_leader.TeamID,SUM(task_assign.RequiredTime ) AS totaltime 
+        FROM systemuser LEFT JOIN task_assign ON systemuser.EmpID=task_assign.AssignedTo 
+        INNER JOIN team_leader ON systemuser.EmpID = team_leader.EmpID GROUP BY systemuser.EmpID";
 
         $res1 = $this->db->runQuery($sql1);
         $res2 = $this->db->runQuery($sql2);
