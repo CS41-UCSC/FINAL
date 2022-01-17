@@ -102,7 +102,7 @@
             <a href="http://localhost/Co-WMS/leave/empLeave" class="nav-link" id="emp_leave">
                 <i class="fa fa-list-alt fa-lg"><span>Employee Leave</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/logout" class="nav-link" id="logout">
+            <a href="http://localhost/FINAL/login/logout" class="nav-link" id="logout">
                 <i class="fa fa-list-alt fa-lg"><span>Logout</span></i>
             </a>
         </div>
@@ -261,8 +261,8 @@
                     var ap = '<?php echo $a; ?>';
                     var pe = '<?php echo $d; ?>';
 
-                    var xValues = ["Assign Taks", "Completed Tasks", "Approved Tasks", "Pending Tasks"];
-                    var yValues = [pe, cp, ap, pe];
+                    var xValues = ["Pending Tasks", "Completed Tasks", "Approved Tasks", "Inprogress Tasks"];
+                    var yValues = [pe, cp, ap, ip];
                     var barColors = ["#407294", "#01786f", "#bd6c82", "#69a8a2"];
 
                     new Chart("myChart", {
@@ -404,8 +404,9 @@
             var mm = today.getMonth() + 1; //January is 0!
             var yyyy = today.getFullYear();
 
-            today = yyyy + '-' + mm + '-' + dd;
-
+            today = yyyy + '-0' + mm + '-' + dd;
+            
+           
             var input = document.getElementById("ddate");
             input.setAttribute("min", today);
         }
@@ -431,8 +432,8 @@
             xhr.onload = function() {
 
                 let submit = JSON.parse(this.response);
-
-                if (submit == true) {
+                //alert(submit)
+                if (submit == "true") {
                     alert("Succesfully added new task to Member");
                     //window.location.reload();
                     window.location.reload(false);
