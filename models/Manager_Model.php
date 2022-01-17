@@ -24,8 +24,14 @@ class Manager_Model extends Model
     function getTaskProgressChart($empid)
     {
 
+        $date = date("Y/m/d");
+        $ts = strtotime($date);
+        $startdate = date('Y-m-01',$ts);
+        $enddate = date('Y-m-t' ,$ts);
+
+
         $sql2 = "SELECT task_assign.TaskStatus, SUM(task_assign.RequiredTime) AS totaltime FROM task_assign 
-            WHERE task_assign.AssignedTo = '$empid' GROUP BY task_assign.TaskStatus ;";
+            WHERE task_assign.AssignedTo = '$empid' AND DueDate BETWEEN '$startdate' AND '$enddate' GROUP BY task_assign.TaskStatus ;";
 
         return $this->db->runQuery($sql2);
     }
