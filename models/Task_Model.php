@@ -9,9 +9,49 @@ class Task_Model extends Model{
 
     function getTask($empId){
 
+        //echo $_SESSION['emprole'];
+
         //$sql = "SELECT tk.TeamID, tm.TeamName, tk.TaskName FROM Task tk, Team tm  WHERE tk.TeamID  IN ( SELECT teamID FROM Team WHERE DeptID IN ( SELECT DeptID FROM dept_manager WHERE EmpID =  '$empId' ) ) ; ";
 
-        $sql1 = "SELECT DeptID FROM dept WHERE Dept_Manager = ('$empId') ;";
+        /* 
+
+        */
+        if($_SESSION['emprole'] == "Dept_Manager"){
+
+            $sql1 = "SELECT DeptID FROM dept WHERE Dept_Manager = ('$empId') ;";
+            $dept= $this->db->runQuery($sql1);
+
+            $dept_ID = $dept[0]['DeptID'];
+
+            //$sql = "SELECT tk.TeamID, tm.TeamName, tk.TaskName FROM Team tm INNER JOIN Task tk ON tk.TeamID = tm.TeamID  WHERE tm.DeptID = ('$dept_ID')  ; " ;
+            
+            $sql = "SELECT tk.TeamID, tm.TeamName, tk.TaskName, tk.TaskID FROM Team tm INNER JOIN Task tk ON tk.TeamID = tm.TeamID  
+            WHERE tm.DeptID = ('$dept_ID') AND NOT EXISTS  (select 1 FROM task_assign ts WHERE ts.TaskID = tk.TaskID) ORDER BY tm.TeamName; " ;
+
+            return $this->db->runQuery($sql);
+
+        }
+
+        else if($_SESSION['emprole'] == "Team_Leader"){
+
+            $sql1 = "SELECT TeamID FROM team_leader WHERE EmpID = ('$empId') ;";
+            $dept= $this->db->runQuery($sql1);
+
+            //get team id
+
+            $team_ID = $dept[0]['TeamID'];
+
+            $sql = "SELECT tk.TeamID,tm.TeamName, tk.TaskName, tk.TaskID FROM Team tm INNER JOIN Task tk ON tk.TeamID = tm.TeamID 
+            WHERE tm.TeamID = ('$team_ID') AND NOT EXISTS  (select 1 FROM task_assign ts WHERE ts.TaskID = tk.TaskID)" ;
+
+            //send remaining task array to controller
+           
+            return $this->db->runQuery($sql);
+        }
+        /*
+        */
+
+        /*$sql1 = "SELECT DeptID FROM dept WHERE Dept_Manager = ('$empId') ;";
         $dept= $this->db->runQuery($sql1);
 
         $dept_ID = $dept[0]['DeptID'];
@@ -20,21 +60,33 @@ class Task_Model extends Model{
         $sql = "SELECT tk.TeamID, tm.TeamName, tk.TaskName, tk.TaskID FROM Team tm INNER JOIN Task tk ON tk.TeamID = tm.TeamID  
         WHERE tm.DeptID = ('$dept_ID') AND NOT EXISTS  (select 1 FROM task_assign ts WHERE ts.TaskID = tk.TaskID) ORDER BY tm.TeamName; " ;
 
-        return $this->db->runQuery($sql);
+        return $this->db->runQuery($sql);*/
 
     }
 
     function getTeam($empID){
 
-        $sql1 = "SELECT DeptID FROM dept WHERE Dept_Manager = ('$empID') ;";
-        $dept= $this->db->runQuery($sql1);
+        if($_SESSION['emprole'] == "Dept_Manager"){
 
-        $dept_ID = $dept[0]['DeptID'];
+            $sql1 = "SELECT DeptID FROM dept WHERE Dept_Manager = ('$empID') ;";
+            $dept= $this->db->runQuery($sql1);
 
-        $sql2 = "SELECT T.TeamID, T.TeamName, L.EmpID, S.EmpName FROM team T INNER JOIN team_leader L ON T.TeamID = L.TeamID INNER JOIN 
-        systemuser S ON S.EmpID = L.EmpID WHERE T.DeptID = ('$dept_ID')  ; " ;
+            $dept_ID = $dept[0]['DeptID'];
 
-        return $this->db->runQuery($sql2);
+            $sql2 = "SELECT T.TeamID, T.TeamName, L.EmpID, S.EmpName FROM team T INNER JOIN team_leader L ON T.TeamID = L.TeamID INNER JOIN 
+            systemuser S ON S.EmpID = L.EmpID WHERE T.DeptID = ('$dept_ID')  ; " ;
+
+            return $this->db->runQuery($sql2);
+
+        }
+
+        else if($_SESSION['emprole'] == "Team_Leader"){
+
+            $sql = "SELECT TeamID FROM team_leader WHERE team_leader.EmpID = ('$empID') ";
+
+            return $this->db->runQuery($sql);
+
+        }
 
     }
 

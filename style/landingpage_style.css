@@ -47,6 +47,7 @@
     .item4, .item5, .item6, .item7{
         border-left-style: solid;
         border-left-color: #2B65EC;
+        background-color: #eeeeee;
         color: #525C65;
         border-left-width: 3px;
         margin-top: 20px;
@@ -72,6 +73,7 @@
     .item8, .item9 {
         border-left-style: solid;
         border-left-color: #2B65EC;
+        background-color: #eeeeee;
         color: #525C65;
         border-left-width: 3px;
         border-radius: 10px;

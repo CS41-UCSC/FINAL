@@ -154,7 +154,7 @@
                             $month = date("F Y", $time);
 
                             foreach ($result as $row) {
-                                echo '<tr id= ' . $row['0'] . '>';
+                                echo '<tr class="team-name" id= ' . $row['0'] . '>';
                                 echo '<td>' . $row['0'] . '</td>';
                                 echo '<td>' . $row['1'] . '</td>';
                                 echo '<td>' . $row['2'] . '</td>';
@@ -176,7 +176,7 @@
 
                                         echo '<tr id= ' . $row2['0'] . ' >';
                                         echo '<td class="subtd">' . $row2['3'] . ' h</td>';
-                                        echo '<td class="subtd"><progress id="file" value=' . $row2['3'] . ' max="160"></progress></td>';
+                                        echo '<td class="subtd"><progress class="progress-bar" id="file" value=' . $row2['3'] . ' max="160"></progress></td>';
                                         echo '<td class="subtd">' . $row2['0'] . '</td>';
                                         echo '<td class="subtd">' . $row2['1'] . '</td>';
                                         echo '<td class="subtd"><a href="../Task/loadMembers/' . $row2["0"] . '/' . $row["0"] . ' " class="user"><i class="fa fa-user fa-lg"></i></a></td>';

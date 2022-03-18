@@ -61,12 +61,12 @@
 
         if(usernamepattern.test(username))
         {
-            document.getElementById("username").style.border='1px solid green'; 
+            document.getElementById("username").style.border='2px solid green'; 
             res="green";
         }
         else
         {
-            document.getElementById("username").style.border='1px solid red'; 
+            document.getElementById("username").style.border='2px solid red'; 
             res = "red";
         }
 	}
@@ -82,7 +82,7 @@
         else if(res=="red"){
 
             document.getElementById("msg").innerHTML = "Invalid username and password";
-            document.getElementById("msg").style.border='1px solid red'; 
+            document.getElementById("msg").style.border='2px solid red'; 
             document.getElementById("username").style.border='transparent';
             event.preventDefault();
             
