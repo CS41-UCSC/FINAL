@@ -10,24 +10,36 @@ class Manager_Model extends Model
 
     function getAssignTasksforMember($empid)
     {
+
+        $startdate = date('Y-m-01'); 
+        $enddate  = date('Y-m-t');
+
         $sql = "SELECT task.TaskID, task.TaskName, task_assign.AssignedTime, task_assign.RequiredTime, task_assign.DueDate, task_assign.TaskStatus
-        FROM task_assign INNER JOIN task ON task_assign.TaskID=task.TaskID WHERE task_assign.AssignedTo= '$empid' ";
+        FROM task_assign INNER JOIN task ON task_assign.TaskID=task.TaskID WHERE task_assign.AssignedTo= '$empid' AND 
+        task_assign.DueDate BETWEEN '$startdate' AND '$enddate' ORDER BY task_assign.DueDate DESC";
 
         return $this->db->runQuery($sql);
     }
 
-    function getTaskProgressChart($empid){
-        
-        $sql2 ="SELECT task_assign.TaskStatus, SUM(task_assign.RequiredTime) AS totaltime FROM task_assign 
-            WHERE task_assign.AssignedTo = '$empid' GROUP BY task_assign.TaskStatus ;" ;
+    function getTaskProgressChart($empid)
+    {
 
-            return $this->db->runQuery($sql2);  
+        $date = date("Y/m/d");
+        $ts = strtotime($date);
+        $startdate = date('Y-m-01',$ts);
+        $enddate = date('Y-m-t' ,$ts);
+
+
+        $sql2 = "SELECT task_assign.TaskStatus, SUM(task_assign.RequiredTime) AS totaltime FROM task_assign 
+            WHERE task_assign.AssignedTo = '$empid' AND DueDate BETWEEN '$startdate' AND '$enddate' GROUP BY task_assign.TaskStatus ;";
+
+        return $this->db->runQuery($sql2);
     }
 
     function AssignTasksforMember($empid, $taskid, $desc, $ddate, $rhours)
     {
 
-        try{
+        try {
 
             $this->db->beginTransaction();
 
@@ -50,14 +62,30 @@ class Manager_Model extends Model
             }
             $this->db->commit();
             return true;
-
-         }
-         catch(Exception $e){
+        } catch (Exception $e) {
 
             $this->db->rollback();
             return false;
+        }
+    }
 
-         }
+    function getLeaves($empid)
+    {
+
+        $sql = "SELECT StartDate, EndDate FROM empleave WHERE EmpID = '$empid' AND LStatus='Approved' ";
+        $result = $this->db->runQuery($sql);
+        return $result;
+    }
+
+    function DeleteAssignTask($taskid, $empid)
+    {
+
+        $sql = "DELETE FROM task_assign WHERE TaskID='$taskid' AND AssignedTO='$empid' ";
+        if ($this->db->query($sql) == TRUE) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

@@ -17,6 +17,13 @@ class Task extends controller{
         $this->view->render('deptManageTask');
     }
 
+    function showpage_leaderManageTask(){
+        $team = new Team();
+        $this->view->deptteams = $team->getdeptTeams(); 
+        $this->view->task = $this->model->getTask($_SESSION['login_user']);
+        $this->view->render('leaderManageTask');
+    }
+
     function showpage_assignTasksTeam(){
         $this->view->users = $this->model->getTeam($_SESSION['login_user']);
         $team = new Team();
@@ -24,8 +31,15 @@ class Task extends controller{
         $this->view->render('assignTasksTeam');
     }
 
+    function showpage_leaderAssignTasksTeam(){
+        $this->view->users = $this->model->getTeam($_SESSION['login_user']);
+        $team = new Team();
+        $this->view->members = $team->getTeamMembers();
+        $this->view->render('leaderAssignTasksTeam');
+    }
+
     function showpage_taskProgress(){
-        $this->view->users = $this->model->getTaskProgress($_SESSION['teamID']);
+        $this->view->users = $this->model->getTaskProgress($_SESSION['teamID'],$_SESSION['startmonthyear'],$_SESSION['endmonthyear']);
         $this->view->render('taskProgress');
     }
 
@@ -113,20 +127,56 @@ class Task extends controller{
 
     }
 
-    function loadTeam($teamId){
+    function loadTeam($teamId,$date){
 
         $_SESSION['teamID'] = $teamId;
+        $ts = strtotime($date);
+        $startmonthyear = date('Y-m-01',$ts);
+        $_SESSION['startmonthyear'] = $startmonthyear;
+        $endmonthyear = date('Y-m-t' ,$ts);
+        $_SESSION['endmonthyear'] = $endmonthyear;
 
         header('location: http://localhost/FINAL/Task/showpage_taskProgress');
            
     }
 
+    function monthfilter(){
+
+        $date = $_GET['Date'];
+        $date_arr = explode("-", $date);
+        $month_num = $date_arr[1];
+        $month_name = date("F", mktime(0, 0, 0, $month_num, 10));
+        $_SESSION['monthname'] = $month_name;
+
+        $ts = strtotime($date);
+
+        $startmonthyear = date('Y-m-01',$ts);
+        $_SESSION['startmonthyear'] = $startmonthyear;
+        $endmonthyear = date('Y-m-t' ,$ts);
+        $_SESSION['endmonthyear'] = $endmonthyear;
+
+        header('location: http://localhost/FINAL/Task/showpage_taskProgress');
+    }
+
     function loadMembers($memberId, $memberteamId){
 
-        $_SESSION['memberID'] = $memberId;
-        $_SESSION['memberteamID'] = $memberteamId;
-        header('location: http://localhost/FINAL/Manager/showpage_assignTasksMember');
+        if($_SESSION['emprole'] == "Dept_Manager"){
 
+            $_SESSION['memberID'] = $memberId;
+            $_SESSION['memberteamID'] = $memberteamId;
+            header('location: http://localhost/FINAL/Manager/showpage_assignTasksMember');
+
+        }
+
+        else if($_SESSION['emprole'] == "Team_Leader"){
+
+            $_SESSION['memberID'] = $memberId;
+            $_SESSION['memberteamID'] = $memberteamId;
+            header('location: http://localhost/FINAL/Leader/showpage_leaderAssignTasksMember');
+
+        }
+
+        
     }
 
     function editAssignTask(){
