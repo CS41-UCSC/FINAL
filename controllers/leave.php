@@ -8,10 +8,11 @@ class leave extends Controller{
 		$this->view->annual = 14;
 		$this->view->casual = 4;
 		$this->view->sick = 10;
-		
+
 		$date = date_create();
 		$this->cur_month = date_format($date, "Y-m");
 		$this->cur_year = date_format($date, "Y");
+		
 	}
 	
 	function index(){
@@ -19,6 +20,8 @@ class leave extends Controller{
 	}
 	
 	function myleaveApproved(){
+		$this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
 		$status = "Approved";
 		
 		if (isset($_POST['filterbtn'])){
@@ -41,6 +44,9 @@ class leave extends Controller{
 	}
 	
 	function myleavePending(){
+		$this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+		
 		$status = "Pending";
 		if(isset($_GET['ID'])){
 			$return1 = $this->model->delete($_GET['ID']);
@@ -61,31 +67,36 @@ class leave extends Controller{
 		if (isset($_POST['filterbtn'])){
 			$this->view->data = $this->model->getmyLeave($status,$_POST['month']);
 			$this->view->month_val = $_POST['month'];
+			$this->view->render('myleavePending');
 		}
 		else{
 			$this->view->data = $this->model->getmyLeave($status,$this->cur_month);
 			$this->view->month_val = $this->cur_month;
+			$this->view->render('myleavePending');
 		}
-		$this->view->render('myleavePending');
+		// $this->view->render('myleavePending');
 	}
 	
 	function myleaveRequest(){
+		$this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
 		$this->taken_annual = $this->model->getApprovedCount("Annual",$this->cur_year);
 		$this->taken_casual = $this->model->getApprovedCount("Casual",$this->cur_year);
 		$this->taken_sick = $this->model->getApprovedCount("Sick",$this->cur_year);
+		$this->deptManID = $this->model->deptManagerID();
+		$this->dept_ManID = $this->deptManID['0']['0'];
 		
 		$this->taken_Annual = 0;
 		$this->taken_Casual = 0;
 		$this->taken_Sick = 0;
 
 		if(!empty($this->taken_annual)){
-			foreach($this->taken_annual as $count){
-				if($count['0']==NULL){
-					$taken_Annual = 0;
-				}
-				else{
-					$taken_Annual = $count['0'];
-				}
+			if($this->taken_annual['0']['0']==NULL){
+				$taken_Annual = 0;
+			}
+			else{
+				$taken_Annual = $this->taken_annual['0']['0'];
 			}
 		}
 
@@ -124,6 +135,8 @@ class leave extends Controller{
 						}
 						else{
 							$this->model->insert($_POST["start"],$_POST["end"],$_POST["leavetype"]);
+							$msg = 'Annual Leave Request from '.$_SESSION['login_user'] ;
+							$this->model->notify($msg,"Leave",$this->dept_ManID);
 							echo "<script>alert('Requested Successfully')</script>";
 						}
 					}
@@ -133,6 +146,8 @@ class leave extends Controller{
 						}
 						else{
 							$this->model->insert($_POST["start"],$_POST["end"],$_POST["leavetype"]);
+							$msg = 'Casual Leave Request from '.$_SESSION['login_user'] ;
+							$this->model->notify($msg,"Leave",$this->dept_ManID);
 							echo "<script>alert('Requested Successfully')</script>";
 						}
 					}
@@ -142,6 +157,8 @@ class leave extends Controller{
 						}
 						else{
 							$this->model->insert($_POST["start"],$_POST["end"],$_POST["leavetype"]);
+							$msg = 'Sick Leave Request from '.$_SESSION['login_user'] ;
+							$this->model->notify($msg,"Leave",$this->dept_ManID);
 							echo "<script>alert('Requested Successfully')</script>";
 						}
 					}
@@ -155,7 +172,10 @@ class leave extends Controller{
 	}
 	
 	function dptleaveApproved(){
+		$this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
 		$status = "Approved";
+
 		if (isset($_POST['filterbtn'])){
 			$this->view->data = $this->model->getdeptLeave($status,NULL,$_POST['month']);
 			$this->view->month_val = $_POST['month'];
@@ -183,7 +203,10 @@ class leave extends Controller{
 	}
 	
 	function dptleavePending(){
+		$this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
 		$status = "Pending";
+
 		if (isset($_POST['filterbtn'])){
 			$this->view->data = $this->model->getdeptLeave($status,NULL,$_POST['month']);
 			$this->view->month_val = $_POST['month'];
@@ -196,17 +219,24 @@ class leave extends Controller{
 	}
 	
 	function dptleavePendingview(){
+		$this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
 		$status = "Pending";
+
 		$leaveID = $_GET['ID'];
 		$this->view->data = $this->model->getdeptLeave($status,$leaveID,$this->cur_month);
 		$this->view->render('dptleavePendingview');
 	}
 	
 	function empLeave(){
+		$this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
 		$this->view->render('empLeave');
 	}
 	
 	function teamLeave(){
+		$this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
 		$this->view->render('teamLeave');
 	}
 	
