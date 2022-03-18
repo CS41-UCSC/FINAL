@@ -42,14 +42,25 @@
         </label>
         <div class="notification" >
 			<button class="icon"><i class="fa fa-bell fa-lg" ></i>
-				<span class="badge">5</span>
+                    <?php
+                        $notificationsCount = $this->notificationCount['0']['0'];
+                        if($notificationsCount == 0){
+                            echo '';
+                        }
+                        else{
+                            echo '<span class="badge">'.$notificationsCount.'</span>';
+                        }
+                    ?>
 			</button>
 			<div class="list" >
-				<a href="#">TaskID 101 has been Approved</a>
-				<a href="#">TaskID 121 has been Assigned</a>
-				<a href="#">TaskID 102 is Overdue</a>
-				<a href="#">LeaveRq 100 has been Approved</a>
-				<a href="#">10 Hours Pending to Complete</a>
+                <?php
+                    $notifications = $this->notifications;
+                    if(!empty($notifications)){
+                        foreach($notifications as $row){
+                            echo '<a href="#">'.$row['Notification'].'</a>';
+                        }
+                    }
+                ?>
 			</div>
 		</div>
         <div class="user-login"> <?php echo $_SESSION['login_user']; ?> </div>

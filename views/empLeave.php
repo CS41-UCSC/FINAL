@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="http://localhost/Co-WMS/style/myleave.css?<?php echo time(); ?>" type="text/css">
 	<link rel="stylesheet" href="http://localhost/Co-WMS/style/nav_style.css?<?php echo time(); ?>" type="text/css">
+    <link rel="stylesheet" href="http://localhost/Co-WMS/style/notification_style.css?<?php echo time(); ?>" type="text/css">
     <link rel="stylesheet" href="http://localhost/Co-WMS/font-awesome-4.7.0/css/font-awesome.min.css">
 	<script language="javascript" src="http://localhost/Co-WMS/views/navigation.js?<?php echo time(); ?>" >
 	</script>
@@ -39,7 +40,28 @@
                                         
                                     ?>
         </label>
-        <div class="notification" ><a href="#" ><i class="fa fa-bell fa-lg" > </i> </a> </div>
+        <div class="notification" ><button class="icon"><i class="fa fa-bell fa-lg" ></i>
+                    <?php
+                        $notificationsCount = $this->notificationCount['0']['0'];
+                        if($notificationsCount == 0){
+                            echo '';
+                        }
+                        else{
+                            echo '<span class="badge">'.$notificationsCount.'</span>';
+                        }
+                    ?>
+			</button>
+			<div class="list" >
+                <?php
+                    $notifications = $this->notifications;
+                    if(!empty($notifications)){
+                        foreach($notifications as $row){
+                            echo '<a href="#">'.$row['Notification'].'</a>';
+                        }
+                    }
+                ?>
+			</div>
+        </div>
         <div class="user-login"> <?php echo $_SESSION['login_user']; ?> </div>
         <img  class="img-rounded-circle" src="http://localhost/Co-WMS/Asserts/avator.jpg" alt="" />
     </header>
