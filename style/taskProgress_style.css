@@ -31,6 +31,18 @@ tr{
     cursor: pointer;
 }
 
+.newremarkcount{
+    width: 18px;
+    height: 18px;
+    background-color: #3140cc;
+    border-radius: 10px;
+    position: fixed;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+}
+
 #viewbtn i:hover{
     color: green;
 }

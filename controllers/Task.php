@@ -40,6 +40,7 @@ class Task extends controller{
 
     function showpage_taskProgress(){
         $this->view->users = $this->model->getTaskProgress($_SESSION['teamID'],$_SESSION['startmonthyear'],$_SESSION['endmonthyear']);
+        $this->view->remarkcount = $this->model->getTaskRemarksCounts($_SESSION['startmonthyear'],$_SESSION['endmonthyear']);
         $this->view->render('taskProgress');
     }
 
@@ -57,8 +58,9 @@ class Task extends controller{
     function showpage_checkRemarks(){
 
         $taskid = $_GET['TaskID'];
+        $empid = $_GET['EmpID'];
         $this->view->tname=$_GET['Name'];
-        $this->view->users = $this->model->getTaskRemarks($taskid);
+        $this->view->users = $this->model->getTaskRemarks($empid,$taskid);
         $this->view->render('checkRemarks');
     }
 

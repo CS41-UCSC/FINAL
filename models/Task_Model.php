@@ -92,6 +92,10 @@ class Task_Model extends Model{
 
     function getTaskProgress($teamid,$startdate,$enddate){
 
+        /*$sql="SELECT T.TaskName,  T.TaskID,  TA.*, COUNT(RM.TaskID) AS remarks FROM Task T LEFT JOIN Task_Assign TA ON TA.TaskID = T.TaskID 
+        LEFT JOIN Remark RM ON RM.EmpID = TA.AssignedTo WHERE T.TeamID = '$teamid'
+        AND TA.DueDate BETWEEN '$startdate' AND '$enddate' GROUP BY TA.TaskID, TA.AssignedTo  ORDER BY TA.DueDate DESC ";*/
+
         $sql="SELECT T.TaskName,  T.TaskID,  TA.* FROM Task T LEFT JOIN Task_Assign TA ON TA.TaskID = T.TaskID WHERE T.TeamID = '$teamid'
         AND TA.DueDate BETWEEN '$startdate' AND '$enddate'  ORDER BY TA.DueDate DESC ";
 
@@ -221,9 +225,17 @@ class Task_Model extends Model{
 
     }
 
-    function getTaskRemarks($id){
+    function getTaskRemarksCounts($startdate,$enddate){
 
-        $sql = "SELECT * FROM remark WHERE TaskID='$id' ";
+        $sql = "SELECT TaskID, EmpID, count(EmpID) FROM remark GROUP BY TaskID, EmpID";
+
+        return $this->db->runQuery($sql);
+
+    }
+
+    function getTaskRemarks($empid,$taskid){
+
+        $sql = "SELECT * FROM remark WHERE TaskID='$taskid' AND EmpID='$empid' ";
 
         return $this->db->runQuery($sql);
     }
