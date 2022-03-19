@@ -173,9 +173,21 @@
                             <?php
 
                             $result = $this->users;
+
+                            $remarkcount = $this->remarkcount;
+
                             $i = 1;
+                            
 
                             foreach ($result as $row) {
+
+                                $count = 0;
+
+                                foreach ($remarkcount as $c ) {
+                                    if(($c[0] == $row[1]) && ($c[1]==$row[4])){
+                                        $count = $c[2];
+                                    }
+                                } 
 
                                 echo '<tr id= ' . $i++ . '>';
                                 echo '<td class="row-data" hidden>' . $row['1'] . '</td>';
@@ -192,7 +204,8 @@
                                 echo '<td class="row-data" style="display:none" >' . $row['12'] . '</td>';
                                 echo '<td><button type="button" class="pen" id="viewbtn" onclick="viewshow();"><i class="fa fa-eye fa-lg"></i></button></td>';
                                 echo '<td><button type="button" class="pen" id="editbtn" onclick="show();"><i class="fa fa-pencil fa-lg"></i></button></td>';
-                                echo '<td><button type="button" class="pen" id="remarkbtn" onclick="viewRemarks();"><i class="fa fa-book fa-lg"></i></button></td>';
+                                echo '<td><button type="button" class="pen" id="remarkbtn" onclick="viewRemarks();"><i class="fa fa-book fa-lg"></i>
+                                <div class="newremarkcount">'.$count.'</div></button></td>';
                                 echo '</tr>';
                             }
 
@@ -502,11 +515,13 @@
 
         function viewRemarks() {
 
-            var tid = event.target.parentNode.parentNode.parentNode.id;
-            var data = document.getElementById(tid).querySelectorAll(".row-data");
+            var rid = event.target.parentNode.parentNode.parentNode.id;
+            var data = document.getElementById(rid).querySelectorAll(".row-data");
+            var tid = data[0].innerHTML;
             var name = data[1].innerHTML;
+            var empid = data[3].innerHTML;
 
-            window.location.href = "http://localhost/FINAL/Task/showpage_checkRemarks?TaskID=" + tid + "&Name=" + name;
+            window.location.href = "http://localhost/FINAL/Task/showpage_checkRemarks?EmpID=" + empid + "&TaskID=" + tid+ "&Name=" + name;
         }
 
         function closeviewForm() {
