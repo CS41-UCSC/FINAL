@@ -115,6 +115,7 @@
 
                     foreach ($result as $row) {
 
+
                         echo '<div class="member">
                         <div id="eid" value=' . $row['0'] . '>' . $row['0'] . '</div>
                         <div>' . $row['1'] . ' h</div>

@@ -102,7 +102,7 @@ class Task_Model extends Model{
         return $this->db->runQuery($sql);
     }
 
-    function getTeamProgress(){
+    function getTeamProgress($startdate,$enddate){
 
         if($_SESSION['emprole'] == "Dept_Manager"){
 
@@ -116,15 +116,44 @@ class Task_Model extends Model{
             return $this->db->runQuery($sql);
         }
 
-        elseif($_SESSION['emprole'] == "Team_Leader" || $_SESSION['emprole'] == "Team_Member"){
+        else if($_SESSION['emprole'] == "Team_Leader" ){
+    
+            $sql = "SELECT systemuser.EmpID , 
+            SUM(CASE WHEN task_assign.DueDate BETWEEN '".$startdate."' AND  '".$enddate."'  THEN task_assign.RequiredTime ELSE 0 END ) AS totaltime 
+            FROM systemuser LEFT JOIN task_assign ON 
+            systemuser.EmpID=task_assign.AssignedTo WHERE systemuser.EmpID = ANY ( (SELECT team_member.EmpID FROM team_member INNER JOIN team ON 
+            team_member.TeamID = team.TeamID WHERE team.TeamID = (SELECT TeamID FROM team_leader WHERE EmpID = '$_SESSION[login_user]' ) )
+            UNION (SELECT team_leader.EmpID FROM `team_leader` INNER JOIN `team` ON team_leader.TeamID = team.TeamID 
+            WHERE team.TeamID = (SELECT TeamID FROM team_leader WHERE EmpID = '$_SESSION[login_user]' )  EXCEPT  
+            (SELECT systemuser.EmpID FROM `systemuser` WHERE systemuser.EmpID = '$_SESSION[login_user]' )) ) GROUP BY systemuser.EmpID ;" ;
+
+            return $this->db->runQuery($sql);
+
+        }
+
+        else if($_SESSION['emprole'] == "Team_Member"){
+
+            $sql = "SELECT systemuser.EmpID , SUM(task_assign.RequiredTime ) AS totaltime FROM systemuser LEFT JOIN task_assign ON 
+            systemuser.EmpID=task_assign.AssignedTo WHERE systemuser.EmpID = ANY ( (SELECT team_member.EmpID FROM team_member INNER JOIN team ON 
+            team_member.TeamID = team.TeamID WHERE team.TeamID = (SELECT TeamID FROM team_member WHERE EmpID = '$_SESSION[login_user]' ) )
+            UNION (SELECT team_leader.EmpID FROM `team_leader` INNER JOIN `team` ON team_leader.TeamID = team.TeamID 
+            WHERE team.TeamID = (SELECT TeamID FROM team_member WHERE EmpID = '$_SESSION[login_user]' ) ) EXCEPT  
+            (SELECT systemuser.EmpID FROM `systemuser` WHERE systemuser.EmpID = '$_SESSION[login_user]' ) ) GROUP BY systemuser.EmpID ;" ;
+
+            return $this->db->runQuery($sql);
+
+        }
+
+        /*else if($_SESSION['emprole'] == "Team_Leader" || $_SESSION['emprole'] == "Team_Member"){
+
 
             $sql = "SELECT task_assign.AssignedTo, SUM(task_assign.RequiredTime ) AS totaltime FROM task_assign 
             INNER JOIN task ON task_assign.TaskID = task.TaskID INNER JOIN team ON task.TeamID = team.TeamID 
             INNER JOIN team_member ON team.TeamID = team_member.TeamID WHERE team_member.EmpID = '$_SESSION[login_user]'GROUP BY task_assign.AssignedTo ;" ;
-    
+
             return $this->db->runQuery($sql);
 
-        }
+        }*/
 
     }
 

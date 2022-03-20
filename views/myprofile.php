@@ -123,7 +123,7 @@
 			<a href="http://localhost/Co-WMS/leaderManageTask" class="nav-link" id="manage_task_leader">
                 <i class="fa fa-tasks fa-lg" ><span>Manage Tasks</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/manageEmployee" class="nav-link" id="manage_emp">
+            <a href="http://localhost/FINAL/HRmanager/showpage_manageEmployee" class="nav-link" id="manage_emp">
                 <i class="fa fa-pencil-square-o fa-lg" ><span>Manage Employee</span></i>
             </a>
             <a href="http://localhost/Co-WMS/leave/myleaveApproved" class="nav-link" id="my_leave">
