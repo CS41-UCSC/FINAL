@@ -51,7 +51,11 @@ class Task extends controller{
     }
     
     function showpage_teamProgress(){
-        $this->view->users = $this->model->getTeamProgress();
+        
+        $startmonthyear = date('Y-m-01');
+        $endmonthyear = date('Y-m-t');
+        
+        $this->view->users = $this->model->getTeamProgress($startmonthyear,$endmonthyear);
         $this->view->render('teamProgress');
     }
 
