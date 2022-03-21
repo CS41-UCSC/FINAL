@@ -86,6 +86,14 @@ class leave_Model extends Model{
 		return $this->db->runQuery($sql);
 	}
 
+	function setLeaveStatus($leaveId,$status){
+		$empID = $_SESSION['login_user'];
+		$date = date("Y-m-d");
+		$sql = "UPDATE empleave SET LStatus = '$status', ApprovedBy = '$empID', ApprovedDate = '$date'
+		WHERE LeaveID = '$leaveId'";
+		return $this->db->runQuery($sql);
+	}
+
 	function deptManagerID(){
 		$empID = $_SESSION['login_user'];
 		$sql = "SELECT dept_manager.EmpID FROM dept_manager, team_member, team 
