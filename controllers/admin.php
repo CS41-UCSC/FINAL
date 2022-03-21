@@ -13,6 +13,9 @@ class admin extends Controller{
 	}
 	
 	function adminHome(){
+		$this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
 		if (isset($_POST['search_btn'])){
 			if(!(empty($_POST['empId']))){
 				$this->view->emp=$this->model->searchdata($_POST['empId']);
@@ -30,6 +33,9 @@ class admin extends Controller{
 	}
 	
 	function manageAccess(){
+		$this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+		
 		$this->view->emp=$this->model->searchdata($_GET['empID']);
 		$this->view->res1=$this->model->getaccessdata($_GET['empID']);
 		

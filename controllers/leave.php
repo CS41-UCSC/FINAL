@@ -222,10 +222,36 @@ class leave extends Controller{
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 		$status = "Pending";
-
 		$leaveID = $_GET['ID'];
 		$this->view->data = $this->model->getdeptLeave($status,$leaveID,$this->cur_month);
-		$this->view->render('dptleavePendingview');
+		$leavetype = $this->view->data['0']['LeaveType'];
+		$date = $this->view->data['0']['StartDate'] . '-' .$this->view->data['0']['EndDate'];
+
+		if(isset($_POST['approvebtn'])){
+			$return = $this->model->setLeaveStatus($leaveID,"Approved");
+				echo "<script>alert('Leave Request Approved Successfully')</script>";
+				$msg = "$leavetype Leave Request from $date is Approved";
+				$this->model->notify($msg,"Leave",$this->view->data['0']['EmpID']);
+				echo "<script>alert('Notification Sent Successfully')</script>";
+			// else{
+			// 	echo "<script>alert('Leave Request Approval Unsuccessfull')</script>";
+			// }
+			echo '<script> window.location.replace("http://localhost/Co-WMS/leave/dptleavePending"); </script>';
+		}
+		elseif(isset($_POST['declinebtn'])){
+			$return = $this->model->setLeaveStatus($leaveID,"Declined");
+				echo "<script>alert('Leave Request Declined Successfully')</script>";
+				$msg = "$leavetype Leave Request from $date is Declined";
+				$this->model->notify($msg,"Leave",$this->view->data['0']['EmpID']);
+				echo "<script>alert('Notification Sent Successfully')</script>";
+			// else{
+			// 	echo "<script>alert('Leave Request Decline Unsuccessfull')</script>";
+			// }
+			echo '<script> window.location.replace("http://localhost/Co-WMS/leave/dptleavePending"); </script>';
+		}
+		else{
+			$this->view->render('dptleavePendingview');
+		}
 	}
 	
 	function empLeave(){
