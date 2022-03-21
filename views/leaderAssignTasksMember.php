@@ -113,13 +113,13 @@
 
 
         <div class="item1" id="item1">
-            <a href="../TASK/showpage_deptManageTask">
+            <a href="../TASK/showpage_leaderManageTask">
                 <span>Add Task</span>
             </a>
-            <a href="showpage_assignTasksMembers" class="activelink">
+            <a href="showpage_leaderAssignTasksMembers" class="activelink">
                 <span>MemberProgress</span>
             </a>
-            <a href="../TASK/showpage_assignTasksTeam">
+            <a href="../TASK/showpage_leaderAssignTasksTeam">
                 <span>Back</span>
             </a>
         </div>

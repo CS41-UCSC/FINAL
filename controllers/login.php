@@ -89,4 +89,12 @@ class Login extends Controller
             }
         }
     }
+
+    function logout(){
+
+        session_destroy();
+
+        echo '<script>window.location.href="http://localhost/FINAL/login"</script>';   
+
+    }
 }

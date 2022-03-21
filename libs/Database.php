@@ -8,6 +8,7 @@ class Database extends PDO {
     }
 
     public function runQuery($query){
+        
         $stmt = $this->prepare($query);
 
         $stmt->execute();

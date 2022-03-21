@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/AssignTasksTeam_style.css" type="text/css">
+    <link rel="stylesheet" href="../style/leaderAssignTasksTeam_style.css" type="text/css">
     <link rel="stylesheet" href="../style/nav_style.css" type="text/css">
     <script language="javascript" src="../resource/navigation.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -105,10 +105,10 @@
     <main>
 
         <div class="item1" id="item1">
-            <a href="showpage_deptManageTask">
+            <a href="showpage_leaderManageTask">
                 <span>Add Task</span>
             </a>
-            <a href="showpage_assignTasksTeam" class="activelink">
+            <a href="showpage_leaderAssignTasksTeam" class="activelink">
                 <span>Team Progress</span>
             </a>
         </div>
@@ -147,43 +147,34 @@
 
                         </tr>-->
                             <?php
-                            $result = $this->users;
+                            
+                            $teamid = $this->users;
+                           
                             $res = $this->members;
-
+                           
                             $time = strtotime(date("Y-m-d"));
                             $month = date("F Y", $time);
 
-                            foreach ($result as $row) {
-                                echo '<tr class="team-name" id= ' . $row['0'] . '>';
-                                echo '<td>' . $row['0'] . '</td>';
-                                echo '<td>' . $row['1'] . '</td>';
-                                echo '<td>' . $row['2'] . '</td>';
-                                echo '<td>' . $row['3'] . '</td>';
-                                echo '<td><a href="../Task/loadTeam/' . $row["0"] . '/' . $month . ' " class="add"><i class="fa fa-plus fa-lg"></i></a></td>';
-                                echo '</tr>';
+                            echo '<tr  >';
+                                    echo '<td class="hname">Assigned Hours</td>';
+                                    echo '<td class="hname">Progress Bar</td>';
+                                    echo '<td class="hname">Emp-ID</td>';
+                                    echo '<td class="hname">Emp-Name</td>';
+                                    echo '<td class="hname"></td>';
+                            echo '</tr>';
 
-                                echo '<tr  >';
-                                        echo '<td class="hname">Assigned Hours</td>';
-                                        echo '<td class="hname">Progress Bar</td>';
-                                        echo '<td class="hname">Emp-ID</td>';
-                                        echo '<td class="hname">Emp-Name</td>';
-                                        echo '<td class="hname"></td>';
-                                echo '</tr>';
+                            foreach ($res as $row2) {
 
-                                foreach ($res as $row2) {
-
-                                    if ($row2['2'] == $row['0']) {
 
                                         echo '<tr id= ' . $row2['0'] . ' >';
                                         echo '<td class="subtd">' . $row2['3'] . ' h</td>';
                                         echo '<td class="subtd"><progress class="progress-bar" id="file" value=' . $row2['3'] . ' max="160"></progress></td>';
                                         echo '<td class="subtd">' . $row2['0'] . '</td>';
                                         echo '<td class="subtd">' . $row2['1'] . '</td>';
-                                        echo '<td class="subtd"><a href="../Task/loadMembers/' . $row2["0"] . '/' . $row["0"] . ' " class="user"><i class="fa fa-user fa-lg"></i></a></td>';
+                                        echo '<td class="subtd"><a href="../Task/loadMembers/' . $row2["0"] . '/' . $teamid["0"]["0"] . ' " class="user"><i class="fa fa-user fa-lg"></i></a></td>';
                                         echo '</tr>';
-                                    }
-                                }
                             }
+                            
 
                             ?>
 
