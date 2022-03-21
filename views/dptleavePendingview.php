@@ -198,9 +198,11 @@
 					}
 				?>
                 </table>
-				<button href="#" name="approvebtn" id="approvebtn" class="viewbtn" >Approve</button>
-				<button href="#" name="declinebtn" id="declinebtn" class="viewbtn" >Decline</button>
-			</div>
+                <form name="approve_leave" action="#" method="POST">
+				    <button type="submit" name="approvebtn" id="approvebtn" class="viewbtn" >Approve</button>
+				    <button type="submit" name="declinebtn" id="declinebtn" class="viewbtn" >Decline</button>
+                </form>
+            </div>
         </div>        
     </main>
 	</div>

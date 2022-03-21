@@ -206,10 +206,6 @@
 					}
 				?>
 				</table>
-				<!-- <table>
-					<tr><td>EmpID</td><td>Annual Leave</td><td>15/12/2021 - 16/12/2021</td><td>Pending</td>
-                    <td><a href="dptleavePendingview" ><button name="viewbtn" class="viewbtn" >View</button></a></td></tr>
-				</table> -->
 			</div>
         </div>        
     </main>

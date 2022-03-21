@@ -36,6 +36,29 @@
                                     ?>
         </label>
         <div class="notification" >
+        <button class="icon"><i class="fa fa-bell fa-lg" ></i>
+                    <?php
+                        $notificationsCount = $this->notificationCount['0']['0'];
+                        if($notificationsCount == 0){
+                            echo '';
+                        }
+                        else{
+                            echo '<span class="badge">'.$notificationsCount.'</span>';
+                        }
+                    ?>
+			</button>
+			<div class="list" >
+                <?php
+                    $notifications = $this->notifications;
+                    if(!empty($notifications)){
+                        foreach($notifications as $row){
+                            echo '<a href="#">'.$row['Notification'].'</a>';
+                        }
+                    }
+                ?>
+			</div>
+        </div>
+        <!-- <div class="notification" >
 			<button class="icon"><i class="fa fa-bell fa-lg" ></i>
 				<span class="badge">3</span>
 			</button>
@@ -45,7 +68,7 @@
 				<a href="#">Revoke all access from </a>
 				<a href="#">10 Hours Pending to Complete</a>
 			</div>
-		</div>
+		</div> -->
         <div class="user-login"> <?php echo $_SESSION['login_user']; ?> </div>
         <img  class="img-rounded-circle" src="http://localhost/Co-WMS/Asserts/avator.jpg" alt="" />
     </header>
