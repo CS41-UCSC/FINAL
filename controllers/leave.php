@@ -225,7 +225,7 @@ class leave extends Controller{
 		$leaveID = $_GET['ID'];
 		$this->view->data = $this->model->getdeptLeave($status,$leaveID,$this->cur_month);
 		$leavetype = $this->view->data['0']['LeaveType'];
-		$date = $this->view->data['0']['StartDate'] . '-' .$this->view->data['0']['EndDate'];
+		$date = $this->view->data['0']['StartDate'] . ' to ' .$this->view->data['0']['EndDate'];
 
 		if(isset($_POST['approvebtn'])){
 			$return = $this->model->setLeaveStatus($leaveID,"Approved");
