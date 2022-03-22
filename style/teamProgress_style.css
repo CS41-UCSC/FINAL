@@ -74,7 +74,7 @@ tr{
     border-bottom:2px solid white;
     display: flex;
     flex-direction: row;
-    background-color: #9ac3f8;
+    background-color: #75a3a3;
     margin: auto;
 }
 
@@ -85,17 +85,44 @@ tr{
 }
 
 .member:hover{
-    background-color: #9ac3f888;
+    background-color: #a6e6e6;
+}
+
+progress {
+    border: none;
+    width: 220px;
+    height: 20px;
+    border-radius: 20px;
+    background: crimson;
+}
+
+progress {
+    color: lightblue;
+}
+
+progress::-moz-progress-bar {
+    border-radius: 20px;
+    background: lightcolor;
+}
+  
+progress::-webkit-progress-value {
+    border-radius: 20px;
+    background: rgb(255, 123, 0);
+}
+  
+progress::-webkit-progress-bar {
+    border-radius: 20px;
+    background: rgb(255, 255, 255);
 }
 
 .view{
     background-size:cover;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     background-image: url('../Asserts/avator.jpg');
     cursor:pointer;
     border: none;
-    border-radius: 10px;
+    border-radius: 50%;
 }
 
 @media (min-width: 800px) {
