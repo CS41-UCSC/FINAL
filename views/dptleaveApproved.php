@@ -7,8 +7,9 @@
 	<link rel="stylesheet" href="http://localhost/Co-WMS/style/myleave.css?<?php echo time(); ?>" type="text/css">
 	<link rel="stylesheet" href="http://localhost/Co-WMS/style/nav_style.css?<?php echo time(); ?>" type="text/css">
     <link rel="stylesheet" href="http://localhost/Co-WMS/style/notification_style.css?<?php echo time(); ?>" type="text/css">
-    <link rel="stylesheet" href="http://localhost/Co-WMS/font-awesome-4.7.0/css/font-awesome.min.css">
-	<script language="javascript" src="http://localhost/Co-WMS/views/navigation.js?<?php echo time(); ?>">
+    <!-- <link rel="stylesheet" href="http://localhost/Co-WMS/font-awesome-4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script language="javascript" src="http://localhost/Co-WMS/resource/navigation.js?<?php echo time(); ?>">
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 	</script>
@@ -59,7 +60,7 @@
                     $notifications = $this->notifications;
                     if(!empty($notifications)){
                         foreach($notifications as $row){
-                            echo '<a href="#">'.$row['Notification'].'</a>';
+                            echo '<a href="http://localhost/Co-WMS/notification?ID='.$row['NotID'].' ">'.$row['Notification'].'</a>';
                         }
                     }
                 ?>
