@@ -108,6 +108,9 @@ tr{
     .item4 {grid-area: four;}
     .item5 {grid-area: five;}
     .item6 {grid-area: six;}
+    .item7 {grid-area: seven;}
+    .skillname {grid-area: skillname;}
+    .rate {grid-area: rate;}
 
 
     .container {
@@ -117,7 +120,8 @@ tr{
         grid-template-areas:
         'two two two'
         'three four four'
-        'five six six';
+        'five six six'
+        'seven six six';
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 10px;
         height: max-content;
@@ -193,7 +197,7 @@ tr{
 
     .item4{
         height: 400px;
-        margin-right: 15px;
+        /*margin-right: 15px;*/
         border-radius: 5px;
         border: 1px solid #c0bfbf;
     }
@@ -289,6 +293,25 @@ tr{
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .item7{
+        /*margin-right: 15px;*/
+        border-radius: 5px;
+        border: 1px solid #c0bfbf;
+        padding: 20px;
+        display: grid;
+        grid-template-areas:
+        'skillname skillname rate';
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .skillname{
+        color: #686868;
+    }
+
+    .rate{
+        color: #0a2e63;
     }
 
     .popupdel {
