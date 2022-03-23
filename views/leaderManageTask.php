@@ -371,7 +371,7 @@
 
         function addtask() {
 
-            document.addform.action = "addTask";
+            document.addform.action = "leaderAddTask";
 
         }
 

@@ -296,6 +296,21 @@
 
             </div>
 
+            <div class="item7">
+
+                <?php
+
+                    $res = $this->skills;
+                    
+                    foreach ($res as $row){
+                        echo '<div class="skillname"><label for="">'.$row[1].'</label></div>';
+                        echo '<div class="rate"><label for="">'.$row[2].'</label></div>';
+                    }
+
+                ?>
+
+            </div>
+
             <div class="item5">
 
                 <h4>Assign tasks to Memebrs</h4>

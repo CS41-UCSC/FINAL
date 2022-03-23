@@ -87,6 +87,16 @@ class Manager_Model extends Model
             return false;
         }
     }
+
+    function getmembersskills($memberID){
+
+       $sql = "SELECT EmpID, skill_name, percent FROM star_rate WHERE EmpID='$memberID' ";
+
+       $res = $this->db->runQuery($sql);
+
+       return $res;
+       
+    }
 }
 
 /*

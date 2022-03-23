@@ -217,6 +217,55 @@ class Task_Model extends Model{
     }
 
 
+    function leaderInsertTask(){
+
+        $getteamidsql = "SELECT TeamID FROM team_leader WHERE EmpID= ('$_SESSION[login_user]') ";
+        $idarray = $this->db->runQuery($getteamidsql);
+        $id = $idarray[0][0];
+        
+        $name = $_POST['tname'];
+
+        $sql = "INSERT INTO task (TeamID, TaskName) VALUES ('$id', '$name')" ;
+
+        if ($this->db->query($sql) == TRUE) {
+            $_SESSION['addTask'] = "yes";
+          } else {
+            $_SESSION['addTask'] = "no";
+        }
+
+        $gettaskid = "SELECT TaskID FROM task WHERE TaskName='$name' ";
+        $taskid = $this->db->runQuery($gettaskid);
+
+        $tid = $taskid[0][0];
+
+        $a = array();
+        $sub1 = $_POST['sub1'];
+        $sub2 = $_POST['sub2'];
+        $sub3 = $_POST['sub3'];
+        $sub4 = $_POST['sub4'];
+        array_push($a,$sub1,$sub2,$sub3,$sub4);
+        
+        
+        for ($i = 0; $i <4; $i++){
+
+            if($a[$i]){
+                
+                //echo $a[$i];
+
+                $sql = "INSERT INTO subtask (TaskID, SubTaskName) VALUES ('$tid', '$a[$i]')" ;
+    
+                if ($this->db->query($sql) == TRUE) {
+                    $_SESSION['addTask'] = "yes";
+                } else {
+                    $_SESSION['addTask'] = "no";
+                }
+                
+            }
+            
+
+        }
+
+    }
 
     function EditTask($tid,$tteam,$ttitle){
 

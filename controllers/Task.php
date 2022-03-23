@@ -83,6 +83,14 @@ class Task extends controller{
 
     }
 
+    function leaderAddtask(){
+
+        $this->model->leaderInsertTask();
+
+        header('location: http://localhost/FINAL/Task/showpage_leaderManageTask');
+
+    }
+
     function EditTask(){
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
