@@ -21,6 +21,15 @@ class Manager_Model extends Model
         return $this->db->runQuery($sql);
     }
 
+    function getAllAssignTasksforMember($empid){
+
+        $sql = "SELECT task.TaskID, task.TaskName, task_assign.AssignedTime, task_assign.RequiredTime, task_assign.DueDate, task_assign.TaskStatus
+        FROM task_assign INNER JOIN task ON task_assign.TaskID=task.TaskID WHERE task_assign.AssignedTo= '$empid' ";
+
+        return $this->db->runQuery($sql);
+
+    }
+
     function getTaskProgressChart($empid)
     {
 

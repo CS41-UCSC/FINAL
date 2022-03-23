@@ -16,6 +16,7 @@ class Manager extends controller{
         $this->view->teamTasks = $team->getTaskSet($_SESSION['memberteamID']);
         $this->view->leave = $this->model->getLeaves($_SESSION['memberID']);
         $this->view->tasks = $this->model->getAssignTasksforMember($_SESSION['memberID']);
+        $this->view->alltasks = $this->model->getAllAssignTasksforMember($_SESSION['memberID']);
         $this->view->chart = $this->model->getTaskProgressChart($_SESSION['memberID']);
         $this->view->skills = $this->model->getmembersskills($_SESSION['memberID']);
         $this->view->render('assignTasksMember');

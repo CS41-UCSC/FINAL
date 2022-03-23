@@ -93,7 +93,7 @@
     <nav class="nav">
         <div class="nav-links">
 
-        <a href="http://localhost/Co-WMS/admin/adminHome" class="nav-link" id="manage_access">
+           <a href="http://localhost/FINAL/admin/adminHome" class="nav-link" id="manage_access">
                 <i class="fa fa-pencil-square-o fa-lg"><span>Manage Access</span></i>
             </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="dashboard">
@@ -102,13 +102,13 @@
 			<a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
             </a>
-			<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
+			<!--<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg" ><span>Department Progress</span></i>
-            </a>
+            </a>-->
             <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link nav-link-active" id="my_profile">
                 <i class="fa fa-user fa-lg" ><span>My Profile</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/myProgressAccepted" class="nav-link" id="my_progress">
+			<a href="http://localhost/FINAL/Member/showpage_myprogressPending" class="nav-link" id="my_progress">
                 <i class="fa fa-user fa-lg" ><span>My Progress</span></i>
             </a>
 			<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="t_progress">
