@@ -64,7 +64,7 @@
                 ?>
 			</div>
         </div>
-        <div class="user-login"> <!--<?php echo $_SESSION['login_user']; ?>--> Hello Admin </div>
+        <div class="user-login"> <?php echo $_SESSION['login_user']; ?> </div>
         <img  class="img-rounded-circle" src="http://localhost/FINAL/Asserts/avator.jpg" alt="" />
     </header>
 	<div class="page">
