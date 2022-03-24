@@ -138,47 +138,73 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- <tr>
+                            <td data-label="Task Id">17</td>
+                            <td data-label="Task Name">organize a client meeting with ZOOM and collect details</td>
+                            <td data-label="Assigned On">10/07/2021</td>
+                            <td data-label="Due On">18/07/2021</td>
+                            <td data-label="Required Time">5 hrs</td>
+                            <td data-label="View"><a href="myprogressInprogressSelect"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
+                            <td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>
+                        </tr>         -->
                         <?php
-                            $result = $this->users;
-                            // print_r($result);
-                            foreach ($result as $row) {
-                                echo '<tr>';
-                                echo '<td>' . $row['TaskID'] . '</td>';
-                                echo '<td>' . $row['TaskName'] . '</td>';
-                                echo '<td>' . $row['AssignedTime'] . '</td>';
-                                echo '<td>' . $row['DueDate'] . '</td>';
-                                echo '<td>' . $row['RequiredTime'] . '</td>';
-                                echo '<td data-label="View"><a href="myprogressInprogressSelect"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>';
-                                echo '<td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>';
-                                echo '</tr>';
-                            }
+                        $result = $this->users;
+                        // print_r($result);
+                        foreach ($result as $row) {
+                            echo '<tr>';
+                            echo '<td>' . $row['TaskID'] . '</td>';
+                            echo '<td>' . $row['TaskName'] . '</td>';
+                            echo '<td>' . $row['AssignedTime'] . '</td>';
+                            echo '<td>' . $row['DueDate'] . '</td>';
+                            echo '<td>' . $row['RequiredTime'] . '</td>';
+                            echo '<td data-label="View"><a href="myprogressInprogressSelect"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>';
+                            echo '<td data-label="Remark"><button class="button" data-modal="modalOne'.$row['TaskID'].'"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>';
+                            echo '</tr>';
+                        }
 
-                        ?> 
-                        
+                        ?>
                         
                     </tbody>
                 </table>
 
-                <div id="modalOne" class="modal">
-                    <div class="modal-content">
-                        <div class="contact-form">
-                            <a class="close">&times;</a>
-                            <form action="/">
-                                <h3>Remark</h3>
-                                <!-- <span>Message</span> -->
-                                <div class="message">Message</div>
-                                <div>
-                                    <textarea rows="4"></textarea>
-                                </div>
-                                <button type="submit" href="/">Send</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                $result = $this->users;
+                foreach ($result as $row) {
+                echo '<div id="modalOne'.$row['TaskID'].'" class="modal">';
+                    echo '<div class="modal-content">';
+                        echo '<div class="contact-form">';
+                            echo '<a class="close">&times;</a>';
+                            
+
+
+
+
+
+                                //echo '<form action="myprogressPending/sendRemark/'.$row['TaskID'].'/'.$row['AssignedTo'].'" method="post">';
+                                echo '<form action="http://localhost/FINAL/Member/sendRemarkA/'.$row['AssignedTo'].'" method="post">';
+                                echo '<input type="hidden" value='.$row['TaskID'].' name="taskId">';
+                                echo '<h3>Remark</h3>';
+                                echo '<div class="message">'."Message".'</div>';
+                                echo '<div>';
+                                    echo '<input rows="8" name="remark" required></input>';
+                                echo '</div>';
+                                // if($row['TaskID'] == $i){
+                                //     echo '<button type="submit">Send</button>';
+                                //     break;
+                                // }
+                                echo '<button type="submit">Send</button>';
+                                echo '</form>';
+                                
+                            
+                        echo '</div>';
+                    echo '</div>';
+                echo '</div>';
+                } ?>
     
             </div>
         </div>
     </main>
+
 
     <!-- <footer class="footer">
         <label for="" class="footer-data">© 2021, All rights reserved by CO - WMS <br>

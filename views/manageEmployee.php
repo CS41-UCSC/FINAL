@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="../style/navbar_style.css?<?php echo time(); ?>" type="text/css">
     <link rel="stylesheet" href="../style/manageEmployee_style.css?<?php echo time(); ?>" type="text/css">
     <script language="javascript" src="../resource/navigation.js?<?php echo time(); ?>"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
@@ -143,6 +146,7 @@
                             <th>Employee Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th>Status</th>
                             <th>Edit</th>
                             <th>Terminate</th>
                         </tr>
@@ -153,15 +157,29 @@
                         $result = $this->users;
                         // print_r($result);
                         foreach ($result as $row) {
+                            echo '<form action="http://localhost/FINAL/HRmanager/removeRestoreEmployee/'.$row['EmpID'].'/'.$row['EmpStatus'].'" onsubmit="return submitForm(this);" method="post">';
                             echo '<tr>';
                             echo '<td>' . $row['EmpID'] . '</td>';
                             echo '<td>' . $row['EmpName'] . '</td>';
                             echo '<td>' . $row['EmpEmail'] . '</td>';
                             echo '<td>' . $row['EmpRole'] . '</td>';
+                            echo '<td>' . $row['EmpStatus'] . '</td>';
                             // echo '<td data-label="Edit"><a href="manageEmployeeEditDelete"><i class="fa fa-pencil fa-lg" style="color:grey;" aria-hidden="true"></i></a></td>';
                             echo '<td data-label="Edit"><a href="http://localhost/FINAL/HRmanager/showpage_manageEmployeeEditDelete?epmId='.$row['EmpID'].'"><i class="fa fa-pencil fa-lg" style="color:grey;" aria-hidden="true"></i></a></td>';
-                            echo '<td data-label="Terminate"><a href="#"><i class="fa fa-minus-circle fa-lg" style="color:grey;" aria-hidden="true"></i></a></td>';
+                            //echo '<td data-label="Terminate"><a href="#"><i class="fa fa-minus-circle fa-lg" style="color:grey;" aria-hidden="true"></i></a></td>';
+                            
+                            if($row['EmpStatus'] == 'Active'){
+                                // echo '<td data-label="Terminate"><button type="submit" name="Active" onclick="deleteshow();"><i class="fa fa-minus-circle fa-lg" style="color:green;" aria-hidden="true"></i></button></td>';
+                                // echo '<td data-label="Terminate"><button type="submit" name="Active"><i class="fa fa-minus-circle fa-lg" style="color:green;" aria-hidden="true"></i></button></td>';
+                                echo '<td data-label="Terminate"><button  type="submit" name="Active"><i class="fa fa-minus-circle fa-lg" style="color:green;" aria-hidden="true"></i></button></td>';
+                            }else{
+                                // echo '<td data-label="Terminate"><button type="submit" name="Inactive"><i class="fa fa-window-restore fa-lg" style="color:grey;" aria-hidden="true"></i></button></td>';
+                                // echo '<td data-label="Terminate"><button type="submit" name="Active"><i class="fa fa-minus-circle fa-lg" style="color:red;" aria-hidden="true"></i></button></td>';
+                                echo '<td data-label="Terminate"><button type="submit" name="Active"><i class="fa fa-minus-circle fa-lg" style="color:red;" aria-hidden="true"></i></button></td>';
+
+                            }
                             echo '</tr>';
+                            echo '</form>';
                         }
 
                         ?>
@@ -177,6 +195,26 @@
         <label for="" class="footer-data">© 2021, All rights reserved by CO - WMS <br>
             No: 23, Flower Avenue, Colombo 7, Sri Lanka.</label>
     </footer>-->
+
+    <script>
+        function submitForm(form){
+            swal({
+                title: "Are you sure ?",
+                text: "This employee will be Terminate/Restore",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then(function (isOkay) {
+                if (isOkay) {
+                    form.submit();
+                }
+            });
+            return false;
+        }
+    </script>
+
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const nav = document.querySelector(".nav");

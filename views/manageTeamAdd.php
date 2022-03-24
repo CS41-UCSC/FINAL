@@ -132,7 +132,7 @@
     
     <main>
         <div class="container">
-            <form action="manageTeamAdd/setTeamData" method="post">
+            <form action="http://localhost/FINAL/HRmanager/setTeamData" method="post">
                 <div class="flex-container1">
                     <div>Add New Team</div>
                     
@@ -154,6 +154,11 @@
                             <input type="text" id="dId" name="dId" placeholder="Department Id" required><br>
                         </div>
                         <!-- <div></div> -->
+
+                        <div>
+                            <label for="lId">Leader Id :</label><br>
+                            <input type="text" id="lId" name="lId" placeholder="Leader Id" required><br>
+                        </div>
                         
                         <div>
                                 <!-- <input type="submit" value="Back" class="rectan"> -->

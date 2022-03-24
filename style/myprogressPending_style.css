@@ -2,6 +2,7 @@
 
 /*background: rgba(87, 87, 87, 0.5);
     backdrop-filter: blur(1px);*/
+    
 
     nav {
       position: fixed;
@@ -144,6 +145,8 @@
         margin: 50px auto;
         border: 1px solid #999;
         width: 60%;
+        
+        border-radius: 10px;
       }
       h3{
         text-align: left;
@@ -181,13 +184,15 @@
         outline: none;
       }
       .contact-form button {
-        width: 100%;
+        width: 93%;
         padding: 10px;
         border: none;
         background: #1c87c9;
         font-size: 16px;
         font-weight: 400;
         color: #fff;
+
+        border-radius: 10px;
       }
       button:hover {
         background: #2371a0;

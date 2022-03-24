@@ -138,6 +138,7 @@
                         <th>Team ID</th>
                         <th>Team Name</th>
 			            <th>Department ID</th>
+                        <th>Team Leader ID</th>
                         <th>Edit</th>
                         <!-- <th>Terminate</th> -->
                         </tr>
@@ -151,7 +152,8 @@
                                     echo '<td>' . $row['TeamID'] . '</td>';
                                     echo '<td>' . $row['TeamName'] . '</td>';
                                     echo '<td>' . $row['DeptID'] . '</td>';
-                                    echo '<td data-label="Edit"><a href="http://localhost/FINAL/HRmanager/showpage_manageTeamEditDelete"><i class="fa fa-pencil fa-lg" style="color:grey;" aria-hidden="true"></i></a></td>';
+                                    echo '<td>' . $row['EmpID'] . '</td>';
+                                    echo '<td data-label="Edit"><a href="http://localhost/FINAL/HRmanager/showpage_manageTeamEditDelete?tId='.$row['TeamID'].'"><i class="fa fa-pencil fa-lg" style="color:grey;" aria-hidden="true"></i></a></td>';
                                     // echo '<td data-label="Terminate"><a href="#"><i class="fa fa-minus-circle fa-lg" style="color:grey;" aria-hidden="true"></i></a></td>';
                                 echo '</tr>';
                             }

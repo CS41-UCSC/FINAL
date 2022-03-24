@@ -66,7 +66,7 @@
             <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
                 <i class="fa fa-user fa-lg" ><span>My Profile</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/myProgressAccepted" class="nav-link" id="my_progress">
+			<a href="http://localhost/FINAL/Member/showpage_myProgressAccepted" class="nav-link" id="my_progress">
                 <i class="fa fa-user fa-lg" ><span>My Progress</span></i>
             </a>
 			<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="t_progress">
@@ -81,7 +81,7 @@
 			<a href="http://localhost/FINAL/Task/showpage_leaderManageTask" class="nav-link" id="manage_task_leader">
                 <i class="fa fa-tasks fa-lg" ><span>Manage Tasks</span></i>
             </a>
-            <a href="http://localhost/FINAL/manageEmployee" class="nav-link" id="manage_emp">
+            <a href="http://localhost/FINAL/HRmanager/showpage_manageEmployee" class="nav-link" id="manage_emp">
                 <i class="fa fa-pencil-square-o fa-lg" ><span>Manage Employee</span></i>
             </a>
             <a href="http://localhost/Co-WMS/leave/myleaveApproved" class="nav-link" id="my_leave">
