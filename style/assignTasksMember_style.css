@@ -111,6 +111,7 @@ tr{
     .item7 {grid-area: seven;}
     .skillname {grid-area: skillname;}
     .rate {grid-area: rate;}
+    .headline {grid-area: headline;}
 
 
     .container {
@@ -302,8 +303,14 @@ tr{
         padding: 20px;
         display: grid;
         grid-template-areas:
+        'headline headline headline'
         'skillname skillname rate';
         grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    h3{
+        text-align: left;
+        color: #082247;
     }
 
     .skillname{

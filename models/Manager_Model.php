@@ -21,6 +21,15 @@ class Manager_Model extends Model
         return $this->db->runQuery($sql);
     }
 
+    function getAllAssignTasksforMember($empid){
+
+        $sql = "SELECT task.TaskID, task.TaskName, task_assign.AssignedTime, task_assign.RequiredTime, task_assign.DueDate, task_assign.TaskStatus
+        FROM task_assign INNER JOIN task ON task_assign.TaskID=task.TaskID WHERE task_assign.AssignedTo= '$empid' ";
+
+        return $this->db->runQuery($sql);
+
+    }
+
     function getTaskProgressChart($empid)
     {
 
@@ -97,42 +106,74 @@ class Manager_Model extends Model
        return $res;
        
     }
+
+    function notify($msg,$type,$receiver){
+		$empID = $_SESSION['login_user'];
+		$sql = "INSERT INTO notification (Notification,Notype,SentDT,NotStatus,Sender,Receiver)
+		VALUES ('$msg','$type',CURRENT_TIMESTAMP,'Pending','$empID','$receiver')";
+		return $this->db->runQuery($sql);
+	}
+
+    function getNotifications(){
+		$empID = $_SESSION['login_user'];
+		$sql = "SELECT NotID, Notification, Notype FROM notification 
+		WHERE Receiver = '$empID' AND NotStatus = 'Pending' LIMIT 5";
+		return $this->db->runQuery($sql);
+	}
+
+	function getNotificationCount(){
+		$empID = $_SESSION['login_user'];
+		$sql = "SELECT COUNT(*) FROM notification 
+		WHERE Receiver = '$empID' AND NotStatus = 'Pending'";
+		return $this->db->runQuery($sql);
+	}
+
+    function notificationEmail($msg,$empID){
+        
+		$sql = "SELECT EmpName, EmpEmail FROM systemuser WHERE EmpID = '$empID'";
+		$result = $this->db->runQuery($sql);
+		$empName = $result['0']['EmpName'];
+		$empEmail = $result['0']['EmpEmail']; 
+
+		$mail_subject = "Notification from Co-WMS";
+		$email_body = "Dear {$empName},\n";
+		$email_body .= $msg;
+		$from = "From: cowmsofficial@gmail.com";
+
+		$mail_result = mail($empEmail, $mail_subject, $email_body, $from);
+		
+		if($mail_result){
+			return true;
+		}
+		else{
+			return false;
+		}
+
+	}
+
 }
 
 /*
  //try{
             //$this->db->beginTransaction();
-
             $sql1 = "INSERT task_assign (TaskID, AssignedTo, AssignedBy, RequiredTime, DueDate, TaskStatus, ) 
             VALUES ('$taskid','$empid','$_SESSION[login_user]','$rhours','$ddate','Pending' )";
-
             $this->db->query($sql1);
-
             //f$sql2 = "UPDATE task SET Description = '$desc' WHERE TaskID= '$taskid' ";
-
             //$this->db->query($sql2);
-
             $sqlgetsubtasks = "SELECT * FROM subtask WHERE TaskID= '$taskid' ";
-
             $result = $this->db->runQuery($sqlgetsubtasks);
-
             if(count($result) > 0 ){
-
                 foreach ($result as $row){
                     
                     $sqlassignsubtasks = "INSERT INTO `subtask_assign`(`TaskID`, `SubTaskID`, `AssignedTo`) VALUES ('$row[1]','$row[0]','$empid')" ;
-
                     $this->db->query($sqlassignsubtasks);
                 }
             }
-
             return true;
        // }
-
         //catch(PDOException $e){
-
             //$this->db->rollback();
             //return false;
        // }    
-
 */

@@ -57,18 +57,18 @@
     <nav class="nav">
         <div class="nav-links">
 
-            <a href="http://localhost/Co-WMS/admin/adminHome" class="nav-link" id="manage_access">
+        <a href="http://localhost/Co-WMS/admin/adminHome" class="nav-link" id="manage_access">
                 <i class="fa fa-pencil-square-o fa-lg"><span>Manage Access</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/landingpage" class="nav-link" id="dashboard">
+            <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="dashboard">
                 <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/landingpage" class="nav-link" id="d_dashboard">
+            <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-            <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
+            <!--<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg"><span>Department Progress</span></i>
-            </a>
+            </a>-->
             <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
                 <i class="fa fa-user fa-lg"><span>My Profile</span></i>
             </a>
@@ -81,7 +81,7 @@
             <a href="http://localhost/Co-WMS/employeeWorkProgress" class="nav-link " id="emp_progress">
                 <i class="fa fa-users fa-lg"><span>Employee Progress</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/deptManageTask" class="nav-link nav-link-active" id="manage_task_dpt">
+            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link nav-link-active" id="manage_task_dpt">
                 <i class="fa fa-tasks fa-lg"><span>Manage Tasks</span></i>
             </a>
             <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link" id="manage_task_leader">
@@ -133,14 +133,11 @@
                         <option value=""></option>;
                         <?php
                         $res = $this->members;
-
                         foreach ($res as $row) {
                             echo '<option value="' . $row[0] . '">' . $row[1] . '</option>';
                         } ?>
-
                     </select><br>
                     <input type="submit" id="submitid" name="submitid" class="submitidbtn" value="Go" onclick="submitID()">
-
                 </div>-->
 
                 <h3 id="memberName"><?php echo $_SESSION['memberID'] ?></h3>
@@ -207,7 +204,7 @@
                     \'' . $str_arr[2] . '\',\'' . $end_arr[0] . '\', \'' . $end_arr[1] . '\',\'' . $end_arr[2] . '\')</script>';
                 }
                 
-                $result = $this->tasks;
+                $result = $this->alltasks;
 
                 foreach ($result as $row) {
                     $string = $row[4];
@@ -298,16 +295,18 @@
 
             <div class="item7">
 
-                <?php
+                <div class="headline"><h3>Skills</h3></div>
 
-                    $res = $this->skills;
-                    
-                    foreach ($res as $row){
-                        echo '<div class="skillname"><label for="">'.$row[1].'</label></div>';
-                        echo '<div class="rate"><label for="">'.$row[2].'</label></div>';
-                    }
+                    <?php
 
-                ?>
+                        $res = $this->skills;
+                        
+                        foreach ($res as $row){
+                            echo '<div class="skillname"><label for="">'.$row[1].'</label></div>';
+                            echo '<div class="rate"><label for="">'.$row[2].'</label></div>';
+                        }
+
+                    ?>
 
             </div>
 

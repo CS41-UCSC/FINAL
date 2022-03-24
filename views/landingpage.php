@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/landingpage_style.css?<?php echo time(); ?>" type="text/css">
     <link rel="stylesheet" href="../style/nav_style.css" type="text/css">
+    <link rel="stylesheet" href="http://localhost/FINAL/style/notification_style.css?<?php echo time(); ?>" type="text/css">
     <script language="javascript" src="../resource/navigation.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -84,7 +85,7 @@
             <a href="http://localhost/FINAL/manageEmployee" class="nav-link" id="manage_emp">
                 <i class="fa fa-pencil-square-o fa-lg" ><span>Manage Employee</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/leave/myleaveApproved" class="nav-link" id="my_leave">
+            <a href="http://localhost/FINAL/leave/myleaveApproved" class="nav-link" id="my_leave">
                 <i class="fa fa-list-alt fa-lg" ><span>My Leave</span></i>
             </a>
 			<a href="http://localhost/Co-WMS/leave/teamLeave" class="nav-link" id="t_leave">
