@@ -107,5 +107,31 @@ class Member_Model extends Model{
         $sql = "SELECT * FROM team";
         return $this->db->runQuery($sql);
     }
+    function getTaskData($taskid){
+
+        $sql = "SELECT t.TaskName, tA.* FROM task t, task_assign tA where t.TaskID = tA.TaskID && tA.TaskStatus='InProgress'
+        AND t.TaskID = '$taskid' ";
+        return $this->db->runQuery($sql);
+
+    }
+    function getSubTaskData($taskid){
+
+        $sql1 = "SELECT SubTaskID, SubTaskName,status FROM subtask where TaskID = '$taskid'";
+        return $this->db->runQuery($sql1);
+
+    }
+
+    function updateSubTaskData($data){
+
+        foreach($data as $row){
+        
+            $sql2 = "UPDATE subtask SET status ='Completed' WHERE SubTaskID='$row' " ;
+            $this->db->query($sql2);
+
+        }
+
+        return true;
+        
+    }
 
 }
