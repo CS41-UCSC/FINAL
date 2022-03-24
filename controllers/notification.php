@@ -18,12 +18,12 @@ class notification extends Controller{
 			if(!empty($notData)){
 				if($notData['0']['Notype']=='Leave'){
 					if(($_SESSION['emprole']=="Dept_Manager")||($_SESSION['emprole']=="HR_Manager")){
-						$link= "http://localhost/CO-WMS/leave/dptleavePending";
+						$link= "http://localhost/FINAL/leave/dptleavePending";
 					}
 					elseif(($_SESSION['emprole']=="Team_Leader")||($_SESSION['emprole']=="Team_Member")){
 						
 						if((!empty($sender))&&($sender['0']['0']=="Dept_Manager")){
-							$link= "http://localhost/CO-WMS/leave/myleavePending";
+							$link= "http://localhost/FINAL/leave/myleavePending";
 						}
 						else{
 							echo 'Unidentifined Notification';
@@ -39,24 +39,24 @@ class notification extends Controller{
 					$notification = explode(" ",$notData['0']['Notification']);
 
 					if(($_SESSION['emprole']=="Dept_Manager")||($_SESSION['emprole']=="HR_Manager")){
-						$link= "http://localhost/CO-WMS/Task/showpage_taskProgress";
+						$link= "http://localhost/FINAL/Task/showpage_taskProgress";
 					}
 					elseif(($_SESSION['emprole']=="Team_Leader")&&($sender['0']['0']=="Team_Member")){
-						$link= "http://localhost/CO-WMS/Task/showpage_teamProgress";
+						$link= "http://localhost/FINAL/Task/showpage_teamProgress";
 					}
 					elseif(($sender['0']['0']=="Dept_Manager")||($sender['0']['0']=="HR_Manager")){
 						if($notification['1']=="assigned"){
-							$link= "http://localhost/CO-WMS/Member/showpage_myprogressPending";
+							$link= "http://localhost/FINAL/Member/showpage_myprogressPending";
 						}
 						elseif($notification['1']=="approved"){
-							$link= "http://localhost/CO-WMS/Member/showpage_myprogressCompleted";
+							$link= "http://localhost/FINAL/Member/showpage_myprogressCompleted";
 						}
 						else{
 							echo 'Unidentifined Notification';
 						}
 					}
 					elseif(($_SESSION['emprole']=="Team_Member")&&($sender['0']['0']=="Team_Leader")){
-						$link= "http://localhost/CO-WMS/Member/showpage_myprogressPending";
+						$link= "http://localhost/FINAL/Member/showpage_myprogressPending";
 					}
 					else{
 						echo 'Unidentifined Notification';
@@ -64,7 +64,7 @@ class notification extends Controller{
 				}
 				elseif($_GET['type']=='Access'){
 					if(($_SESSION['emprole']=="Admin")&&($sender['0']['0']=="HR_Manager")){
-						$link= "http://localhost/CO-WMS/admin/adminHome";
+						$link= "http://localhost/FINAL/admin/adminHome";
 					}
 					else{
 						echo 'Unidentifined Notification';

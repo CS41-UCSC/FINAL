@@ -16,7 +16,7 @@ class leave extends Controller{
 	}
 	
 	function index(){
-		// $this->view->render('empLeave');
+		
 	}
 	
 	function myleaveApproved(){
