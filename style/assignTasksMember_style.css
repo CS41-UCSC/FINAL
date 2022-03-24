@@ -198,9 +198,13 @@ tr{
 
     .item4{
         height: 400px;
-        /*margin-right: 15px;*/
+        margin-right: 15px;
         border-radius: 5px;
         border: 1px solid #c0bfbf;
+    }
+
+    .item4 h3{
+        text-align: center;
     }
 
     .chart{

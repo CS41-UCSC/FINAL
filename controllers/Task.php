@@ -11,6 +11,10 @@ class Task extends controller{
     }
     
     function showpage_deptManageTask(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $team = new Team();
         $this->view->deptteams = $team->getdeptTeams(); 
         $this->view->task = $this->model->getTask($_SESSION['login_user']);
@@ -18,6 +22,10 @@ class Task extends controller{
     }
 
     function showpage_leaderManageTask(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $team = new Team();
         $this->view->deptteams = $team->getdeptTeams(); 
         $this->view->task = $this->model->getTask($_SESSION['login_user']);
@@ -25,6 +33,10 @@ class Task extends controller{
     }
 
     function showpage_assignTasksTeam(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->users = $this->model->getTeam($_SESSION['login_user']);
         $team = new Team();
         $this->view->members = $team->getTeamMembers();
@@ -32,6 +44,10 @@ class Task extends controller{
     }
 
     function showpage_leaderAssignTasksTeam(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->users = $this->model->getTeam($_SESSION['login_user']);
         $team = new Team();
         $this->view->members = $team->getTeamMembers();
@@ -39,18 +55,29 @@ class Task extends controller{
     }
 
     function showpage_taskProgress(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->users = $this->model->getTaskProgress($_SESSION['teamID'],$_SESSION['startmonthyear'],$_SESSION['endmonthyear']);
         $this->view->remarkcount = $this->model->getTaskRemarksCounts($_SESSION['startmonthyear'],$_SESSION['endmonthyear']);
         $this->view->render('taskProgress');
     }
 
     function showpage_assignTasksMember(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->teamTasks = 
         $this->view->tasks = $this->model->getAssignTasksforMember($_SESSION['memberID']);
         $this->view->render('assignTasksMember');
     }
     
     function showpage_teamProgress(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
         
         $startmonthyear = date('Y-m-01');
         $endmonthyear = date('Y-m-t');
@@ -61,6 +88,9 @@ class Task extends controller{
 
     function showpage_checkRemarks(){
 
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $taskid = $_GET['TaskID'];
         $empid = $_GET['EmpID'];
         $this->view->tname=$_GET['Name'];
@@ -69,6 +99,7 @@ class Task extends controller{
     }
 
     function getEmployeeProgress(){
+
         $eid = $_POST['empid'];
         $task = $this->model->getEmployeeProgress($eid);
         
@@ -101,6 +132,8 @@ class Task extends controller{
             $edit = $this->model->EditTask($id,$tteam,$ttitle);
 
             if($edit == true){
+                $msg = '' ;
+			    $this->model->notify($msg,"Task",);
                 echo '<script>alert("Changed Successfully");
                 window.location.href="http://localhost/FINAL/Task/showpage_deptManageTask" ;</script>';
             }else{

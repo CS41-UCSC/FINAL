@@ -384,7 +384,14 @@ class Task_Model extends Model{
         
     }
 
-    function getNotifications(){
+    function notify($msg,$type,$receiver){
+		$empID = $_SESSION['login_user'];
+		$sql = "INSERT INTO notification (Notification,Notype,SentDT,NotStatus,Sender,Receiver)
+		VALUES ('$msg','$type',CURRENT_TIMESTAMP,'Pending','$empID','$receiver')";
+		return $this->db->runQuery($sql);
+	}
+
+	function getNotifications(){
 		$empID = $_SESSION['login_user'];
 		$sql = "SELECT NotID, Notification, Notype FROM notification 
 		WHERE Receiver = '$empID' AND NotStatus = 'Pending' LIMIT 5";
@@ -396,6 +403,28 @@ class Task_Model extends Model{
 		$sql = "SELECT COUNT(*) FROM notification 
 		WHERE Receiver = '$empID' AND NotStatus = 'Pending'";
 		return $this->db->runQuery($sql);
+	}
+
+	function notificationEmail($msg,$empID){
+		$sql = "SELECT EmpName, EmpEmail FROM systemuser WHERE EmpID = '$empID'";
+		$result = $this->db->runQuery($sql);
+		$empName = $result['0']['EmpName'];
+		$empEmail = $result['0']['EmpEmail']; 
+
+		$mail_subject = "Notification from Co-WMS";
+		$email_body = "Dear {$empName},\n";
+		$email_body .= $msg;
+		$from = "From: cowmsofficial@gmail.com";
+
+		$mail_result = mail($empEmail, $mail_subject, $email_body, $from);
+		
+		if($mail_result){
+			return true;
+		}
+		else{
+			return false;
+		}
+
 	}
 
     
