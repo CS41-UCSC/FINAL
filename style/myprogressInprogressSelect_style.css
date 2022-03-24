@@ -49,6 +49,7 @@
       position: absolute;
       top: -100px;
   }
+  
   nav .icon-burger {
       display: none;
       position: absolute;
@@ -76,147 +77,29 @@
 
     .flex-container {
         display: flex;
-        margin-top: 73px;
+        margin-top: 100px;
         margin-left: 90px;
         margin-right: 40px;
         flex-wrap: wrap;
-        height : 60vh;
+        height : 30vh;
         /* background-color: #ffffff;
         border: 1px solid #777ee0; */
-        width: 160vh;
+        background-color: #ffffff;
+        width: 90vw;
         
         
       }
       
-      .content{
-          height: 50vh;
-          width: 89vw;
-          background-color: #ffffff;
-      }
-      .progress {
-        position: relative;
-        width: 80%;
-        margin-left: 10%;
-        height: 30px;
-        background: #9cbab4;
-        border-radius: 5px;
-        overflow: hidden;
-      }
       
-      .progress__fill {
-        width: 0%;
-        height: 100%;
-        background: #0c56b6;
-        transition: all 0.2s;
-      }
-      
-      .progress__text {
-        position: absolute;
-        top: 50%;
-        right: 5px;
-        transform: translateY(-50%);
-        font: bold 14px "Quicksand", sans-serif;
-        color: #ffffff;
-      }
-      .content h2{
-          color: black;
-          font-size: 12pt;
-          text-align: left;
-          margin-left: 18%;
-      }
-      .tick-box{
-          width:30vw;
-          height: 20vh;
-          background-color: #ffffff;
-          margin-left: 20%;
-          margin-top: -8px;
-      }
-      .box {
-        display: block;
-        position: relative;
-        padding-left: 25px;
-        margin-bottom: 12px;
-        cursor: pointer;
-        font-size: 15px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        color: black;
-        margin-right: 10%;
-        
-        
-      }
-      
-      /* Hide the browser's default checkbox */
-      .box input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-        
-        
-        
-        
-      }
-      
-      /* Create a custom checkbox */
-      .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 21px;
-        width: 21px;
-        background-color: #eee;
-        margin-left: 80%;
-        border: 1px solid #00010a;
-        
-      }
-      
-      /* On mouse-over, add a grey background color */
-      .boxr:hover input ~ .checkmark {
-        background-color: #ccc;
-      }
-      
-      /* When the checkbox is checked, add a blue background */
-      .box input:checked ~ .checkmark {
-        background-color: #2196F3;
-      }
-      
-      /* Create the checkmark/indicator (hidden when not checked) */
-      .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-      }
-      
-      /* Show the checkmark when checked */
-      .box input:checked ~ .checkmark:after {
-        display: block;
-      }
-      
-      /* Style the checkmark/indicator */
-      .box .checkmark:after {
-        left: 8px;
-        top: 4px;
-        width: 5px;
-        height: 10px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-      }
       .btns{
           height : 10vh;
-          margin-top: 20px;
+          margin-top: 250px;
           background-color: #ffffff;
           width : 90vw;
       }
-      .button {
+      /* .button {
         background-color: #9ac3f8;
-        /* Green */
+        
         border: none;
         color: rgb(255, 255, 255);
         padding: 15px 32px;
@@ -228,10 +111,10 @@
         cursor: pointer;
         border-radius: 5px;
         
-      }
+      } */
       
-      .button1 {background-color: #9ac3f8;} 
-      /* Blue */
+      /* .button1 {background-color: #9ac3f8;}  */
+      
      
       
       .modal {
@@ -280,7 +163,12 @@
         padding: 25px;
         margin: 25px;
         box-shadow: 0 2px 5px #f5f5f5;
-        background: #eee;
+        background: rgb(255, 255, 255);
+        width: 60vw;
+        height: 15vh;
+        margin-left: 330px;
+        margin-top: -10px;
+        font-size: 15px;
       }
       input,
       textarea {
@@ -299,9 +187,9 @@
         font-weight: 400;
         color: rgb(255, 255, 255);
       }
-      button:hover {
+      /* button:hover {
         background: #2371a0;
-      }
+      } */
       .close {
         color: #aaa;
         float: right;
@@ -314,7 +202,7 @@
         text-decoration: none;
         cursor: pointer;
       }
-      button.button {
+      /* button.button {
         background: none;
         border-top: none;
         outline: none;
@@ -327,15 +215,120 @@
       }
       button.button:hover {
         border-bottom: #a99567 1px solid;
-        /* color: #398bf7; */
+        
         background-color: #3389fa;
       }
-      /* jkfkd */
+     
       .btns > button{
         background-color: #62a1f3;
         width: 100px;
         height: 30px;
+      } */
+      .task_view{
+        background-color: #c3c8f5;
+        display: flex;
+        margin-top: 25px;
+        margin-left: 350px;
+        margin-right: 40px;
+        flex-wrap: wrap;
+        height : 30vh;
+        width: 50vw;
+        border-style: solid;
+        border-color: rgb(49, 39, 231);
+        border-radius: 20px;
+
       }
+      .task_view:hover{
+        transform: scale(1.03);
+        z-index: 5;
+    }
+      .details{
+        font-size: 20px;
+        margin-left: 120px;
+        margin-top: 10px;
+        font-weight: 600;
+        
+      }
+     
+
+
+      h1 {
+        text-align: center;
+      }
+      
+      #myProgress {
+        margin: auto;
+        width: 50%;
+        background-color: rgb(186, 213, 137);
+        margin-top: 9px;
+        height: 30px;
+        border-radius: 40px;
+        
+      }
+      /* #myProgress:hover{
+        transform: scale(1.03);
+        z-index: 5;
+    } */
+      
+      #myBar {
+        width: 0%;
+        height: 30px;
+        background-color: green;
+        
+        
+      }
+      .sub{
+        margin-left: 100px;
+      }
+      
+      
+      .buttonHold {
+        text-align: center;
+        width: 50%;
+        
+      }
+      .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 100px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        margin-left: 5%;
+      }
+      .button1 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #f44336;
+        border-radius: 40px;
+        margin-left: -30px;
+        
+      }
+      .button1:hover{
+        background-color: #d36e66;
+        transform: scale(1.10);
+        z-index: 5;
+      }
+      .button2 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #4CAF50;
+        border-radius: 40px;
+        width: 18vw;
+      }
+      .button2:hover{
+        background-color: #6ed672;
+        transform: scale(1.10);
+        z-index: 5;
+        
+      }
+     
+
+      
 
       
     

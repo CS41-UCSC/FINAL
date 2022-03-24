@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../style/manageTeamEditDelete_style.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="../style/navbar_style.css?<?php echo time(); ?>">
     <script language="javascript" src="../resource/navigation.js?<?php echo time(); ?>"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <script language="javascript" src="navigation.js"> -->
     <title>Document</title>
@@ -114,181 +115,76 @@
             <div class="line"></div>
         </label>
     </nav>
+
+    <?php
+    $result = $this->team;
+    if (!empty($_SESSION['edit-team'])) {
+        if ($_SESSION['edit-team'] == "yes") {
+            echo '<script>swal("Success!", "Team Updated!", "success")</script>';
+            $_SESSION['edit-team'] = null;
+        } else if ($_SESSION['edit-team'] == "no") {
+            echo '<script>swal("Failed!", "Try Again!","error")</script>';
+            $_SESSION['edit-team'] = null;
+        }
+    }
+
+
+    ?>
     
     <main>
-        
-            <div class="flex-container">
-               
-                    <div class="left">
-                        <div class="form">
-                            <h1>Edit Team</h1>
-                            <form action=POST>
-                               
-                                    <label for="Name" class="name">Department Name :</label><br>
-                                    <input type="box" class="input"><br>
-                        
-                                    <label for="ID" class="id">Department ID   : </label><br>
-                                    <input type="box" class="input"><br>
-                             
-                                
-                                    <div class="box1">
-                                            <label for="leaders" class="selection-box"><div class="text1">Edit Team Leader: </div></label><br>
-                                        
-                                            <div class="select">
-                                                <select name="format" id="format">
-                                                <option selected disabled>Team Leader</option>
-                                                <option value="manager 1">Perera A</option>
-                                                <option value="manager 2">Perera B</option>
-                                                <option value="manager 3">Perera C</option>
-                                                <option value="manager 4">Perera D</option>
-                                                <option value="manager 5">Perera E</option>
-                                                </select>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="box2">
-                                                <label for="Departments" class="selection-box"><div class="text2">Edit Department : </div></label><br>
-                                        
-                                                <div class="select">
-                                                <select name="format" id="format">
-                                                <option selected disabled>Department</option>
-                                                <option value="manager 1">Department A</option>
-                                                <option value="manager 2">Departmenta B</option>
-                                                <option value="manager 3">Department C</option>
-                                                
-                                                </select>
-                                            </div>
-                                    </div>
-  
-                                  
-            
-                                
-                            </form>
-            
-                        </div>
-                        
-            
-                    </div>
-                    <div class="right">
-                        <div class="header_fixed" align="center">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Profile</th>
-                                        <th>Name</th>
-                                        <th>Employee ID</th>
-                                        <th></th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                        
-                                        <td><img src="../Asserts/image1.jpg"></td>
-                                        <td>Karunaratne W.S.P.K</td>
-                                        <td>AC-TM-001</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        
+        <div class="container">
+            <div class="flex-container1">
+                    <div>Edit Team Details</div>
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image2.jpg"></td>
-                                        <td>Madushani P.P.L</td>
-                                        <td>AC-TM-005</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image3.jfif"></td>
-                                        <td>Praveena W.K</td>
-                                        <td>AC-DM-001</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image4.jpeg"></td>
-                                        <td>Abewardane A.D</td>
-                                        <td>AC-TL-004</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image5.jpg"></td>
-                                        <td>Kumarasinghe H.J.K</td>
-                                        <td>AC-TL-004</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image6.jfif"></td>
-                                        <td>Fernando R</td>
-                                        <td>AC-TM-010</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image7.jfif"></td>
-                                        <td>G.H.J.K de Silva</td>
-                                        <td>AC-DM-007</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    
-                                    
-                                    
-                                </tbody>
-                            </table>
-                            
-                        </div>
-                        <div class="btn-group">
-                            <button class="button">Cancel</button>
-                            <button class="button">Save</button>
-                          </div>
-                        
-            
-                    </div>
-                
-                
-               
             </div>
+            <form action="http://localhost/FINAL/HRmanager/editTeam" method="post">
+                <?php 
+                    $emp=$this->users;
+
+                ?>
+            
+
+                <div class="flex-container">
+
+                    <div>
+                        <label for="tName">Team Name :</label><br>
+                        <input type="text" id="tName" name="tName" value="<?php if(!empty($emp[0]['TeamName'])){ echo $emp[0]['TeamName'];}else{echo "";}?>"><br>
+                    </div>
+
+                    <div>
+                        <label for="tId">Team ID :</label><br>
+                        <input type="text" id="tId" name="tId" value="<?php if(!empty($emp[0]['TeamID'])){ echo $emp[0]['TeamID'];}else{echo "";}?>"><br>
+                    </div>
+
+                    <div>
+                        <label for="leaders" id="label-role">Team Leader ID :</label><br>
+                        <select name="format" id="format">
+                        <option selected disabled>Team Leader ID</option>
+                            <?php
+                                $result = $this->members;
+                                    foreach ($result as $row){ ?>     
+                                        <option name="LId" value="<?php echo $row['EmpID'] ?>"><?php echo $row['EmpID']?></option>
+                            <?php }
+                            ?>  
+                        </select>
+
+                    </div>
+
+                    <div></div>
+
+                    <div>
+                        <a href="manageTeam" class="back" style="color: grey;"><span><i class="fa fa-arrow-left"></i>Back</span></a>
+                    </div>
+                    <div>
+                        <button type="submit" class="rectan" name="Add">Save</button>
+                    </div>
+                    
+                </div>
+            </form>
+
+        </div>    
              
     </main>
-
     <!-- <footer class="footer">
         <label for="" class="footer-data">©️ 2021, All rights reserved by CO - WMS <br>
                         No: 23, Flower Avenue, Colombo 7, Sri Lanka.</label>

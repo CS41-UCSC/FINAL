@@ -70,7 +70,7 @@
 			<a href="http://localhost/Co-WMS/teamProgress" class="nav-link" id="t_progress">
                 <i class="fa fa-users fa-lg" ><span>Team Progress</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/employeeWorkProgress" class="nav-link nav-link-active" id="emp_progress">
+			<a href="http://localhost/FINAL/HRmanager/employeeWorkProgress" class="nav-link nav-link-active" id="emp_progress">
                 <i class="fa fa-users fa-lg" ><span>Employee Progress</span></i>
             </a>
             <a href="http://localhost/Co-WMS/deptManageTask" class="nav-link" id="manage_task_dpt">
@@ -122,90 +122,27 @@
                         <th>Profile</th>
                         <th>Employee</th>
                         <th>Employee Id</th>
-                        <th>Team Id</th>
+                        <th>Role</th>
                         <th>View</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
-                        <tr>
-                            <td data-label="Profile"><a href="#"><i class="fa fa-user fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Employee">Kamal Silva</td>
-                            <td data-label="Employee Id">AC-TM-004</td>
-                            <td data-label="Team">1</td>
-                            <td data-label="View"><a href="http://localhost/Co-WMS/progressReport"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                        </tr>
-
+                        <?php
+                        $result = $this->users;
                         
-                        <tr>
-                            <td data-label="Profile"><a href="#"><i class="fa fa-user fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Employee">Visal Rajapaksha</td>
-                            <td data-label="Employee Id">AC-TM-007</td>
-                            <td data-label="Team">2</td>
-                            <td data-label="View"><a href="http://localhost/Co-WMS/progressReport"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                        </tr>
+                        foreach ($result as $row) {
+                         
+                            echo '<tr>';
+                            echo '<td data-label="Profile"><a href="#"><i class="fa fa-user fa-2x" style="color:grey;" aria-hidden="true"></i></a></td>';
+                            echo '<td>' . $row['EmpName'] . '</td>';
+                            echo '<td>' . $row['EmpID'] . '</td>';
+                            echo '<td>' . $row['EmpRole'] . '</td>';
+                            //echo '<td data-label="View"><a href="http://localhost/FINAL/HRmanger/showpage_progressReport?ID=' . $row['EmpID'] . '"><i class="fa fa-eye fa-2x" style="color:grey;" aria-hidden="true"></i></a></td>';
+                            echo '</tr>';
+                        }
 
-                       
-                        <tr>
-                            <td data-label="Profile"><a href="#"><i class="fa fa-user fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Employee">T.R.A. Kaluvitharana</td>
-                            <td data-label="Employee Id">AC-DM-002</td>
-                            <td data-label="Team">4</td>
-                            <td data-label="View"><a href="http://localhost/Co-WMS/progressReport"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                        </tr>
-
-                        
-        
-                        <tr>
-                            <td data-label="Profile"><a href="#"><i class="fa fa-user fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Employee">A.R.A. Silva</td>
-                            <td data-label="Employee Id">AC-TL-001</td>
-                            <td data-label="Team">12</td>
-                            <td data-label="View"><a href="http://localhost/Co-WMS/progressReport"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Profile"><a href="#"><i class="fa fa-user fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Employee">S.S. Munasinha</td>
-                            <td data-label="Employee Id">AC-DM-002</td>
-                            <td data-label="Team">9</td>
-                            <td data-label="View"><a href="http://localhost/Co-WMS/progressReport"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                        </tr>
-
-                        </tr>
-                        <tr>
-                            <td data-label="Profile"><a href="#"><i class="fa fa-user fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Employee">Binod Karunarathna</td>
-                            <td data-label="Employee Id">AC-DM-002</td>
-                            <td data-label="Team">5</td>
-                            <td data-label="View"><a href="http://localhost/Co-WMS/progressReport"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Profile"><a href="#"><i class="fa fa-user fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Employee">S.M. Abewardhana</td>
-                            <td data-label="Employee Id">AC-TM-007</td>
-                            <td data-label="Team">3</td>
-                            <td data-label="View"><a href="http://localhost/Co-WMS/progressReport"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                        </tr>
-
-                        <tr>
-                            <td data-label="Profile"><a href="#"><i class="fa fa-user fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Employee">A.A Fernando</td>
-                            <td data-label="Employee Id">AC-TM-010</td>
-                            <td data-label="Team">5</td>
-                            <td data-label="View"><a href="http://localhost/Co-WMS/progressReport"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                        </tr>
-
-                        </tr>
-                        <tr>
-                            <td data-label="Profile"><a href="#"><i class="fa fa-user fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                            <td data-label="Employee">S.S. Vihansa</td>
-                            <td data-label="Employee Id">AC-TM-007</td>
-                            <td data-label="Team">5</td>
-                            <td data-label="View"><a href="http://localhost/Co-WMS/progressReport"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>
-                        </tr>
-
-
-
+                        ?>
                     </tbody>
                 </table>
     

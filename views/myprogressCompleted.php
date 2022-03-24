@@ -119,46 +119,61 @@
     <main>
         <div class="container">
             <div class="flex-container">
-                <!-- <div class="text">Completed Tasks</div> 
-                <div>1</div> -->
+               <!-- <div class="text">Completed Tasks</div>  -->
+                <!-- <div>1</div> -->
                     <div class="flex-container1">
                         <div class="text">Completed Tasks</div>
-                        <div>
-                            <input type="date" id="myDate" value="2014-02-09">
-                        </div>
-                        <div>
-                            <input type="date" id="myDate" value="2014-02-09">
-                        </div>
-                        <div>
-                            <button type="submit" name="submit" class="rectan">Search</button>
-                        </div>
+                        <?php
+                            echo '<form action="http://localhost/FINAL/Member/sortDate" method="post">';
+                            echo '<div>';
+                                echo '<input type="date" id="myDate" name="startDate" value="2014-02-09">';
+                            echo '</div>';
+                            echo '<div>';
+                                echo '<input type="date" id="myDate" name="endDate" value="2014-02-09">';
+                            echo '</div>';
+                            echo '<div>';
+                                echo '<button type="submit" name="submit" class="rectan">Search</button>';
+                            echo '</div>';
+                            echo '</form>';
+                        ?>
                     </div>
                 <table class="table">
                     <thead>
                         <tr>
                         <th>Task Id</th>
+                        <th>Sub Task Id</th>
                         <th>Task Name</th>
+                        <th>Sub Task Name</th>
                         <th>Done On</th>
                         <th>Approved On</th>
                         <th>Covered Hours</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- <tr>
+                            <td data-label="Task Id">1</td>
+                            <td data-label="Task Name">Design the solution</td>
+                            <td data-label="Done On">10/07/2021</td>
+                            <td data-label="Approved On">13/07/2021</td>
+                            <td data-label="Covered Hours">5 hrs</td>
+                        </tr> -->
                         <?php
-                            $result = $this->users;
-                            // print_r($result);
-                            foreach ($result as $row) {
-                                echo '<tr>';
-                                echo '<td>' . $row['TaskID'] . '</td>';
-                                echo '<td>' . $row['TaskName'] . '</td>';
-                                echo '<td>' . $row['CompletedDate'] . '</td>';
-                                echo '<td>' . $row['ApprovedDate'] . '</td>';
-                                echo '<td>' . $row['RequiredTime'] . '</td>';
-                                echo '</tr>';
-                            }
+                        $result = $this->users;
+                        // print_r($result);
+                        foreach ($result as $row) {
+                            echo '<tr>';
+                            echo '<td>' . $row['TaskID'] . '</td>';
+                            echo '<td>' . $row['SubTaskID'] . '</td>';
+                            echo '<td>' . $row['TaskName'] . '</td>';
+                            echo '<td>' . $row['SubTaskName'] . '</td>';
+                            echo '<td>' . $row['CompletedDate'] . '</td>';
+                            echo '<td>' . $row['ApprovedDate'] . '</td>';
+                            echo '<td>' . $row['RequiredTime'] . '</td>';
+                            echo '</tr>';
+                        }
 
-                        ?>  
-                        
+                        ?>
+ 
                     </tbody>
                 </table>
     

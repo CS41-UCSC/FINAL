@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/myprogressAccepted_style.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="../style/navbar_style.css?<?php echo time(); ?>">
-    <script language="javascript" src="../resource/navigation.js?<?php echo time(); ?>"></script>
+    <script language="javascript" src="../views/navigation.js?<?php echo time(); ?>"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
@@ -35,7 +35,7 @@
         </label>
         <div class="notification"><a href="#" ><i class="fa fa-bell fa-lg "></i></a></div>
         <span class="user-login"><?php echo $_SESSION['login_user'] ?></span>
-        <img class="img-rounded-circle" src="../Asserts/<?php if ($_SESSION['user_img']) {echo $_SESSION['user_img'];} else {echo 'avator.jpg';} ?>" alt="">
+        <img class="img-rounded-circle" src="../Co-WMS/Asserts/<?php if ($_SESSION['user_img']) {echo $_SESSION['user_img'];} else {echo 'avator.jpg';} ?>" alt="">
     
 
     </header>
@@ -148,7 +148,8 @@
                                 echo '<td>' . $row['AssignedTime'] . '</td>';
                                 echo '<td>' . $row['DueDate'] . '</td>';
                                 echo '<td>' . $row['RequiredTime'] . '</td>';
-                                echo '<td data-label="View"><a href="myprogressInprogressSelect"><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>';
+                                echo '<td data-label="View"><a href="myprogressInprogressSelectid?ID='.$row['TaskID'].' "><i class="fa fa-eye fa-2x" style="color:gray;" aria-hidden="true"></i></a></td>';
+                                
                                 echo '<td data-label="Remark"><button class="button" data-modal="modalOne"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>';
                                 echo '</tr>';
                             }

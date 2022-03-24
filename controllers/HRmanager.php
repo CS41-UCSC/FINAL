@@ -1,7 +1,7 @@
 <?php
 
 require 'controllers/Manager.php';
-require 'controllers/team.php';
+// require 'controllers/team.php';
 require 'controllers/department.php';
 // include_once('controllers/team.php');
 // include_once('controllers/department.php');
@@ -21,6 +21,26 @@ class HRmanager extends Manager{
         $this->view->render('manageEmployee');
 
     }
+
+    function removeRestoreEmployee($empid,$empStatus){
+
+        $this->model->removeRestoreEmployee($empid,$empStatus);
+        //     }
+
+        // }
+
+       
+        // $empStatus = $_POST['EmpStatus'];
+
+        // $this->model->removeRestoreEmployee($empid,$empStatus);
+        header('location: http://localhost/FINAL/HRmanager/showpage_manageEmployee');
+        
+        // $this->model->temp = $this->model->getData();
+        // $this->view->temp1 = $this->model->removeRestoreEmployee();
+        // header('location: http://localhost/CO-WMS/manageEmployee');
+
+    }
+
     function showpage_manageEmployeeAdd(){
         $team = new Team();
         $this->view->teams = $team->getTeams(); 
@@ -107,7 +127,7 @@ class HRmanager extends Manager{
             //$this->view->users =  $this->model->getData($_POST['epmId']);
            // $this->view->employee=0;
             //$this->view->render('manageEmployeeEditDelete');
-            header('location: http://localhost/CO-WMS/manageEmployeeEditDelete');
+            header('location: http://localhost/FINAL/HRmanager/showpage_manageEmployeeEditDelete');
 
         // $this->index();
          //header('location: http://localhost/CO-WMS/manageEmployeeEditDelete');
@@ -142,7 +162,7 @@ class HRmanager extends Manager{
 		
         $this->model->insertDepartment($dName,$dId,$dManagerId);
 		
-        header('location: http://localhost/CO-WMS/manageDepartmentAdd');
+        header('location: http://localhost/FINAL/HRmanager/showpage_manageDepartmentAdd');
 		
     }
     
@@ -168,23 +188,51 @@ class HRmanager extends Manager{
       
         $teamName= $_POST['tname'];
         $DeptId = $_POST['dId'];
+        $LeaderId = $_POST['lId'];
 
         // $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        $this->model->insertTeam($teamName,$DeptId);
+        $this->model->insertTeam($teamName,$DeptId,$LeaderId);
 
-        header('location: http://localhost/CO-WMS/manageTeamAdd');
+        header('location: http://localhost/FINAL/HRmanager/showpage_manageTeamAdd');
 
     }
     
     function showpage_manageTeamEditDelete(){
-        $this->view->users =  $this->model->getTeamEditDeleteData();
+        // $this->view->users =  $this->model->getTeamEditDeleteData();
+        // $this->view->render('manageTeamEditDelete');
+
+
+        $this->view->users =  $this->model->getData($_GET['tId']);
+        $this->view->team=0;
+
+        $this->view->members =  $this->model->getMembers($_GET['tId']);
         $this->view->render('manageTeamEditDelete');
+
+        // $this->view->users =  $this->model->getTeamEditDeleteData();
+        // $this->view->render('manageTeamEditDelete');
+
+        // $this->view->members =  $this->model->getMembers($_GET['tId']);
+
 
     }
 
+    function editTeam(){
+        $tName = $_POST['tName'];
+        $tId= $_POST['tId'];
+        $LeaderId = $_POST['LId'];
+        // $format = $_POST['format'];
+
+        // $this->model->editTeam($tName,$tId,$format);
+        // $this->view->members =  $this->model->getMembers($tId);
+
+        $preLeaderId = $this->model->getData($tId);
+        $this->model->editTeam($tName,$tId,$LeaderId,$preLeaderId);
+        header('location: http://localhost/FINAL/HRmanager/showpage_manageTeam');
+    }
+
     function showpage_employeeWorkProgress(){
-        // $this->view->users =  $this->model->getemployeeWorkProgressData();
+        $this->view->users =  $this->model->getemployeeWorkProgressData();
         $this->view->render('employeeWorkProgress');
 
     }
