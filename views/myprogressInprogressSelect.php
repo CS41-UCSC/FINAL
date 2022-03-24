@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/myprogressInprogressSelect_style.css">
     <link rel="stylesheet" href="../style/navbar_style.css">
-    <script language="javascript" src="../resource/navigation.js"></script>
+    <script language="javascript" src="../views/navigation.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'> -->
     <title>Document</title>
 </head>
 
@@ -35,7 +38,7 @@
         </label>
         <div class="notification"><a href="#" ><i class="fa fa-bell fa-lg "></i></a></div>
         <span class="user-login"><?php echo $_SESSION['login_user'] ?></span>
-        <img class="img-rounded-circle" src="../Asserts/<?php if ($_SESSION['user_img']) {
+        <img class="img-rounded-circle" src="../Co-WMS/Asserts/<?php if ($_SESSION['user_img']) {
                                                                     echo $_SESSION['user_img'];
                                                                 } else {
                                                                     echo 'avator.jpg';
@@ -101,10 +104,10 @@
     <nav>
     <input id="nav-toggle" type="checkbox"> 
         <ul class="links">
-            <li><a href="http://localhost/FINAL/Member/showpage_myprogressCompleted">Completed</a></li>
-            <li><a href="http://localhost/FINAL/Member/showpage_myprogressAccepted" class="activelink">In Progress</a></li>
-            <li><a href="http://localhost/FINAL/Member/showpage_myprogressOverdue">Overdue</a></li>
-            <li><a href="http://localhost/FINAL/Member/showpage_myprogressPending">Pending</a></li>
+            <li><a href="myprogressCompleted">Completed</a></li>
+            <li><a href="myprogressAccepted" class="activelink">In Progress</a></li>
+            <li><a href="myprogressOverdue">Overdue</a></li>
+            <li><a href="myprogressPending">Pending</a></li>
         </ul>
         <label for="nav-toggle" class="icon-burger">
             <div class="line"></div>
@@ -114,81 +117,131 @@
     </nav>
     
     <main>
-        <div class="container">
+        <!-- <div class="container"> -->
             
             <div class="flex-container">
                 <div class="content">
-                   
-                    <div class="progress">
-                        <div class="progress__fill"></div>
-                        <span class="progress__text">0%</span>
-                        
-                    </div>
-                    <h2>17</h2>
-                    <h2>organize a client meeting with ZOOM and collect details.</h2>
-                    <h2>Due On : 10/09/2021</h2>
-                    <h2>Required Time : 2 hrs</h2>
-                    <div class="tick-box">
-                        <h2>Sub Tasks : </h2>
-                        <label class="box">Task 1
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                        </label>
-                        <label class="box">Task 2
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        </label>
-                        <label class="box">Task 3
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    
-                </div>
-                <script>
-                    function updateProgressBar(progressBar, value) {
-                        value = Math.round(value);
-                        progressBar.querySelector(".progress__fill").style.width = `${value}%`;
-                        progressBar.querySelector(".progress__text").textContent = `${value}%`;
-                        }
+                        <!-- <div class="container"> -->
+                            <div id="myProgress">
+                                <div id="myBar"></div>
+                            </div>
+                            <br>  
 
-                        const myProgressBar = document.querySelector(".progress");
+                                <form id="progress" action="savesubtasks" method="POST">
+                                    <!-- <label for="sub">Sub Task 1</label><input id="sub" type="checkbox" class="k" value="1" /><br>
+                                    <label for="sub">Sub Task 2</label><input id="sub" type="checkbox" value="1" /><br>
+                                    <label for="sub">Sub Task 3</label><input id="sub" type="checkbox" value="1" /><br>
+                                    <label for="sub">Sub Task 4</label><input id="sub" type="checkbox" value="1" /><br> -->
+                                    
+                                    <?php
+                                        $result = $this->users1;
+                                        
+                                        $i=0;
+                                        foreach($result as $row){
+                                            
+                                            if(! (strcmp($row[2],"Completed"))){
+                                                echo '<label for="sub">'.$row[1].'</label><input id="sub" type="checkbox" name="task[]" value="'.$row[0].' " checked/><br>';
+                                            }else{
+                                                echo '<label for="sub">'.$row[1].'</label><input id="sub" type="checkbox" name="task[]" value="'.$row[0].'" /><br>';
+                                            }
+                                            
+                                            $i++;
+                                        }
+                                    ?>
 
-                        /* Example */
-                        updateProgressBar(myProgressBar, 32);
-                </script>
-                <div class="btns">
-                
-                    <!-- <button class="button button2">Remark</button> -->
-                    <button class="button" data-modal="modalOne">Remark</button>
-                    <button class="button button3">Save</button>
+                                     <div class="btns">
+                                
+                                    <!-- <button class="button button2">Remark</button> -->
+                                    <!-- <button class="button" data-modal="modalOne">Back</button> -->
+                                    <!-- <button class="button button3">Save</button> -->
+                                    <div class="buttonHold">
+                                    <!-- <input type="button" value="Back" onclick="update()" />
+                                    <input type="button" value="Update" onclick="update()" /> -->
+                                    
+                                    </div>
+                                    <button class="button button1">Back</button>
+                                    <!-- <button class="button button2">Save</button> -->
+                                    <!--<a href="myprogressAccepted" class="back" ><button class="button button1">Back</a>-->
+                                    <!--<button class="button button2">Save</button>-->
+                                    <input class="button button2" type="submit" value="Submit" name="submit">
+                                
 
-                </div> 
-                <div id="modalOne" class="modal">
-                    <div class="modal-content">
-                        <div class="contact-form">
-                            <a class="close">&times;</a>
-                            <form action="/">
-                                <h3>Remark</h3>
-                                <!-- <span>Message</span> -->
-                                <div class="message">Message</div>
-                                <div>
-                                    <textarea rows="4"></textarea>
-                                </div>
-                                <button type="submit" href="/">Send</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                                    </div> 
+            
+                                    
+                                    
+                                </form>
+                                
+                        <!-- </div> -->
     
+               </div>
             </div>
-        </div>
+            <div class="task_view">
+                <div class="details">
+
+                    <?php
+                        $i=0;
+                        $result = $this->users;
+
+                        
+                        foreach ($result as $row){
+
+
+                            // if($row['TaskID']==$row1[1]){
+                            //     echo "<br> - Task ID  : ". $row["TaskID"]. "<br> - Task Name  : ". $row["TaskName"]. "<br> - Assigned Time  : ". " " . $row["AssignedTime"] . "<br> - DueDate  : " . " " . $row["DueDate"] . "<br> - RequiredTime  : " .  " " .$row["RequiredTime"] . "<br>";
+                                
+                            // }
+                            
+                            if($i==0){
+                                echo "<br> - Task ID  : ". $row["TaskID"]. "<br> - Task Name  : ". $row["TaskName"]. "<br> - Assigned Time  : ". " " . $row["AssignedTime"] . "<br> - DueDate  : " . " " . $row["DueDate"] . "<br> - RequiredTime  : " .  " " .$row["RequiredTime"] . "<br>";
+                            }
+                            $i=$i+1;
+                            
+
+                        }
+                        
+                        
+                    
+                    ?>
+
+                </div>
+            </div>
     </main>
+                                                                    
+                        
+                
 
     <!-- <footer class="footer">
         <label for="" class="footer-data">©️ 2021, All rights reserved by CO - WMS <br>
                         No: 23, Flower Avenue, Colombo 7, Sri Lanka.</label>
     </footer> -->
+        <script>
+        function update() {
+            var checked = 0;
+            var myBar = document.getElementById("myBar");
+            //Reference the Form.
+            var fruits = document.getElementById("progress");
+
+            //Reference all the CheckBoxes in Table.
+            boxes = fruits.querySelectorAll("input[type='checkbox']:checked");
+            checked = boxes.length
+
+
+            myBar.style.width = ((checked / 2) * 100) + "%";
+            if (checked == 0) {
+                alert("Please select CheckBoxe(s).");
+            }
+            return true;
+            }
+
+            checks = document.querySelectorAll("input[type='checkbox']");
+            checks.forEach(function(box) {
+            box.addEventListener("change", function(e) {
+                update()
+            });
+            });
+    </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", () =>{
             const nav = document.querySelector(".nav");
