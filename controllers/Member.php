@@ -106,7 +106,7 @@ class Member extends controller{
 
     function myprogressInprogressSelectid(){
         $taskid = $_GET['ID'];
-        $this->view->users =  $this->model->getData($taskid);
+        $this->view->users =  $this->model-> getTaskData($taskid);
         $this->view->users1 =  $this->model->getSubTaskData($taskid);
         //$this->view->users2 =  $this->model->updateSubTaskData();
         $this->view->render('myprogressInprogressSelect');
