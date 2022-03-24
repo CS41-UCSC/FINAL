@@ -121,6 +121,28 @@ class leave_Model extends Model{
 		WHERE Receiver = '$empID' AND NotStatus = 'Pending'";
 		return $this->db->runQuery($sql);
 	}
+
+	function notificationEmail($msg,$empID){
+		$sql = "SELECT EmpName, EmpEmail FROM systemuser WHERE EmpID = '$empID'";
+		$result = $this->db->runQuery($sql);
+		$empName = $result['0']['EmpName'];
+		$empEmail = $result['0']['EmpEmail']; 
+
+		$mail_subject = "Notification from Co-WMS";
+		$email_body = "Dear {$empName},\n";
+		$email_body .= $msg;
+		$from = "From: cowmsofficial@gmail.com";
+
+		$mail_result = mail($empEmail, $mail_subject, $email_body, $from);
+		
+		if($mail_result){
+			return true;
+		}
+		else{
+			return false;
+		}
+
+	}
 	
 }
 ?>
