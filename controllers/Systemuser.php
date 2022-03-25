@@ -20,6 +20,7 @@ class Systemuser extends controller{
     function showpage_myprofile(){
 
         $this->view->users = $this->model->getData($_SESSION['login_user']);
+        $this->view->users_skill =  $this->model->getSkillData($_SESSION['login_user']);
         $this->view->render('myprofile');
     }
 
@@ -69,6 +70,18 @@ class Systemuser extends controller{
 
         $this->showpage_myprofile();
         
+    }
+    function setSkillData(){
+        $skill = $_POST['skillname'];
+        $percentage = $_POST['percent'];
+        $r = $_SESSION['login_user'];
+        $this->model->insertSkill($skill,$percentage,$r);
+        
+        
+        
+		
+        header('location: http://localhost/FINAL/Systemuser/showpage_myprofile');
+		
     }
 
 }
