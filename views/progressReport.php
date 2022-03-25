@@ -177,22 +177,43 @@
 			</div>
 			</div>
 			<div class="item2">
+                <?php
+                    $userdata = $this->userdata;
+                    $assignedTask = $this->assignedTask;
+                    $pendingTask = $this->pendingTask;
+                    $inprogressTask = $this->inprogressTask;
+                    $completedTask = $this->completedTask;
+                    $approvedLeaves = $this->approvedLeaves;
+                    $remainingLeaves = $this->remainingLeaves;
+                ?>
 				<h2>Employee Progress Report</br>Month of <?php echo date("F") ." ". date("Y"); ?></h2>
 				<span>Generated on - <?php echo date("d")." ". date("M") ." ". date("Y"); ?></span></br>
-				<p>Employee ID: </br>
-				Employee Name: </br></br>
+				<p>Employee ID: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <?php echo $userdata['0']['EmpID'] ?></br>
+				Employee Name: &nbsp <?php echo $userdata['0']['EmpName'] ?></br></br>
 				<h3>Task Progress</h3>
-				Total Assigned Tasks: </br>
-				Total Complted Tasks: </br>
-				Pending Tasks: </br>
+				Total Assigned Tasks: 
+                <?php if($assignedTask[0][0] == 0){ echo "None";} else{ echo $assignedTask[0][0];} ?> </br>
+				Total Completed Tasks: 
+                <?php if($completedTask[0][0] == 0){ echo "None";} else{ echo $completedTask[0][0];} ?> </br>
+                Tasks In-Progress: 
+                <?php if($inprogressTask[0][0] == 0){ echo "None";} else{ echo $inprogressTask[0][0];} ?> </br>
+				Pending Tasks: 
+                <?php if($pendingTask[0][0] == 0){ echo "None";} else{ echo $pendingTask[0][0];} ?> </br>
 				<h3>Working Hours</h3>
-				Total Assigned Hours: </br>
-				Total Complted Hours: </br>
-				Pending Hours: </br>
+				Total Assigned Hours: 
+                <?php if($assignedTask[0][1] == 0){ echo "None";} else{ echo $assignedTask[0][1];} ?>  </br>
+				Total Complted Hours: 
+                <?php if($completedTask[0][1] == 0){ echo "None";} else{ echo $completedTask[0][1];} ?> </br>
+				Pending Hours: 
+                <?php if($pendingTask[0][1] == 0){ echo "None";} else{ echo $pendingTask[0][1];} ?> </br>
 				<h3>Leave Details</h3>
-				Leave taken for this Month: </br>
-				Remaining Leaves: </br>
-				Sick: &nbsp; Annual: &nbsp; Casual: &nbsp;
+				Approved Leaves for this Month: 
+                <?php if($approvedLeaves[0][0] == 0){ echo "None";} else{ echo $approvedLeaves[0][0];} ?> </br>
+				Remaining Leaves for this Year: </br>
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                Sick: <?php echo $remainingLeaves['sick']; ?> &nbsp 
+                Annual: <?php echo $remainingLeaves['annual']; ?> &nbsp 
+                Casual: <?php echo $remainingLeaves['casual']; ?> &nbsp
 			</div>
         </div>        
     </main>
