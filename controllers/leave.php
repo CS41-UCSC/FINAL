@@ -251,6 +251,10 @@ class leave extends Controller{
 		$leavetype = $this->view->data['0']['LeaveType'];
 		$date = $this->view->data['0']['StartDate'] . ' to ' .$this->view->data['0']['EndDate'];
 
+		$empID = $this->view->data['0']['EmpID'];
+		$this->view->pendingTasks = $this->model->getTaskData($empID,$date,"Pending");
+		$this->view->inprogressTasks = $this->model->getTaskData($empID,$date,"InProgress");
+
 		if(isset($_POST['approvebtn'])){
 			$return = $this->model->setLeaveStatus($leaveID,"Approved");
 			echo "<script>alert('Leave Request Approved Successfully')</script>";
