@@ -183,6 +183,19 @@
                 <table class="leaveview">
                 <?php
 					$data=$this->data;
+
+                    if($this->pendingTasks['0']['0'] == 0){
+                        $pendingtask = "None";
+                    }else{
+                        $pendingtask = $this->pendingtasks['0']['0'];
+                    }
+
+                    if($this->inprogressTasks['0']['0'] == 0){
+                        $inprogresstask = "None";
+                    }else{
+                        $inprogresstask = $this->inprogressTasks['0']['0'];
+                    }
+                    
 					if(!empty($data)){
 					foreach($data as $row){
 						echo '<tr id= ' . $row['0'] . '>';
@@ -190,9 +203,11 @@
                         echo'<tr><td>EmpName : </td><td>'.$row['EmpName'].'</td></tr>';
 						echo'<tr><td>Leave Type : </td><td>'.$row['LeaveType'].'</td></tr>';
 						echo '<tr><td>Duration : </td><td>'.$row['StartDate'].' &nbsp - &nbsp '.$row['EndDate'].'</td></tr>';
-						echo '<tr><td>Pending Tasks : </td><td> None </td></tr>';
-                        echo '<tr><td>Ongoing Tasks : </td><td> 5 </td></tr>';
-                        echo '<tr id= ' . $row['0'] . '><td colspan="2"><a href="#"> More Task Details </a></td></tr>';
+						echo '<tr><td>Pending Tasks : </td><td>' .$pendingtask. '</td></tr>';
+                        echo '<tr><td>Tasks In-Progress : </td><td>' .$inprogresstask. '</td></tr>';
+                        echo '<tr id= ' . $row['0'] . '><td colspan="2">
+                        <a href="http://localhost/FINAL/Task/showpage_assignTasksTeam"> More Task Details 
+                        </a></td></tr>';
 					}
 					}else{
 						echo "No records found";
