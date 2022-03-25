@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../style/notification_style.css?<?php echo time(); ?>" type="text/css">
     <script language="javascript" src="../resource/navigation.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <title>Document</title>
@@ -20,6 +21,7 @@
     <?php
 
     $result = $this->users;
+    //echo $_SESSION['password'];
 
     if (!empty($_SESSION['photo'])) {
         if ($_SESSION['photo'] == "yes") {
@@ -64,7 +66,7 @@
 
                                     ?>
         </label>
-        <!--<div class="notification">
+        <div class="notification">
             <button class="icon"><i class="fa fa-bell fa-lg"></i>
                 <span class="badge">3</span>
             </button>
@@ -74,7 +76,7 @@
                 <a href="#">Revoke all access from </a>
                 <a href="#">10 Hours Pending to Complete</a>
             </div>
-        </div>-->
+        </div>
         <span class="user-login"><?php echo $_SESSION['login_user'] ?></span>
         <img class="img-rounded-circle" src="../Asserts/<?php if ($result[0]['Userimg']) {
                                                                     echo $result[0]['Userimg'];
@@ -117,7 +119,7 @@
             <a href="http://localhost/FINAL/HRmanager/showpage_employeeWorkProgress" class="nav-link " id="emp_progress">
                 <i class="fa fa-users fa-lg"><span>Employee Progress</span></i>
             </a>
-            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link" id="manage_task_dpt">
+            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link " id="manage_task_dpt">
                 <i class="fa fa-tasks fa-lg"><span>Manage Tasks</span></i>
             </a>
             <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link" id="manage_task_leader">
@@ -141,7 +143,6 @@
             <a href="http://localhost/FINAL/login/logout" class="nav-link" id="logout">
                 <i class="fa fa-list-alt fa-lg"><span>Logout</span></i>
             </a>
-            
         </div>
         <div class="nav-overlay"></div>
     </nav>
@@ -175,9 +176,7 @@
                     <label for="empemail">Email</label>
                     <input type="text" name="empemail" value="<?php echo $result[0]['EmpEmail'] ?>" readonly class="input-fields"><br>
                     <label for="emprole">Employee Role</label>
-                    <input type="text" name="emprole" value="<?php echo $result[0]['EmpRole'] ?>" readonly class="input-fields"><br>
-                    <label for="emprole">Started Date</label>
-                    <input type="text" name="startdate" value="<?php echo $result[1]['StartDate'] ?>" readonly class="input-fields"><br>
+                    <input type="text" name="emprole" value="<?php echo $result[0]['EmpRole'] ?>" readonly class="input-fields"><br><br><br>
                     <h3>Reset Password</h3>
                     <label for="add">Current Password</label>
                     <input type="password" name="pass" id="pass" value="" class="input-fields"><br>
@@ -185,10 +184,10 @@
                     <input type="password" name="cpass" id="cpass" value="" class="input-fields" onkeyup="validationc();"><br>
                     <label for="add">Confirm Password</label>
                     <input type="password" name="npass" id="npass" value="" class="input-fields" onkeyup="validationn();"><br>
-                    <input type="submit" value="Save Changes" class="button" onclick="saveform();">
+                    <input type="submit" value="Save Changes" class="button1" onclick="saveform();">
                 </form>
+               
             </div>
-            
             <div class="item3">
                 <h4>Skills and Endoresments</h4><br>
                                         
@@ -237,7 +236,6 @@
                 
 
             </div>
-            
             <div id="modalOne" class="modal">
         
 
@@ -249,7 +247,6 @@
                         
                         
                         <div class="skills">
-
                             <label for="percent" class="rate" >Skill Percentage....</label><br>
                         
                             <div>
@@ -278,7 +275,13 @@
                         </form>
                     </div>                              
             </div>
+            <!-- </div> -->
+            
+           
+
         </div>
+        
+        
 
     </main>
 
@@ -330,7 +333,7 @@
         function checkfile() {
 
             if (path == "yes")
-                document.form1.action = "savephoto";
+                document.form1.action = "http://localhost/FINAL/Systemuser/savephoto";
 
             else if (!path) {
 
@@ -376,7 +379,7 @@
         function saveform() {
 
             if (res == "green")
-                document.form2.action = "saveform";
+                document.form2.action = "http://localhost/FINAL/Systemuser/saveform";
 
             else if (!res) {
 
