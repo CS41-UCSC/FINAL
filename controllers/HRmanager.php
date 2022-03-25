@@ -17,12 +17,19 @@ class HRmanager extends Manager{
     }
 
     function showpage_manageEmployee(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->users =  $this->model->getEmployeeData();
         $this->view->render('manageEmployee');
 
     }
 
     function removeRestoreEmployee($empid,$empStatus){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
 
         $this->model->removeRestoreEmployee($empid,$empStatus);
         //     }
@@ -42,6 +49,10 @@ class HRmanager extends Manager{
     }
 
     function showpage_manageEmployeeAdd(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $team = new Team();
         $this->view->teams = $team->getTeams(); 
         $team = new Department();
@@ -54,6 +65,9 @@ class HRmanager extends Manager{
     function setEmployeeData(){
         
         //session_start();
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
         
         $empid = $_POST['epmId'];
         $empname= $_POST['Ename'];
@@ -86,6 +100,15 @@ class HRmanager extends Manager{
                 }else{
                     $_SESSION['add-emp-msg'] = "New record created successfully and Email was not sent";
                 }*/
+
+                $msg = 'Permit'.$emprole.' access for '.$empid ;
+			    $this->model->notify($msg,"Access",'CM-AD-100');
+
+                if(strcmp($emprole,"Team_Member") || strcmp($emprole,"Team_Leader")){
+                    $msg = 'Permit'.$emprole.' access for '.$empid ;
+			        $this->model->notify($msg,"Task",'CM-AD-100');
+                }
+
                 $_SESSION['add-emp-msg'] = "New record created successfully";
 
             }else{
@@ -98,13 +121,17 @@ class HRmanager extends Manager{
             $_SESSION['add-emp-msg'] = "Fialed to add New Employee password";
         }
         
-        echo $_SESSION['add-emp-msg'];
+        //echo $_SESSION['add-emp-msg'];
 
         header('http://localhost/FINAL/HRmanager/showpage_manageEmployeeAdd');
 
     }
     
     function showpage_manageEmployeeEditDelete(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->users =  $this->model->getEmployeeEditDeleteData($_GET['epmId']);
         $this->view->employee=0;
         $this->view->render('manageEmployeeEditDelete');
@@ -136,11 +163,19 @@ class HRmanager extends Manager{
     }
 
     function showpage_manageDepartment(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->users =  $this->model->getDepartmentData();
         $this->view->render('manageDepartment');
 
     }
     function showpage_manageDepartmentAdd(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->department = 0;
         
         // $this->view->users =  $this->model->getData();
@@ -167,17 +202,29 @@ class HRmanager extends Manager{
     }
     
     function showpage_manageDepartmentEditDelete(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->users =  $this->model->getDepartmentEditDeleteData();
         $this->view->render('manageDepartmentEditDelete');
 
     }
 
     function showpage_manageTeam(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->users =  $this->model->getTeamData();
         $this->view->render('manageTeam');
 
     }
     function showpage_manageTeamAdd(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->team=0;
         $this->view->render('manageTeamAdd');
 
@@ -199,6 +246,10 @@ class HRmanager extends Manager{
     }
     
     function showpage_manageTeamEditDelete(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         // $this->view->users =  $this->model->getTeamEditDeleteData();
         // $this->view->render('manageTeamEditDelete');
 
@@ -232,6 +283,10 @@ class HRmanager extends Manager{
     }
 
     function showpage_employeeWorkProgress(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $this->view->users =  $this->model->getemployeeWorkProgressData();
         $this->view->render('employeeWorkProgress');
 
