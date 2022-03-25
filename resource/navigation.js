@@ -73,6 +73,3 @@ function f6(AdminAccess){
 		
 	}
 }	
-	
-	
-

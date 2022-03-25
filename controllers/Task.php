@@ -132,8 +132,6 @@ class Task extends controller{
             $edit = $this->model->EditTask($id,$tteam,$ttitle);
 
             if($edit == true){
-                $msg = '' ;
-			    $this->model->notify($msg,"Task",);
                 echo '<script>alert("Changed Successfully");
                 window.location.href="http://localhost/FINAL/Task/showpage_deptManageTask" ;</script>';
             }else{
@@ -239,6 +237,12 @@ class Task extends controller{
             $edit = $this->model->editAssignTask($id,$assignedmember,$rtime,$ddate,$stts);
 
             if($edit == true){
+
+                if(!strcmp($stts,"Approved")){
+                    $msg = 'TaskID'.$id.' approved by '.$_SESSION['login_user'] ;
+			        $this->model->notify($msg,"Task",$assignedmember);
+                }
+                
                 echo '<script>alert("Changed Successfully");
                 window.location.href="http://localhost/FINAL/Task/showpage_taskProgress" ;</script>';
             }else{
