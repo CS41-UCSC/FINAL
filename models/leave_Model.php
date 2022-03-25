@@ -106,6 +106,15 @@ class leave_Model extends Model{
 		return $this->db->runQuery($sql);
 	}
 
+	function getTaskData($empID, $date, $status){
+		$sql = "SELECT COUNT(*) FROM task_assign 
+		WHERE task_assign.AssignedTo = '$empID' 
+		AND DATE_FORMAT(task_assign.AssignedTime, '%Y-%m-%d')<='$date' 
+		AND DATE_FORMAT(task_assign.DueDate, '%Y-%m-%d')>='$date' AND task_assign.TaskStatus = '$status'";
+		
+		return $this->db->runQuery($sql);
+	}
+
 	function deptManagerID(){
 		$empID = $_SESSION['login_user'];
 		$sql = "SELECT dept_manager.EmpID FROM dept_manager, team_member, team 
