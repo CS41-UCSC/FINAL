@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../FINAL/style/notification_style.css?<?php echo time(); ?>" type="text/css">
 	<link rel="stylesheet" href="../FINAL/style/report_style.css?<?php echo time(); ?>" type="text/css">
-	<script language="javascript" src="http://localhost/FINAL/views/navigation.js?<?php echo time(); ?>" >
+	<script language="javascript" src="http://localhost/FINAL/resource/navigation.js?<?php echo time(); ?>" >
 	</script>
     <title>Co-WMS</title>
 </head>
@@ -112,7 +112,7 @@
         </div>-->
 		<nav class="nav">
         <div class="nav-links nav-link-icons">
-        <a href="http://localhost/FINAL/admin/adminHome" class="nav-link" id="manage_access">
+            <a href="http://localhost/FINAL/admin/adminHome" class="nav-link" id="manage_access">
                 <i class="fa fa-pencil-square-o fa-lg"><span>Manage Access</span></i>
             </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="dashboard">
@@ -121,9 +121,9 @@
             <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-            <!--<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
+            <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg"><span>Department Progress</span></i>
-            </a>-->
+            </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
                 <i class="fa fa-user fa-lg"><span>My Profile</span></i>
             </a>
@@ -133,10 +133,10 @@
             <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="t_progress">
                 <i class="fa fa-users fa-lg"><span>Team Progress</span></i>
             </a>
-            <a href="http://localhost/FINAL/HRmanager/showpage_employeeWorkProgress" class="nav-link " id="emp_progress">
+            <a href="http://localhost/FINAL/HRmanager/showpage_employeeWorkProgress" class="nav-link nav-link-active" id="emp_progress">
                 <i class="fa fa-users fa-lg"><span>Employee Progress</span></i>
             </a>
-            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link nav-link-active" id="manage_task_dpt">
+            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link" id="manage_task_dpt">
                 <i class="fa fa-tasks fa-lg"><span>Manage Tasks</span></i>
             </a>
             <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link" id="manage_task_leader">

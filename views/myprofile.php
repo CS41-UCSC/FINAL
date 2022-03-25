@@ -188,7 +188,96 @@
                     <input type="submit" value="Save Changes" class="button" onclick="saveform();">
                 </form>
             </div>
+            
+            <div class="item3">
+                <h4>Skills and Endoresments</h4><br>
+                                        
+                  
 
+                <div class="containerx">
+                    <!-- <div class="hello"> -->
+                        <button class="button" data-modal="modalOne"><i class="fa fa-plus" aria-hidden="true"  aria-hidden="true"></i>Add Skills   </button>
+                    <!-- </div> -->
+                    
+
+                    <table class="table">
+                    <thead>
+                      
+                    </thead>
+                        <tbody>
+                    
+                            <?php
+                                // $r = $result[0]['EmpID'];
+                                
+                                
+                                $i=0;
+                                $result = $this->users_skill;
+
+                                
+                                foreach ($result as $row){
+                                    echo '<tr>';
+                                        echo '<td>'. $row['skill_name'] . '</td>';
+                                        // echo " ************** ";
+                                        echo '<td>' . $row['percent'] . '</td>';
+                                        // echo '<td data-label="Edit"><a href="manageTeamEditDelete/viewDropDownMembers?tId='.$row['TeamID'].'"><i class="fa fa-pencil fa-lg" style="color:grey;" aria-hidden="true"></i></a></td>';
+                                    echo '</tr>';
+                                }
+                                
+                                
+                            
+                            ?>
+                        </tbody>
+                    </table>
+         
+                    
+                    
+                </div>
+                
+
+                
+
+            </div>
+            
+            <div id="modalOne" class="modal">
+        
+
+                    <div>
+                        <form action="http://localhost/FINAL/Systemuser/setSkillData" method="post">
+                        <a class="close">&times;</a>
+                        <label for="skillname">Add Your skill here....</label>
+                        <input type="skilltext" id="skillname" name="skillname" placeholder="Enter Your Skill Here..." required><br><br>
+                        
+                        
+                        <div class="skills">
+
+                            <label for="percent" class="rate" >Skill Percentage....</label><br>
+                        
+                            <div>
+                        
+                                <select name="percent" class="selection" id="percent">
+                                    <option value="10%">10%</option>
+                                    <option value="20%">20%</option>
+                                    <option value="30%">30%</option>
+                                    <option value="40%">40%</option>
+                                    <option value="50%">50%</option>
+                                    <option value="60%">60%</option>
+                                    <option value="70%">70%</option>
+                                    <option value="80%">80%</option>
+                                    <option value="90%">90%</option>
+                                    <option value="100%">100%</option>
+                                </select><br>
+                             </div>
+                        </div>
+                  
+
+                       
+                        
+                    
+                        <input type="submit" class="button2"value="Submit">
+                        <!-- <input type="submit" value="Submit" class="rectan"> -->
+                        </form>
+                    </div>                              
+            </div>
         </div>
 
     </main>
@@ -296,6 +385,28 @@
             }
 
         }
+    </script>
+    <script>
+      let modalBtns = [...document.querySelectorAll(".button")];
+      modalBtns.forEach(function(btn) {
+        btn.onclick = function() {
+          let modal = btn.getAttribute('data-modal');
+          document.getElementById(modal)
+            .style.display = "block";
+        }
+      });
+      let closeBtns = [...document.querySelectorAll(".close")];
+      closeBtns.forEach(function(btn) {
+        btn.onclick = function() {
+          let modal = btn.closest('.modal');
+          modal.style.display = "none";
+        }
+      });
+      window.onclick = function(event) {
+        if(event.target.className === "modal") {
+          event.target.style.display = "none";
+        }
+      }
     </script>
 
 </body>

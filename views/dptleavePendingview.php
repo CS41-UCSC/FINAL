@@ -126,9 +126,9 @@
             <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-            <!--<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
+            <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg"><span>Department Progress</span></i>
-            </a>-->
+            </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
                 <i class="fa fa-user fa-lg"><span>My Profile</span></i>
             </a>
@@ -156,7 +156,7 @@
             <a href="http://localhost/FINAL/leave/teamLeave" class="nav-link" id="t_leave">
                 <i class="fa fa-list-alt fa-lg"><span>Team Leave</span></i>
             </a>
-            <a href="http://localhost/FINAL/leave/dptleaveApproved" class="nav-link" id="d_leave">
+            <a href="http://localhost/FINAL/leave/dptleaveApproved" class="nav-link nav-link-active" id="d_leave">
                 <i class="fa fa-list-alt fa-lg"><span>Department Leave</span></i>
             </a>
             <a href="http://localhost/FINAL/leave/empLeave" class="nav-link" id="emp_leave">

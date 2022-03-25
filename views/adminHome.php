@@ -123,7 +123,7 @@
         </div>-->
 		<nav class="nav">
         <div class="nav-links nav-link-icons">
-        <a href="http://localhost/FINAL/admin/adminHome" class="nav-link" id="manage_access">
+            <a href="http://localhost/FINAL/admin/adminHome" class="nav-link nav-link-active" id="manage_access">
                 <i class="fa fa-pencil-square-o fa-lg"><span>Manage Access</span></i>
             </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="dashboard">
@@ -132,9 +132,9 @@
             <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-            <!--<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
+            <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg"><span>Department Progress</span></i>
-            </a>-->
+            </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
                 <i class="fa fa-user fa-lg"><span>My Profile</span></i>
             </a>
@@ -147,7 +147,7 @@
             <a href="http://localhost/FINAL/HRmanager/showpage_employeeWorkProgress" class="nav-link " id="emp_progress">
                 <i class="fa fa-users fa-lg"><span>Employee Progress</span></i>
             </a>
-            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link nav-link-active" id="manage_task_dpt">
+            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link" id="manage_task_dpt">
                 <i class="fa fa-tasks fa-lg"><span>Manage Tasks</span></i>
             </a>
             <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link" id="manage_task_leader">
