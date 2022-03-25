@@ -172,14 +172,33 @@
     <main>
         <div class="container">
 			<div class="item2">
+                <?php
+					$month_val = $this->month_val;
+				?>
 				<form class="date-filter" method="POST" action="#">
-					<input type="month" name="month" class="filter" id="mfilter">
+					<input type="month" name="month" class="filter" value="<?php echo $month_val; ?>" id="mfilter">
+                    <button type="submit" name="filterbtn" class="fabtn" id="filterbtn" >
+						<i class="fa fa-filter fa-lg" ></i>
+					</button>
 				</form>
 			</div>
 			<div class="item4">
-				<table>
-					<tr><td>EmpID</td><td>Annual Leave</td><td>15/12/2021 - 16/12/2021</td><td>Pending</td></tr>
-				</table>
+                <table class="leaveview" >
+                <?php
+					$data=$this->data;
+					if(!empty($data)){
+					foreach($data as $row){
+						echo '<tr id= ' . $row['0'] . '>';
+						echo'<td class="row-data">'.$row['LeaveType'].'</td>';
+						echo '<td class="row-data">'.$row['StartDate'].' &nbsp - &nbsp '.$row['EndDate'].'</td>';
+						echo '<td class="row-data">'.$row['LStatus'].'</td>';
+						echo'</tr>';
+					}
+					}else{
+						echo "No records found";
+					}
+				?>
+                </table>
 			</div>
         </div>        
     </main>
@@ -206,6 +225,15 @@
 			
         });
 		
+	</script>
+    <script>
+		var date = new Date();
+		const currentmonth = ("0" + (date.getMonth() +1)).slice(-2)
+		const minyear = date.getFullYear() - 1;
+		const maxyear = date.getFullYear() + 1;
+		var monthFilter = document.querySelector('input[type="month"]');
+		monthFilter.min = `${minyear}-${currentmonth}`;
+		monthFilter.max = `${maxyear}-${currentmonth}`;
 	</script>
 </body>
 </html>

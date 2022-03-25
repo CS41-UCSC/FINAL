@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Co-WMS/style/nav_style.css?<?php echo time(); ?>" type="text/css">
-    <link rel="stylesheet" href="../Co-WMS/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../Co-WMS/style/notification_style.css?<?php echo time(); ?>" type="text/css">
-	<link rel="stylesheet" href="../Co-WMS/style/report_style.css?<?php echo time(); ?>" type="text/css">
-	<script language="javascript" src="http://localhost/Co-WMS/views/navigation.js?<?php echo time(); ?>" >
+    <link rel="stylesheet" href="../FINAL/style/nav_style.css?<?php echo time(); ?>" type="text/css">
+    <!-- <link rel="stylesheet" href="../FINAL/font-awesome-4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../FINAL/style/notification_style.css?<?php echo time(); ?>" type="text/css">
+	<link rel="stylesheet" href="../FINAL/style/report_style.css?<?php echo time(); ?>" type="text/css">
+	<script language="javascript" src="http://localhost/FINAL/views/navigation.js?<?php echo time(); ?>" >
 	</script>
-    <title>Document</title>
+    <title>Co-WMS</title>
 </head>
 
 <body class="preload" onload='setbutton("<?php echo $_SESSION["memberaccess"] ?>","<?php echo $_SESSION["myprofile"] ?>","<?php echo $_SESSION["manageraccess"] ?>","<?php echo $_SESSION["leaderaccess"] ?>","<?php echo $_SESSION["hraccess"] ?>","<?php echo $_SESSION["adminaccess"] ?>")'>
@@ -18,7 +19,7 @@
         <button class="header-button" id="btnNav" type="button">
             <i class="fa fa-bars fa-lg"></i>
         </button>
-        <img src="../Co-WMS/Asserts/logo.jpg" alt="" class="open-img">
+        <img src="../FINAL/Asserts/logo.jpg" alt="" class="open-img">
         <label for="" class="date"> <?php 
                                         $day;
                                         if(date("d") == 1){
@@ -36,19 +37,30 @@
                                     ?>
         </label>
         <div class="notification" >
-			<button class="icon"><i class="fa fa-bell fa-lg" ></i>
-				<span class="badge">5</span>
+		<button class="icon"><i class="fa fa-bell fa-lg" ></i>
+                    <?php
+                        $notificationsCount = $this->notificationCount['0']['0'];
+                        if($notificationsCount == 0){
+                            echo '';
+                        }
+                        else{
+                            echo '<span class="badge">'.$notificationsCount.'</span>';
+                        }
+                    ?>
 			</button>
 			<div class="list" >
-				<a href="#">TaskID 101 has been Approved</a>
-				<a href="#">TaskID 121 has been Assigned</a>
-				<a href="#">TaskID 102 is Overdue</a>
-				<a href="#">LeaveRq 100 has been Approved</a>
-				<a href="#">10 Hours Pending to Complete</a>
+                <?php
+                    $notifications = $this->notifications;
+                    if(!empty($notifications)){
+                        foreach($notifications as $row){
+                            echo '<a href="http://localhost/FINAL/notification?ID='.$row['NotID'].' ">'.$row['Notification'].'</a>';
+                        }
+                    }
+                ?>
 			</div>
 		</div>
-        <div class="user-login"> <!--<?php echo $_SESSION['login_user']; ?>--> Hello Admin </div>
-        <img  class="img-rounded-circle" src="../Co-WMS/Asserts/avator.jpg" alt="" />
+        <div class="user-login"> <?php echo $_SESSION['login_user']; ?> </div>
+        <img  class="img-rounded-circle" src="../FINAL/Asserts/avator.jpg" alt="" />
     </header>
 	<div class="page">
 		<!--<div class="nav-icons">
@@ -100,52 +112,52 @@
         </div>-->
 		<nav class="nav">
         <div class="nav-links nav-link-icons">
-			<a href="http://localhost/Co-WMS/admin/adminHome" class="nav-link" id="manage_access">
+			<a href="http://localhost/FINAL/admin/adminHome" class="nav-link" id="manage_access">
                 <i class="fa fa-pencil-square-o fa-lg"><span>Manage Access</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/landingpage" class="nav-link" id="dashboard">
+            <a href="http://localhost/FINAL/landingpage" class="nav-link" id="dashboard">
                 <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/landingpage" class="nav-link" id="d_dashboard">
+            <a href="http://localhost/FINAL/landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/teamProgress" class="nav-link" id="d_progress">
+            <a href="http://localhost/FINAL/teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg" ><span>Department Progress</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/myprofile" class="nav-link" id="my_profile">
+            <a href="http://localhost/FINAL/myprofile" class="nav-link" id="my_profile">
                 <i class="fa fa-user fa-lg" ><span>My Profile</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/myProgressAccepted" class="nav-link" id="my_progress">
+			<a href="http://localhost/FINAL/myProgressAccepted" class="nav-link" id="my_progress">
                 <i class="fa fa-user fa-lg" ><span>My Progress</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/teamProgress" class="nav-link" id="t_progress">
+			<a href="http://localhost/FINAL/teamProgress" class="nav-link" id="t_progress">
                 <i class="fa fa-users fa-lg" ><span>Team Progress</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/employeeWorkProgress" class="nav-link nav-link-active" id="emp_progress">
+			<a href="http://localhost/FINAL/employeeWorkProgress" class="nav-link nav-link-active" id="emp_progress">
                 <i class="fa fa-users fa-lg" ><span>Employee Progress</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/deptManageTask" class="nav-link" id="manage_task_dpt">
+            <a href="http://localhost/FINAL/deptManageTask" class="nav-link" id="manage_task_dpt">
                 <i class="fa fa-tasks fa-lg" ><span>Manage Tasks</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leaderManageTask" class="nav-link" id="manage_task_leader">
+			<a href="http://localhost/FINAL/leaderManageTask" class="nav-link" id="manage_task_leader">
                 <i class="fa fa-tasks fa-lg" ><span>Manage Tasks</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/manageEmployee" class="nav-link" id="manage_emp">
+            <a href="http://localhost/FINAL/manageEmployee" class="nav-link" id="manage_emp">
                 <i class="fa fa-pencil-square-o fa-lg" ><span>Manage Employee</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/leave/myleaveApproved" class="nav-link" id="my_leave">
+            <a href="http://localhost/FINAL/leave/myleaveApproved" class="nav-link" id="my_leave">
                 <i class="fa fa-list-alt fa-lg" ><span>My Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leave/teamLeave" class="nav-link" id="t_leave">
+			<a href="http://localhost/FINAL/leave/teamLeave" class="nav-link" id="t_leave">
                 <i class="fa fa-list-alt fa-lg" ><span>Team Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leave/dptleaveApproved" class="nav-link" id="d_leave">
+			<a href="http://localhost/FINAL/leave/dptleaveApproved" class="nav-link" id="d_leave">
                 <i class="fa fa-list-alt fa-lg" ><span>Department Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leave/empLeave" class="nav-link" id="emp_leave">
+			<a href="http://localhost/FINAL/leave/empLeave" class="nav-link" id="emp_leave">
                 <i class="fa fa-list-alt fa-lg" ><span>Employee Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/logout" class="nav-link" id="logout">
+			<a href="http://localhost/FINAL/logout" class="nav-link" id="logout">
                 <i class="fa fa-sign-out fa-lg" ><span>Logout</span></i>
             </a>
         </div>
@@ -156,7 +168,7 @@
         <div class="container">
 			<div class="item1">
 			<div class="back_arrow">
-				<a href="http://localhost/Co-WMS/employeeWorkProgress"><i class="fa fa-arrow-left fa-2x"></i></a>
+				<a href="http://localhost/FINAL/HRManager/showpage_employeeWorkProgress"><i class="fa fa-arrow-left fa-2x"></i></a>
 			</div>
 			<div class="right-icons">
 				<!--<i class="fa fa-search-plus fa-lg" ></i>
@@ -165,7 +177,7 @@
 			</div>
 			</div>
 			<div class="item2">
-				<h2>Employee Progress Report</br>Month of <?php echo date("M") ." ". date("Y"); ?></h2>
+				<h2>Employee Progress Report</br>Month of <?php echo date("F") ." ". date("Y"); ?></h2>
 				<span>Generated on - <?php echo date("d")." ". date("M") ." ". date("Y"); ?></span></br>
 				<p>Employee ID: </br>
 				Employee Name: </br></br>
