@@ -9,7 +9,6 @@ class leave_Model extends Model{
 	
 	function getmyLeave($status,$month){
 		$empID = $_SESSION['login_user'];
-		// $empID = "CM-HR-101";
 		$sql="SELECT LeaveID, LeaveType, StartDate, EndDate, LStatus FROM empLeave 
 		WHERE EmpID='$empID' AND LStatus='$status' AND DATE_FORMAT(StartDate, '%Y-%m')='$month'";
 		return $this->db->runQuery($sql);
@@ -17,7 +16,6 @@ class leave_Model extends Model{
 
 	function getApprovedCount($type,$year){
 		$empID = $_SESSION['login_user'];
-		// $empID = "CM-HR-101";
 		$status = "Approved";
 		$sql="SELECT SUM(EndDate - StartDate + 1) FROM empLeave WHERE EmpID='$empID' 
 		AND LStatus='$status' AND LeaveType='$type' AND DATE_FORMAT(StartDate, '%Y')='$year'";
@@ -26,7 +24,6 @@ class leave_Model extends Model{
 	
 	function insert($start, $end, $leavetype){
 		$empID = $_SESSION['login_user'];
-		// $empID = "CM-HR-104";
 		$status = "Pending";
 		$sql="INSERT INTO empleave (StartDate,EndDate,LeaveType,LStatus,EmpID) 
 		VALUES ('$start','$end','$leavetype','$status','$empID')";
@@ -35,7 +32,6 @@ class leave_Model extends Model{
 	
 	function delete($leaveId){
 		$empID = $_SESSION['login_user'];
-		// $empID = "CM-HR-101";
 		$status = "Pending";
 		$sql="DELETE FROM empleave WHERE LeaveID='$leaveId'";
 		return $this->db->runQuery($sql);
@@ -53,7 +49,6 @@ class leave_Model extends Model{
 
 	function getdeptLeave($status, $leaveId, $month){
 		$empID = $_SESSION['login_user'];
-		// $empID = "CM-HR-015";
 		if($leaveId == NULL){
 		$sql="SELECT empleave.LeaveID, empleave.EmpID, empleave.LeaveType, empleave.StartDate, empleave.EndDate, empleave.LStatus 
 		FROM empleave, team_member, dept_manager, team 
@@ -74,9 +69,26 @@ class leave_Model extends Model{
 		return $this->db->runQuery($sql);
 	}
 
+	function getTeamLeave($status, $month){
+		$empID = $_SESSION['login_user'];
+		$sql = "SELECT empleave.EmpID, empleave.LeaveID, empleave.LeaveType, empleave.StartDate, 
+		empleave.EndDate, empleave.LStatus FROM empleave, team_member, team_leader 
+		WHERE team_leader.EmpID = '$empID' AND team_leader.TeamID = team_member.TeamID 
+		AND team_member.EmpID = empleave.EmpID AND empleave.LStatus = '$status' 
+		AND DATE_FORMAT(empleave.StartDate, '%Y-%m')='$month'";
+		return $this->db->runQuery($sql);
+	}
+
+	function getEmpLeave($status, $month){
+		$empID = $_SESSION['login_user'];
+		$sql = "SELECT empleave.EmpID, empleave.LeaveID, empleave.LeaveType, empleave.StartDate, 
+		empleave.EndDate, empleave.LStatus FROM empleave WHERE empleave.LStatus = '$status' 
+		AND DATE_FORMAT(empleave.StartDate, '%Y-%m')='$month'";
+		return $this->db->runQuery($sql);	
+	}
+
 	function getApprovedTeamCount($status,$year){
 		$empID = $_SESSION['login_user'];
-		// $empID = "CM-HR-015";
 		$sql = "SELECT team.TeamName, COUNT(empleave.LeaveID) FROM empLeave, team_member, dept_manager, team 
 		WHERE empleave.EmpID = team_member.EmpID
         AND team_member.TeamID = team.TeamID AND team.DeptID = dept_manager.DeptID 
