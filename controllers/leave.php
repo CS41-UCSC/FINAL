@@ -291,12 +291,34 @@ class leave extends Controller{
 	function empLeave(){
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
+		$status = "Pending";
+
+		if (isset($_POST['filterbtn'])){
+			$this->view->data = $this->model->getEmpLeave($status,$_POST['month']);
+			$this->view->month_val = $_POST['month'];
+		}
+		else{
+			$this->view->data = $this->model->getEmpLeave($status,$this->cur_month);
+			$this->view->month_val = $this->cur_month;
+		}
+
 		$this->view->render('empLeave');
 	}
 	
 	function teamLeave(){
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
+		$status = "Pending";
+
+		if (isset($_POST['filterbtn'])){
+			$this->view->data = $this->model->getTeamLeave($status,$_POST['month']);
+			$this->view->month_val = $_POST['month'];
+		}
+		else{
+			$this->view->data = $this->model->getTeamLeave($status,$this->cur_month);
+			$this->view->month_val = $this->cur_month;
+		}
+
 		$this->view->render('teamLeave');
 	}
 	

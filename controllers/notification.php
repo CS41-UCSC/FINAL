@@ -34,7 +34,7 @@ class notification extends Controller{
 						echo 'Unidentifined Notification';
 					}
 				}
-				elseif($_GET['type']=='Task'){
+				elseif($notData['0']['Notype']=='Task'){
 
 					$notification = explode(" ",$notData['0']['Notification']);
 
@@ -62,7 +62,7 @@ class notification extends Controller{
 						echo 'Unidentifined Notification';
 					}
 				}
-				elseif($_GET['type']=='Access'){
+				elseif($notData['0']['Notype']=='Access'){
 					if(($_SESSION['emprole']=="Admin")&&($sender['0']['0']=="HR_Manager")){
 						$link= "http://localhost/FINAL/admin/adminHome";
 					}

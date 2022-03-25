@@ -9,6 +9,11 @@ class progressReport extends Controller{
 	}
 	
 	function index(){
+		$this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
+		
+
 		$this->view->render('progressReport');
 	}
 	

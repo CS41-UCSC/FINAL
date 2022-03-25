@@ -16,20 +16,7 @@ class admin extends Controller{
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 		$this->view->emp=$this->model->getdata();
-
-		// if (isset($_POST['search_btn'])){
-		// 	if(!(empty($_POST['empId']))){
-		// 		$this->view->emp=$this->model->searchdata($_POST['empId']);
-		// 	}
-		// 	else{
-		// 		echo "<script>alert('Empty Fields');</script>";
-		// 		$this->view->emp=$this->model->getdata();
-		// 	}
-		// }else if (isset($_POST['search_all'])){
-		// 	$this->view->emp=$this->model->getdata();
-		// }else{
-		// 	$this->view->emp=$this->model->getdata();
-		// }
+		
 		$this->view->render('adminHome');
 	}
 	
