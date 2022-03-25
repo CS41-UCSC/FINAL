@@ -300,7 +300,7 @@
 
             if (res1 == "yes" && res2 == "yes" && res3 == "yes") {
 
-                document.form1.action = "manageEmployeeAdd/setData";
+                document.form1.action = "setEmployeeData";
 
             } else if (res1 == "no" || res2 == "no" || res3 == "no") {
 

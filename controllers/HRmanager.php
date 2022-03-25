@@ -53,7 +53,7 @@ class HRmanager extends Manager{
 
     function setEmployeeData(){
         
-        session_start();
+        //session_start();
         
         $empid = $_POST['epmId'];
         $empname= $_POST['Ename'];
