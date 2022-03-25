@@ -54,53 +54,53 @@
                 <img src="../Asserts/logo.jpg" alt="" class="close-img">
             </div>-->
 
-            <a href="http://localhost/Co-WMS/admin/adminHome" class="nav-link" id="manage_access">
+            <a href="http://localhost/FINAL/admin/adminHome" class="nav-link" id="manage_access">
                 <i class="fa fa-pencil-square-o fa-lg"><span>Manage Access</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/landingpage" class="nav-link" id="dashboard">
-                <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
+            <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="dashboard">
+                <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/landingpage" class="nav-link" id="d_dashboard">
-                <i class="fa fa-tachometer fa-lg" ><span>Dashboard</span></i>
+            <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
+                <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/teamProgress" class="nav-link" id="d_progress">
-                <i class="fa fa-tachometer fa-lg" ><span>Department Progress</span></i>
+            <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
+                <i class="fa fa-tachometer fa-lg"><span>Department Progress</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/myprofile" class="nav-link" id="my_profile">
-                <i class="fa fa-user fa-lg" ><span>My Profile</span></i>
+            <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
+                <i class="fa fa-user fa-lg"><span>My Profile</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/myProgressAccepted" class="nav-link nav-link-active" id="my_progress">
-                <i class="fa fa-user fa-lg" ><span>My Progress</span></i>
+            <a href="http://localhost/FINAL/Member/showpage_myProgressAccepted" class="nav-link nav-link-active" id="my_progress">
+                <i class="fa fa-user fa-lg"><span>My Progress</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/teamProgress" class="nav-link" id="t_progress">
-                <i class="fa fa-users fa-lg" ><span>Team Progress</span></i>
+            <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="t_progress">
+                <i class="fa fa-users fa-lg"><span>Team Progress</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/employeeWorkProgress" class="nav-link " id="emp_progress">
-                <i class="fa fa-users fa-lg" ><span>Employee Progress</span></i>
+            <a href="http://localhost/FINAL/HRmanager/showpage_employeeWorkProgress" class="nav-link " id="emp_progress">
+                <i class="fa fa-users fa-lg"><span>Employee Progress</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/deptManageTask" class="nav-link" id="manage_task_dpt">
-                <i class="fa fa-tasks fa-lg" ><span>Manage Tasks</span></i>
+            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link " id="manage_task_dpt">
+                <i class="fa fa-tasks fa-lg"><span>Manage Tasks</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leaderManageTask" class="nav-link" id="manage_task_leader">
-                <i class="fa fa-tasks fa-lg" ><span>Manage Tasks</span></i>
+            <a href="http://localhost/FINAL/Task/showpage_deptManageTask" class="nav-link" id="manage_task_leader">
+                <i class="fa fa-tasks fa-lg"><span>Manage Tasks</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/manageEmployee" class="nav-link" id="manage_emp">
-                <i class="fa fa-pencil-square-o fa-lg" ><span>Manage Employee</span></i>
+            <a href="http://localhost/FINAL/HRmanager/showpage_manageEmployee" class="nav-link " id="manage_emp">
+                <i class="fa fa-pencil-square-o fa-lg"><span>Manage Employee</span></i>
             </a>
-            <a href="http://localhost/Co-WMS/leave/myleaveApproved" class="nav-link" id="my_leave">
-                <i class="fa fa-list-alt fa-lg" ><span>My Leave</span></i>
+            <a href="http://localhost/FINAL/leave/myleaveApproved" class="nav-link" id="my_leave">
+                <i class="fa fa-list-alt fa-lg"><span>My Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leave/teamLeave" class="nav-link" id="t_leave">
-                <i class="fa fa-list-alt fa-lg" ><span>Team Leave</span></i>
+            <a href="http://localhost/FINAL/leave/teamLeave" class="nav-link" id="t_leave">
+                <i class="fa fa-list-alt fa-lg"><span>Team Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leave/dptleaveApproved" class="nav-link" id="d_leave">
-                <i class="fa fa-list-alt fa-lg" ><span>Department Leave</span></i>
+            <a href="http://localhost/FINAL/leave/dptleaveApproved" class="nav-link" id="d_leave">
+                <i class="fa fa-list-alt fa-lg"><span>Department Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/leave/empLeave" class="nav-link" id="emp_leave">
-                <i class="fa fa-list-alt fa-lg" ><span>Employee Leave</span></i>
+            <a href="http://localhost/FINAL/leave/empLeave" class="nav-link" id="emp_leave">
+                <i class="fa fa-list-alt fa-lg"><span>Employee Leave</span></i>
             </a>
-			<a href="http://localhost/Co-WMS/logout" class="nav-link" id="logout">
-                <i class="fa fa-list-alt fa-lg" ><span>Logout</span></i>
+            <a href="http://localhost/FINAL/login/logout" class="nav-link" id="logout">
+                <i class="fa fa-list-alt fa-lg"><span>Logout</span></i>
             </a>
         </div> 
         <div class="nav-overlay"></div>   
@@ -122,6 +122,7 @@
     </nav>
     
     <main>
+    
         <div class="container">
             
             <div class="flex-container">
@@ -175,7 +176,7 @@
                                     echo '<td data-label="Accept"><button type="submit"><i class="fa fa-check-circle-o fa-2x" style="color:gray;"  aria-hidden="true"></i></button></td>';
                                 echo '</form>';
                                 echo '<td data-label="Remark"><button class="button" data-modal="modalOne'.$row['TaskID'].'"><i class="fa fa-pencil-square-o fa-2x"  aria-hidden="true"></i></button></td>';
-                                echo '<td data-label="View Remark"><button  class="button" data-modal="modalOne2"><i class="fa fa-commenting fa-2x" style="color:gray;" aria-hidden="true"></i></button></td>';
+                                echo '<td data-label="View Remark"><button  class="button" data-modal="modalOne2'.$row['TaskID'].'"><i class="fa fa-commenting fa-2x" style="color:gray;" aria-hidden="true"></i></button></td>';
                                 echo '</tr>';
 
                             }
@@ -226,8 +227,9 @@
                 <?php
 
                 $result = $this->user2;
+                // $res = false;
                 foreach ($result as $row) {
-                echo '<div id="modalOne2" class="modal">';
+                echo '<div id="modalOne2'.$row['TaskID'].'" class="modal">';
                     echo '<div class="modal-content1">';
 
                                 echo '<a class="close">&times;</a>';
@@ -251,18 +253,25 @@
 
                                 echo '<tbody>';
 
-                                foreach ($result as $row) {
-                                    echo '<tr>';
-                                    echo '<td>' . $row['RemarkID'] . '</td>';
-                                    echo '<td>' . $row['EmpID'] . '</td>';
-                                    echo '<td>' . $row['TaskID'] . '</td>';
-                                    echo '<td>' . $row['Remark'] . '</td>';
-                                    echo '<td>' . $row['AddedDate'] . '</td>';
-                                    echo '<td>' . $row['RStatus'] . '</td>';
-                                    echo '<td>' . $row['AccessedDate'] . '</td>';
-                                    echo '<td>' . $row['AccessedBy'] . '</td>';   
-                                    echo '</tr>';
+                                foreach ($result as $row1) {
+                                    if($row['TaskID']==$row1['TaskID'] && $_SESSION['login_user']==$row['EmpID']){
+                                        // $res = true;
+                                        echo '<tr>';
+                                        echo '<td>' . $row1['RemarkID'] . '</td>';
+                                        echo '<td>' . $row1['EmpID'] . '</td>';
+                                        echo '<td>' . $row1['TaskID'] . '</td>';
+                                        echo '<td>' . $row1['Remark'] . '</td>';
+                                        echo '<td>' . $row1['AddedDate'] . '</td>';
+                                        echo '<td>' . $row1['RStatus'] . '</td>';
+                                        echo '<td>' . $row1['AccessedDate'] . '</td>';
+                                        echo '<td>' . $row1['AccessedBy'] . '</td>';   
+                                        echo '</tr>';
+                                    }
+                                    
                                 }
+                                // if(!$res){
+                                //     echo "No Remarks";
+                                // }
 
                                 echo '</tbody>';
                                 echo '</table>';
@@ -277,7 +286,7 @@
                         
                      echo '</div>';
                 echo '</div>';
-                }
+               }
                 ?>
                 
 
