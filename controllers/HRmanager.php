@@ -271,15 +271,24 @@ class HRmanager extends Manager{
     function editTeam(){
         $tName = $_POST['tName'];
         $tId= $_POST['tId'];
-        $LeaderId = $_POST['LId'];
-        // $format = $_POST['format'];
+        //$LeaderId = $_POST['LId'];
+        $format = $_POST['format'];
 
         // $this->model->editTeam($tName,$tId,$format);
         // $this->view->members =  $this->model->getMembers($tId);
 
-        $preLeaderId = $this->model->getData($tId);
-        $this->model->editTeam($tName,$tId,$LeaderId,$preLeaderId);
-        header('location: http://localhost/FINAL/HRmanager/showpage_manageTeam');
+        $preLeaderId = $this->model->getTeamLeaderID($tId);
+
+        $edit = $this->model->editTeam($tName,$tId,$format,$preLeaderId);
+        
+        if($edit == true){
+            echo '<script>alert("Changed Successfully");
+            window.location.href="http://localhost/FINAL/HRmanager/showpage_manageTeam" ;</script>';
+        }else{
+            echo '<script>alert("Failed! Not changed");
+            window.location.href="http://localhost/FINAL/HRmanager/showpage_manageTeam" ;</script>';
+        }
+
     }
 
     function showpage_employeeWorkProgress(){

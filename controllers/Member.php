@@ -10,6 +10,8 @@ class Member extends controller{
     function showpage_myprogressAccepted(){
         // $this->view->users =  $this->model->getAcceptedData();
         // $this->view->render('myprogressAccepted');
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
 
         $loginuser = $_SESSION['login_user'];
         $this->view->users =  $this->model->getDataA($loginuser);
@@ -22,11 +24,27 @@ class Member extends controller{
         $remark = $_POST['remark'];
         $this->model->sendRemarkA($taskId,$empId,$remark);
         header('location: http://localhost/FINAL/Member/showpage_myprogressAccepted');
+
+        echo "<script>alert('Remark Inserted Successfully')</script>";
+        
+        $senderID = $this->model->senderID($taskId);
+        $msg = 'TaskID'.$taskId.' remarked by '.$_SESSION['login_user'] ;
+		$this->model->notify($msg,"Task",$senderID[0][0]);
+		echo "<script>alert('Notification Inserted Successfully')</script>";
+		$email = $this->model->notificationEmail($msg,$senderID[0][0]);
+		if($email){
+			echo "<script>alert('Notification Email Sent Successfully')</script>";
+		}
+		else{
+			echo "<script>alert('Notification Email Not Sent')</script>";
+        }
     }
 
     function showpage_myprogressCompleted(){
         //  $this->view->users =  $this->model->getCompletedData();
         //  $this->view->render('myprogressCompleted');
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
 
 
          $loginuser = $_SESSION['login_user'];
@@ -49,6 +67,9 @@ class Member extends controller{
     //    $this->view->users =  $this->model->getOverdueData();
     //    $this->view->render('myprogressOverdue');
 
+    $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
 
         $loginuser = $_SESSION['login_user'];
         $this->view->users =  $this->model->getDataO($loginuser);
@@ -61,9 +82,26 @@ class Member extends controller{
         $remark = $_POST['remark'];
         $this->model->sendRemarkO($taskId,$empId,$remark);
         header('location: http://localhost/FINAL/Member/showpage_myprogressOverdue');
+
+        echo "<script>alert('Reason Inserted Successfully')</script>";
+        
+        $senderID = $this->model->senderID($taskId);
+        $msg = 'TaskID'.$taskId.' remarked by '.$_SESSION['login_user'] ;
+		$this->model->notify($msg,"Task",$senderID[0][0]);
+		echo "<script>alert('Notification Inserted Successfully')</script>";
+		$email = $this->model->notificationEmail($msg,$senderID[0][0]);
+		if($email){
+			echo "<script>alert('Notification Email Sent Successfully')</script>";
+		}
+		else{
+			echo "<script>alert('Notification Email Not Sent')</script>";
+        }
     }
 
     function showpage_myprogressPending(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
 
         $loginuser = $_SESSION['login_user'];
     //    $this->view->users =  $this->model->getPendingData();
@@ -92,12 +130,30 @@ class Member extends controller{
         $taskId = $_POST['taskId'];
         $remark = $_POST['remark'];
         $this->model->sendRemark($taskId,$empId,$remark);
+        echo "<script>alert('Remark Inserted Successfully')</script>";
+
+        $senderID = $this->model->senderID($taskId);
+        $msg = 'TaskID'.$taskId.' remarked by '.$_SESSION['login_user'] ;
+		$this->model->notify($msg,"Task",$senderID[0][0]);
+		echo "<script>alert('Notification Inserted Successfully')</script>";
+		$email = $this->model->notificationEmail($msg,$senderID[0][0]);
+		if($email){
+			echo "<script>alert('Notification Email Sent Successfully')</script>";
+		}
+		else{
+			echo "<script>alert('Notification Email Not Sent')</script>";
+        }
+
+
         header('location: http://localhost/FINAL/Member/showpage_myprogressPending');
-        // header('location: http://http://localhost/Co-WMS/myprogressPending');
+        
     }
 
 
     function showpage_myprogressInprogressSelect(){
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
        $this->view->users =  $this->model->getInprogressSelectData();
        $this->view->users1 =  $this->model->getSubTaskData($taskid);
        $this->view->render('myprogressInprogressSelect');
@@ -105,6 +161,9 @@ class Member extends controller{
     }
 
     function myprogressInprogressSelectid(){
+
+        
+
         $taskid = $_GET['ID'];
         $this->view->users =  $this->model-> getTaskData($taskid);
         $this->view->users1 =  $this->model->getSubTaskData($taskid);
@@ -136,5 +195,7 @@ class Member extends controller{
 
         }
     }
+
+    
     
 }

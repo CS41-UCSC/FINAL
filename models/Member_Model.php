@@ -19,7 +19,7 @@ class Member_Model extends Model{
     }
 
     function sendRemarkA($taskId,$empId,$remark){
-        $sql = "INSERT INTO `remark`( `EmpID`, `TaskID`, `Remark`) VALUES ('$empId','$taskId' ,'$remark')";
+        $sql = "INSERT INTO `remark`( `EmpID`, `TaskID`, `Remark`,`AddedDate`) VALUES ('$empId','$taskId' ,'$remark',CURRENT_TIMESTAMP)";
         return $this->db->runQuery($sql);
     }
 
@@ -57,7 +57,7 @@ class Member_Model extends Model{
     }
 
     function sendRemarkO($taskId,$empId,$remark){
-        $sql = "INSERT INTO `remark`( `EmpID`, `TaskID`, `Remark`) VALUES ('$empId','$taskId' ,'$remark')";
+        $sql = "INSERT INTO `remark`( `EmpID`, `TaskID`, `Remark`,`AddedDate`) VALUES ('$empId','$taskId' ,'$remark',CURRENT_TIMESTAMP)";
         return $this->db->runQuery($sql);
     }
 
@@ -84,7 +84,7 @@ class Member_Model extends Model{
 
 
     function sendRemark($taskId,$empId,$remark){
-        $sql = "INSERT INTO `remark`( `EmpID`, `TaskID`, `Remark`) VALUES ('$empId','$taskId' ,'$remark')";
+        $sql = "INSERT INTO `remark`( `EmpID`, `TaskID`, `Remark`,`AddedDate`) VALUES ('$empId','$taskId' ,'$remark', CURRENT_TIMESTAMP)";
         return $this->db->runQuery($sql);
     }
 
@@ -133,5 +133,54 @@ class Member_Model extends Model{
         return true;
         
     }
+
+    function senderID($taskId){
+		$empID = $_SESSION['login_user'];
+		$sql = "SELECT task_assign.AssignedBy FROM task_assign WHERE task_assign.TaskID = '$taskId' AND task_assign.AssignedTo = '$empID'";
+		return $this->db->runQuery($sql);
+	}
+
+    function notify($msg,$type,$receiver){
+		$empID = $_SESSION['login_user'];
+		$sql = "INSERT INTO notification (Notification,Notype,SentDT,NotStatus,Sender,Receiver)
+		VALUES ('$msg','$type',CURRENT_TIMESTAMP,'Pending','$empID','$receiver')";
+		return $this->db->runQuery($sql);
+	}
+
+	function getNotifications(){
+		$empID = $_SESSION['login_user'];
+		$sql = "SELECT NotID, Notification, Notype FROM notification 
+		WHERE Receiver = '$empID' AND NotStatus = 'Pending' LIMIT 5";
+		return $this->db->runQuery($sql);
+	}
+
+	function getNotificationCount(){
+		$empID = $_SESSION['login_user'];
+		$sql = "SELECT COUNT(*) FROM notification 
+		WHERE Receiver = '$empID' AND NotStatus = 'Pending'";
+		return $this->db->runQuery($sql);
+	}
+
+	function notificationEmail($msg,$empID){
+		$sql = "SELECT EmpName, EmpEmail FROM systemuser WHERE EmpID = '$empID'";
+		$result = $this->db->runQuery($sql);
+		$empName = $result['0']['EmpName'];
+		$empEmail = $result['0']['EmpEmail']; 
+
+		$mail_subject = "Notification from Co-WMS";
+		$email_body = "Dear {$empName},\n";
+		$email_body .= $msg;
+		$from = "From: cowmsofficial@gmail.com";
+
+		$mail_result = mail($empEmail, $mail_subject, $email_body, $from);
+		
+		if($mail_result){
+			return true;
+		}
+		else{
+			return false;
+		}
+
+	}
 
 }

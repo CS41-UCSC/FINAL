@@ -249,65 +249,44 @@ class HRmanager_Model extends Model{
 
     }
 
+    function getTeamLeaderID($tId){
+
+        $sql = "SELECT * FROM team_leader WHERE TeamID=('$tId')";
+        return $this->db->runQuery($sql);
+
+    }
+
     function editTeam($tName,$tId,$LeaderId,$preLeaderId){
-        // $sql = "UPDATE team,team_leader SET team.TeamName='$tName',team_leader.EmpID='$format' FROM team t,team_leader tl  WHERE t.TeamID=('$tId') OR tl.TeamID=('$tId') " ;
-        // $sql = "UPDATE team SET TeamName='$tName' where TeamID=('$tId')";
-        
-        // if($this->db->query($sql)){
-        //     $_SESSION['edit-team'] = "yes";
-        // }else{
-        //     $_SESSION['edit-team'] = "no";
-        // }
-
-
-
-
 
         try{
             $this->db->beginTransaction();
 
+            $preleader = $preLeaderId[0][0];
 
-            $sql = "UPDATE team SET TeamName='$tName' where TeamID=('$tId')";
+            $sql = "UPDATE `team_leader` SET `EmpID`='$LeaderId' WHERE EmpID='$preleader' ";
+            $sql1 = "INSERT INTO `team_member`(`EmpID`, `TeamID`) VALUES ('$preleader','$tId')";
+            $sql2 = "DELETE FROM `team_member` WHERE EmpID='$LeaderId'";
+
             $res = $this->db->query($sql);
-
-            // $sql1 = "UPDATE team_leader SET EmpID='$LeaderId' where TeamID=('$tId')";
-            // $res1 = $this->db->query($sql1);
-            
-            $sql2 = "INSERT INTO `team_leader` VALUE  WHERE TeamID=('$LeaderId')";
+            $res1 = $this->db->query($sql1);
             $res2 = $this->db->query($sql2);
 
-            $sql3 = "DELETE FROM `team_leader` WHERE EmpID='$preLeaderId'";
-            $res3 = $this->db->query($sql3);
-
-
-            // INSERT INTO `team_leader`(`EmpID`, `TeamID`) VALUES ('$LeaderId','$tid')
-
-            $sql4 = "INSERT INTO `team_member` WHERE TeamID=('$preLeaderId')";
-            $res4 = $this->db->query($sql4);
-
-            $sql5 = "DELETE FROM `team_member` WHERE EmpID='$LeaderId' ";
-            $res5 = $this->db->query($sql5);
-
-
-            if($res && $res1 && $res2 && $res3 && $res4 && $res5){
-                $_SESSION['edit-team'] = "yes";
-                $this->db->commit();
-                return true;
+            if($res && $res1 && $res2){
+                    $_SESSION['edit-team'] = "yes";
+                    $this->db->commit();
+                    return true;
             }else{
-                $_SESSION['edit-team'] = "no";
-                $this->db->rollback();
-                return false;
+                    $_SESSION['edit-team'] = "no";
+                    $this->db->rollback();
+                    return false;
             }
-
-            // $sql1 = "UPDATE team_Member SET EmpID='$LeadreId' where TeamID=('$tId')";
-            // $res1 = $this->db->query($sql1);
-
         }
 
         catch(PDOException $e){
             $this->db->rollback();
             return false;
         }
+
     }
 
     function getMembers($tId){
