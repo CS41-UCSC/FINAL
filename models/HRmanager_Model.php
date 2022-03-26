@@ -178,6 +178,36 @@ class HRmanager_Model extends Model{
         return $this->db->runQuery($sql);
 
     }
+	function getDatadept($dId){
+
+        // $sql = "SELECT * FROM team";
+        // $sql = "SELECT * FROM team WHERE TeamID=('$tId')";
+        // return $this->db->runQuery($sql);
+
+        $sqld = "SELECT * FROM dept WHERE DeptID=('$dId')";
+        return $this->db->runQuery($sqld);
+
+    }
+	function editDepartment($dId,$ManagerId){
+
+        echo $dId;
+        echo $ManagerId;
+
+        $sql = "UPDATE `dept` SET `Dept_Manager`='$ManagerId' WHERE DeptID='$dId' " ;
+        $sql1 = "UPDATE `dept_manager` SET `EmpID`='$ManagerId' WHERE DeptID='$dId' " ;
+
+        $res = $this->db->query($sql);
+        $res1 = $this->db->query($sql1);
+        
+        if($res && $res1){
+            $_SESSION['edit-team'] = "yes";
+            return true;
+        }else{
+             $_SESSION['edit-team'] = "no";
+             return false;
+        }
+
+    }
 
     function getTeamData(){
 
