@@ -109,57 +109,50 @@ class Systemuser_Model extends Model{
     }
     function insertSkill($skill,$percentage,$r){
 		
-		// $sql="";
 	
-			$sql = "INSERT INTO star_rate ( `skill_name`,`percent`,`EmpID`) VALUES ('$skill','$percentage','$r')";
-            // $sql = "INSERT INTO star_rate ( `skill_name`) VALUES ('$skill')";
+			$sql = "INSERT INTO `star_rate`(`EmpID`, `skill_name`, `percent`) VALUES ('$r','$skill','$percentage')";
             $this->db->query($sql);
-            // if (($this->db->query($sql)) == TRUE) {
-            //     return true;
-            // } else {
-            //     return false;
-            // }
 
-            if($percentage == "10%"){
-                $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
-                $this->db->query($sqlk);
-            }
-            elseif($percentage == "20%"){
-                $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
-                $this->db->query($sqlk);
-            }
-            elseif($percentage == "30%"){
-                $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
-                $this->db->query($sqlk);
-            }
-            elseif($percentage == "40%"){
-                $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
-                $this->db->query($sqlk);
-            }
-            elseif($percentage == "50%"){
-                $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
-                $this->db->query($sqlk);
-            }
-            elseif($percentage == "60%"){
-                $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
-                $this->db->query($sqlk);
-            }
-            elseif($percentage == "70%"){
-                $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
-                $this->db->query($sqlk);
-            }
-            elseif($percentage == "80%"){
-                $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
-                $this->db->query($sqlk);
-            }
-            elseif($percentage == "90%"){
-                $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
-                $this->db->query($sqlk);
-            }
-            else{
-                $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
-                $this->db->query($sqlk);
-            }
+            // if($percentage == "10%"){
+            //     $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
+            //     $this->db->query($sqlk);
+            // }
+            // elseif($percentage == "20%"){
+            //     $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
+            //     $this->db->query($sqlk);
+            // }
+            // elseif($percentage == "30%"){
+            //     $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
+            //     $this->db->query($sqlk);
+            // }
+            // elseif($percentage == "40%"){
+            //     $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
+            //     $this->db->query($sqlk);
+            // }
+            // elseif($percentage == "50%"){
+            //     $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
+            //     $this->db->query($sqlk);
+            // }
+            // elseif($percentage == "60%"){
+            //     $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
+            //     $this->db->query($sqlk);
+            // }
+            // elseif($percentage == "70%"){
+            //     $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
+            //     $this->db->query($sqlk);
+            // }
+            // elseif($percentage == "80%"){
+            //     $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
+            //     $this->db->query($sqlk);
+            // }
+            // elseif($percentage == "90%"){
+            //     $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
+            //     $this->db->query($sqlk);
+            // }
+            // else{
+            //     $sqlk ="INSERT INTO star_rate (`star_rating` ) VALUES ('$percentage')";
+            //     $this->db->query($sqlk);
+            // }
             
            
            

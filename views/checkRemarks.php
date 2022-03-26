@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../style/checkRemarks_style.css?<?php echo time(); ?>" type="text/css">
     <link rel="stylesheet" href="../style/nav_style.css?<?php echo time(); ?>" type="text/css">
     <script language="javascript" src="../resource/navigation.js"></script>
+    <link rel="stylesheet" href="../style/notification_style.css?<?php echo time(); ?>" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <title>Document</title>
@@ -37,7 +38,29 @@
 
                                     ?>
         </label>
-        <div class="notification"><a href="#"><i class="fa fa-bell fa-lg"></i></a></div>
+        <div class="notification" >
+        <button class="icon"><i class="fa fa-bell fa-lg" ></i>
+                    <?php
+                        $notificationsCount = $this->notificationCount['0']['0'];
+                        if($notificationsCount == 0){
+                            echo '';
+                        }
+                        else{
+                            echo '<span class="badge">'.$notificationsCount.'</span>';
+                        }
+                    ?>
+			</button>
+			<div class="list" >
+                <?php
+                    $notifications = $this->notifications;
+                    if(!empty($notifications)){
+                        foreach($notifications as $row){
+                            echo '<a href="http://localhost/FINAL/notification?ID='.$row['NotID'].' ">'.$row['Notification'].'</a>';
+                        }
+                    }
+                ?>
+			</div>
+        </div>
         <span class="user-login"><?php echo $_SESSION['login_user'] ?></span>
         <img class="img-rounded-circle" src="../Asserts/<?php if ($_SESSION['user_img']) {
                                                             echo $_SESSION['user_img'];

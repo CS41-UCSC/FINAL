@@ -305,11 +305,11 @@ tr{
         border-radius: 5px;
         border: 1px solid #c0bfbf;
         padding: 20px;
-        display: grid;
+        /*display: grid;
         grid-template-areas:
         'headline headline headline'
         'skillname skillname rate';
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;*/
     }
 
     h3{
@@ -323,6 +323,11 @@ tr{
 
     .rate{
         color: #0a2e63;
+    }
+
+    .precent{
+        color: #b98d13;
+        font-weight: 700;
     }
 
     .popupdel {

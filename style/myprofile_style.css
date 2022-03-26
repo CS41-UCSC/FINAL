@@ -171,7 +171,7 @@
         padding: 30px;
         display: grid;
         grid-template-areas:
-        'one two two '   ;  
+        'one two two three'   ;  
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 12px 20px;
         background-color: #ffffff;

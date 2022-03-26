@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../style/assignTasksMember_style.css?<?php echo time(); ?>" type="text/css">
     <link rel="stylesheet" href="../style/calander_style.css?<?php echo time(); ?>" type="text/css">
     <link rel="stylesheet" href="../style/nav_style.css?<?php echo time(); ?>" type="text/css">
+    <link rel="stylesheet" href="../style/notification_style.css?<?php echo time(); ?>" type="text/css">
     <script language="javascript" src="../resource/navigation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
@@ -43,7 +44,29 @@
 
                                     ?>
         </label>
-        <div class="notification"><a href="#"><i class="fa fa-bell fa-lg"></i></a></div>
+        <div class="notification" >
+        <button class="icon"><i class="fa fa-bell fa-lg" ></i>
+                    <?php
+                        $notificationsCount = $this->notificationCount['0']['0'];
+                        if($notificationsCount == 0){
+                            echo '';
+                        }
+                        else{
+                            echo '<span class="badge">'.$notificationsCount.'</span>';
+                        }
+                    ?>
+			</button>
+			<div class="list" >
+                <?php
+                    $notifications = $this->notifications;
+                    if(!empty($notifications)){
+                        foreach($notifications as $row){
+                            echo '<a href="http://localhost/FINAL/notification?ID='.$row['NotID'].' ">'.$row['Notification'].'</a>';
+                        }
+                    }
+                ?>
+			</div>
+        </div>
         <span class="user-login"><?php echo $_SESSION['login_user'] ?></span>
         <img class="img-rounded-circle" src="../Asserts/<?php if ($_SESSION['user_img']) {
                                                             echo $_SESSION['user_img'];
@@ -302,8 +325,12 @@
                         $res = $this->skills;
                         
                         foreach ($res as $row){
-                            echo '<div class="skillname"><label for="">'.$row[1].'</label></div>';
-                            echo '<div class="rate"><label for="">'.$row[2].'</label></div>';
+                            //echo '<div class="skillname"><label for="">'.$row[1].'</label></div>';
+                            //echo '<div class="rate"><label for="">'.$row[2].'</label></div>';
+                            echo '<label for="">'.$row[1].'</label>';
+                            echo '<label for="" class="precent"> '.$row[2].'</label>';
+                            echo "<br>";
+                            echo "<br>";
                         }
 
                     ?>

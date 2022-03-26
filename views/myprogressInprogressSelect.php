@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/myprogressInprogressSelect_style.css">
     <link rel="stylesheet" href="../style/navbar_style.css">
-    <script language="javascript" src="../views/navigation.js"></script>
+    <script language="javascript" src="../resource/navigation.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -149,24 +149,26 @@
                                         }
                                     ?>
 
-                                     <div class="btns">
+                                    <div class="btns">
+                                        <div class="buttonHold">
+                                            <a href="http://localhost/FINAL/Member/showpage_myprogressAccepted" class="back" ><button class="button button1">Back</a>
+                                        </div>
+                                        <!--<button class="button button2">Save</button>-->
+                                        <input class="button button2" type="submit" value="Submit" name="submit">
+                                    </div> 
                                 
                                     <!-- <button class="button button2">Remark</button> -->
                                     <!-- <button class="button" data-modal="modalOne">Back</button> -->
                                     <!-- <button class="button button3">Save</button> -->
-                                    <div class="buttonHold">
+                                    <!-- <div class="buttonHold">-->
                                     <!-- <input type="button" value="Back" onclick="update()" />
                                     <input type="button" value="Update" onclick="update()" /> -->
                                     
-                                    </div>
-                                    <button class="button button1">Back</button>
+                                    <!--</div> -->
+                                    <!--<button class="button button1" onclick="back()">Back</button>-->
                                     <!-- <button class="button button2">Save</button> -->
-                                    <!--<a href="myprogressAccepted" class="back" ><button class="button button1">Back</a>-->
-                                    <!--<button class="button button2">Save</button>-->
-                                    <input class="button button2" type="submit" value="Submit" name="submit">
-                                
 
-                                    </div> 
+                                    
             
                                     
                                     
@@ -279,6 +281,12 @@
             if(event.target.className === "modal") {
             event.target.style.display = "none";
             }
+        }
+    </script>
+
+    <script>
+        function back(){
+            window.location.href="http://localhost/FINAL/Member/showpage_myprogressAccepted" 
         }
     </script>
 </body>
