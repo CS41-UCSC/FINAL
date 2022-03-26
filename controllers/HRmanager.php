@@ -186,31 +186,74 @@ class HRmanager extends Manager{
 
     }
 
-    function setDepartmentData(){
+//     function setDepartmentData(){
+//         $dName = $_POST['dname'];
+//         $dId = $_POST['dId'];
+// 		$dManagerId = NULL;
+		
+//         if(!empty($_POST['dMId'])){
+// 			$dManagerId = $_POST['dMId'];
+// 		}
+// 		else{
+// 			$dManagerId = NULL;
+// 		}
+		
+//         $this->model->insertDepartment($dName,$dId,$dManagerId);
+		
+//         header('location: http://localhost/FINAL/HRmanager/showpage_manageDepartmentAdd');
+		
+//     }
+	function setDepartmentData(){
+        //not push
         $dName = $_POST['dname'];
         $dId = $_POST['dId'];
-		$dManagerId = NULL;
+		$ManagerId = $_POST['mId'];
 		
-        if(!empty($_POST['dMId'])){
-			$dManagerId = $_POST['dMId'];
-		}
-		else{
-			$dManagerId = NULL;
-		}
+        // if(!empty($_POST['dMId'])){
+		// 	$dManagerId = $_POST['dMId'];
+		// }
+		// else{
+		// 	$dManagerId = NULL;
+		// }
 		
-        $this->model->insertDepartment($dName,$dId,$dManagerId);
+        $this->model->insertDepartment($dName,$dId,$ManagerId);
 		
         header('location: http://localhost/FINAL/HRmanager/showpage_manageDepartmentAdd');
 		
     }
     
-    function showpage_manageDepartmentEditDelete(){
-
-        $this->view->notifications = $this->model->getNotifications();
+    
+	function showpage_manageDepartmentEditDelete(){
+	$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
+        
+        $did = $_GET['dId'];
+        $dname = $_GET['dname'];
+        $dmanager = $_GET['dmanager'];
+        
 
-        $this->view->users =  $this->model->getDepartmentEditDeleteData();
+        $data = array($did, $dname, $dmanager);
+        
+        $this->view->editdata = $data;
+        $this->view->managers = $this->model->getDepartmentManagers();
         $this->view->render('manageDepartmentEditDelete');
+    }
+	function editDepartment(){
+
+        // $dName = $_POST['dName'];
+        $dId = $_POST['deptID'];
+        $ManagerId = $_POST['format'];
+        
+        
+        $edit = $this->model->editDepartment($dId,$ManagerId);
+
+        if($edit == true){
+            echo '<script>alert("Changed Successfully");
+            window.location.href="http://localhost/FINAL/HRmanager/showpage_manageDepartment" ;</script>';
+        }else{
+            echo '<script>alert("Failed! Not changed");
+            window.location.href="http://localhost/FINAL/HRmanager/showpage_manageDepartment" ;</script>';
+        }
 
     }
 
