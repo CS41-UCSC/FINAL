@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/manageDepartmentEditDelete_style.css">
     <link rel="stylesheet" href="../style/navbar_style.css">
-    <script language="javascript" src="../resource/navigation.js"></script>
+    <script language="javascript" src="../views/navigation.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <script language="javascript" src="navigation.js"> -->
     <title>Document</title>
@@ -57,9 +58,9 @@
             <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-            <!--<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
+            <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg"><span>Department Progress</span></i>
-            </a>-->
+            </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
                 <i class="fa fa-user fa-lg"><span>My Profile</span></i>
             </a>
@@ -113,168 +114,79 @@
             <div class="line"></div>
         </label>
     </nav>
+    <?php
+    $result = $this->department;
+    if (!empty($_SESSION['edit-department'])) {
+        if ($_SESSION['edit-department'] == "yes") {
+            echo '<script>swal("Success!", "Department Updated!", "success")</script>';
+            $_SESSION['edit-department'] = null;
+        } else if ($_SESSION['edit-department'] == "no") {
+            echo '<script>swal("Failed!", "Try Again!","error")</script>';
+            $_SESSION['edit-department'] = null;
+        }
+    }
+
+
+    ?>
+
     
     <main>
-        
-            <div class="flex-container">
-               
-                    <div class="left">
-                        <div class="form">
-                            <h1>Edit Department</h1>
-                            <form action=POST>
-                               
-                                    <label for="Name" class="name">Department Name :</label><br>
-                                    <input type="box" class="input"><br>
-                        
-                                    <label for="ID" class="id">Department ID   : </label><br>
-                                    <input type="box" class="input"><br>
-                             
-                                
-                                    <label for="Managers" class="selection-box">Department Manager   : </label><br>
-                                    
-                                        <div class="select">
-                                            <select name="format" id="format">
-                                            <option selected disabled>Department Manager</option>
-                                            <option value="manager 1">Perera A</option>
-                                            <option value="manager 2">Perera B</option>
-                                            <option value="manager 3">Perera C</option>
-                                            <option value="manager 4">Perera D</option>
-                                            <option value="manager 5">Perera E</option>
-                                            </select>
-                                        </div>
-                                 
-                               
-                               
-                                
-                                  
-                                  
-            
-                                
-                            </form>
-            
-                        </div>
-                        
-            
-                    </div>
-                    <div class="right">
-                        <div class="header_fixed" align="center">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Profile</th>
-                                        <th>Name</th>
-                                        <th>Employee ID</th>
-                                        <th></th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image1.jpg"></td>
-                                        <td>Karunaratne W.S.P.K</td>
-                                        <td>AC-TM-001</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image2.jpg"></td>
-                                        <td>Madushani P.P.L</td>
-                                        <td>AC-TM-005</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image3.jfif"></td>
-                                        <td>Praveena W.K</td>
-                                        <td>AC-DM-001</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image4.jpeg"></td>
-                                        <td>Abewardane A.D</td>
-                                        <td>AC-TL-004</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image5.jpg"></td>
-                                        <td>Kumarasinghe H.J.K</td>
-                                        <td>AC-TL-004</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image6.jfif"></td>
-                                        <td>Fernando R</td>
-                                        <td>AC-TM-010</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td><img src="../Asserts/image7.jfif"></td>
-                                        <td>G.H.J.K de Silva</td>
-                                        <td>AC-DM-007</td>
-                                        <td>
-                                            <label class="switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider round"></span>
-                                              </label>
-                                        </td>
-                                    </tr>
-                                    
-                                    
-                                    
-                                </tbody>
-                            </table>
-                            
-                        </div>
-                        <div class="btn-group">
-                            <button class="button">Cancel</button>
-                            <button class="button">Save</button>
-                          </div>
-                        
-            
-                    </div>
-                
-                
-               
+            <div class="container">
+            <div class="flex-container1">
+                    <div>Edit Department Details</div>
+
             </div>
-             
+
+            <?php 
+                //$emp=$this->users;
+                $data = $this->editdata;
+                print_r($data);
+            ?>
+
+            <form action="http://localhost/FINAL/HRmanager/editDepartment" method="post">
+            
+
+                <div class="flex-container">
+
+                    <div>
+                        <label for="deptName">Department Name :</label><br>
+                        <input type="text" id="deptName" name="deptName" value="<?php if(!empty($data[1])){ echo $data[0];}else{echo "";}?>" readonly><br>
+                    </div>
+
+                    <div>
+                        <label for="deptID">Department ID :</label><br>
+                        <input type="text" id="deptID" name="deptID" value="<?php if(!empty($data[0])){ echo $data[2];}else{echo "";}?>" readonly><br>
+                    </div>
+
+                    <div>
+                        <label for="Managers" id="label-role">Department Manager ID :</label><br>
+                        <select name="format" id="format">
+                        <option selected disabled>Department Manager ID :</option>
+                            <?php
+                                $result = $this->managers;
+                                    foreach ($result as $row){ ?>     
+                                        <option name="MId" value="<?php echo $row['EmpID'] ?>"><?php echo $row['EmpID']?></option>
+                            <?php }
+                            ?>  
+                        </select>
+
+                    </div>
+
+                    <div></div>
+
+                    <div>
+                        <a href="http://localhost/FINAL/HRmanager/showpage_manageDepartment" class="back" style="color: grey;"><span><i class="fa fa-arrow-left"></i>Back</span></a>
+                    </div>
+                    <div>
+                        <button type="submit" class="rectan" name="Add">Save</button>
+                    </div>
+                    
+                </div>
+            </form>
+
+            
+        </div>    
     </main>
 
     <!-- <footer class="footer">
