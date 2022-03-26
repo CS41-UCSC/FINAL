@@ -74,7 +74,7 @@ class leave extends Controller{
 			$this->view->month_val = $this->cur_month;
 			$this->view->render('myleavePending');
 		}
-		// $this->view->render('myleavePending');
+		
 	}
 	
 	function myleaveRequest(){
@@ -295,7 +295,7 @@ class leave extends Controller{
 	function empLeave(){
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
-		$status = "Pending";
+		$status = "Approved";
 
 		if (isset($_POST['filterbtn'])){
 			$this->view->data = $this->model->getEmpLeave($status,$_POST['month']);
@@ -312,7 +312,7 @@ class leave extends Controller{
 	function teamLeave(){
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
-		$status = "Pending";
+		$status = "Approved";
 
 		if (isset($_POST['filterbtn'])){
 			$this->view->data = $this->model->getTeamLeave($status,$_POST['month']);

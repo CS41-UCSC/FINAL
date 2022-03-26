@@ -51,6 +51,15 @@ class notification extends Controller{
 						elseif($notification['1']=="approved"){
 							$link= "http://localhost/FINAL/Member/showpage_myprogressCompleted";
 						}
+						elseif ($notification['1']=="PendingRemark") {
+							$link= "http://localhost/FINAL/Task/showpage_myprogressPending";
+						}
+						elseif ($notification['1']=="OverdueRemark") {
+							$link= "http://localhost/FINAL/Task/showpage_myprogressOverdue";
+						}
+						elseif ($notification['1']=="InProgressRemark") {
+							$link= "http://localhost/FINAL/Task/showpage_myprogressAccepted";
+						}
 						else{
 							echo 'Unidentifined Notification';
 						}

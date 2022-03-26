@@ -171,8 +171,6 @@
 				<a href="http://localhost/FINAL/HRManager/showpage_employeeWorkProgress"><i class="fa fa-arrow-left fa-2x"></i></a>
 			</div>
 			<div class="right-icons">
-				<!--<i class="fa fa-search-plus fa-lg" ></i>
-				<i class="fa fa-search-minus fa-lg" ></i>-->
 				<button class="fabtn" onclick="window.print()"><i class="fa fa-print fa-lg" ></i></button>
 			</div>
 			</div>
