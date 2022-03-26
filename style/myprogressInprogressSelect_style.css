@@ -6,7 +6,7 @@
     nav {
       position: fixed;
       z-index: 10;
-      left : 245px;
+      left : 256px;
       /*width: 100%;*/
       right: 0;
       top: 50px;
@@ -15,6 +15,7 @@
       padding-top: 20px;
       height: 40px;
       background-color: #ffffff;
+      /* background-color:none; */
       /* visibility: hidden; */
   }
   

@@ -7,7 +7,7 @@
     nav {
       position: fixed;
       z-index: 10;
-      left : 245px;
+      left : 256px;
       /*width: 100%;*/
       right: 0;
       top: 50px;
@@ -15,7 +15,8 @@
       padding: 10 5%;
       padding-top: 20px;
       height: 40px;
-      background-color: #ffffff;
+      /* background-color: #ffffff; */
+      background-color:none;
       /* visibility: hidden; */
   }
   
@@ -107,7 +108,7 @@
     
     .table td,.table th{
       padding:12px 15px;
-      border:1px solid rgb(253, 253, 253);
+      border:1px solid rgb(255, 255, 255);
       text-align: center;	
       font-size:16px;
     }
