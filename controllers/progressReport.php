@@ -13,9 +13,20 @@ class progressReport extends Controller{
 		$this->annual = 14;
 		$this->casual = 4;
 		$this->sick = 10;
+
+		if(!(isset($_SESSION['login_user']))){
+			header('location: http://localhost/FINAL/login');
+		}
+		
 	}
 	
 	function index(){
+
+		if($_SESSION['hraccess']==0){
+			echo "<script>alert('No Access provided for the requested Page');</script>";
+			echo '<script> history.back();</script>';
+		}
+
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 

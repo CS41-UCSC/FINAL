@@ -6,6 +6,10 @@ class admin extends Controller{
 	{
 		parent::__construct();
 		session_start();
+
+		if(!(isset($_SESSION['login_user']))){
+			header('location: http://localhost/FINAL/login');
+		}
 	}
 	
 	function index(){
@@ -13,6 +17,12 @@ class admin extends Controller{
 	}
 	
 	function adminHome(){
+
+		if($_SESSION['adminaccess']==0){
+			echo "<script>alert('No Access provided for the requested Page');</script>";
+			echo '<script> history.back();</script>';
+		}
+
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 		$this->view->emp=$this->model->getdata();
@@ -21,6 +31,12 @@ class admin extends Controller{
 	}
 	
 	function manageAccess(){
+
+		if($_SESSION['adminaccess']==0){
+			echo "<script>alert('No Access provided for the requested Page');</script>";
+			echo '<script> history.back();</script>';
+		}
+
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 		

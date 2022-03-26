@@ -12,6 +12,10 @@ class leave extends Controller{
 		$date = date_create();
 		$this->cur_month = date_format($date, "Y-m");
 		$this->cur_year = date_format($date, "Y");
+
+		if(!(isset($_SESSION['login_user']))){
+			header('location: http://localhost/FINAL/login');
+		}
 		
 	}
 	
@@ -20,6 +24,12 @@ class leave extends Controller{
 	}
 	
 	function myleaveApproved(){
+
+		if($_SESSION['memberaccess']==0){
+			echo "<script>alert('No Access provided for the requested Page');</script>";
+			echo '<script> history.back();</script>';
+		}
+
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 		$status = "Approved";
@@ -44,6 +54,12 @@ class leave extends Controller{
 	}
 	
 	function myleavePending(){
+
+		if($_SESSION['memberaccess']==0){
+			echo "<script>alert('No Access provided for the requested Page');</script>";
+			echo '<script> history.back();</script>';
+		}
+
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 		
@@ -78,6 +94,12 @@ class leave extends Controller{
 	}
 	
 	function myleaveRequest(){
+
+		if($_SESSION['memberaccess']==0){
+			echo "<script>alert('No Access provided for the requested Page');</script>";
+			echo '<script> history.back();</script>';
+		}
+
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 
@@ -196,6 +218,12 @@ class leave extends Controller{
 	}
 	
 	function dptleaveApproved(){
+
+		if($_SESSION['manageraccess']==0){
+			echo "<script>alert('No Access provided for the requested Page');</script>";
+			echo '<script> history.back();</script>';
+		}
+
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 		$status = "Approved";
@@ -227,6 +255,12 @@ class leave extends Controller{
 	}
 	
 	function dptleavePending(){
+
+		if($_SESSION['manageraccess']==0){
+			echo "<script>alert('No Access provided for the requested Page');</script>";
+			echo '<script> history.back();</script>';
+		}
+
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 		$status = "Pending";
@@ -243,6 +277,12 @@ class leave extends Controller{
 	}
 	
 	function dptleavePendingview(){
+
+		if($_SESSION['manageraccess']==0){
+			echo "<script>alert('No Access provided for the requested Page');</script>";
+			echo '<script> history.back();</script>';
+		}
+
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 		$status = "Pending";
@@ -293,6 +333,12 @@ class leave extends Controller{
 	}
 	
 	function empLeave(){
+
+		if($_SESSION['hraccess']==0){
+			echo "<script>alert('No Access provided for the requested Page');</script>";
+			echo '<script> history.back();</script>';
+		}
+
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 		$status = "Approved";
@@ -310,6 +356,12 @@ class leave extends Controller{
 	}
 	
 	function teamLeave(){
+
+		if($_SESSION['leaderaccess']==0){
+			echo "<script>alert('No Access provided for the requested Page');</script>";
+			echo '<script> history.back();</script>';
+		}
+
 		$this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 		$status = "Approved";
