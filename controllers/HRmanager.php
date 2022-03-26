@@ -110,20 +110,23 @@ class HRmanager extends Manager{
                 }
 
                 $_SESSION['add-emp-msg'] = "New record created successfully";
+                header('http://localhost/FINAL/HRmanager/showpage_manageEmployeeAdd');
+
 
             }else{
                 $_SESSION['add-emp-msg'] = "Fialed to add New Employee";
+                header('http://localhost/FINAL/HRmanager/showpage_manageEmployeeAdd');
+
             }
 
         }
         
         else{
             $_SESSION['add-emp-msg'] = "Fialed to add New Employee password";
+            header('http://localhost/FINAL/HRmanager/showpage_manageEmployeeAdd');
+
         }
         
-        //echo $_SESSION['add-emp-msg'];
-
-        header('http://localhost/FINAL/HRmanager/showpage_manageEmployeeAdd');
 
     }
     

@@ -9,6 +9,9 @@ class Systemuser extends controller{
     }
     
     function showpage_landingpage(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
         
         $this->view->data = $this->model->loadData();
         $this->view->hours = $this->model->loadHours();
@@ -18,6 +21,9 @@ class Systemuser extends controller{
     }
 
     function showpage_myprofile(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
 
         $this->view->users = $this->model->getData($_SESSION['login_user']);
         $this->view->users_skill =  $this->model->getSkillData($_SESSION['login_user']);
