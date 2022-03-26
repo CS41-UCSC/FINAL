@@ -373,6 +373,13 @@ class HRmanager_Model extends Model{
 		}
 
 	}
+	function getDepartmentManagers(){
+
+        $sql = "SELECT systemuser.EmpID FROM systemuser LEFT JOIN dept_manager USING(EmpID) 
+        WHERE dept_manager.EmpID IS NULL AND systemuser.EmpRole='Dept_Manager'";
+
+        return $this->db->runQuery($sql);
+    }
 
 
 }
