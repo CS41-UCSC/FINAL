@@ -12,6 +12,21 @@
 </head>
 
 <body class="preload" onload='setbutton("<?php echo $_SESSION["memberaccess"] ?>","<?php echo $_SESSION["myprofile"] ?>","<?php echo $_SESSION["manageraccess"] ?>","<?php echo $_SESSION["leaderaccess"] ?>","<?php echo $_SESSION["hraccess"] ?>","<?php echo $_SESSION["adminaccess"] ?>")'>
+    
+    <?php
+
+        if (!empty($_SESSION['edit-department'])) {
+            if ($_SESSION['edit-department'] == "yes") {
+                echo '<script>swal("Success!", "Department Updated!", "success")</script>';
+                $_SESSION['edit-department'] = null;
+            } else if ($_SESSION['edit-department'] == "no") {
+                echo '<script>swal("Failed!", "Try Again!","error")</script>';
+                $_SESSION['edit-department'] = null;
+            }
+        }
+        
+    ?>   
+
     <header class="header">
         <button class="header-button" id="btnNav" type="button">
             <i class="fa fa-bars fa-lg"></i>
@@ -55,9 +70,9 @@
             <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-            <!--<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
+            <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg"><span>Department Progress</span></i>
-            </a>-->
+            </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
                 <i class="fa fa-user fa-lg"><span>My Profile</span></i>
             </a>
@@ -158,7 +173,7 @@
                                     echo '<td>' . $row['DeptID'] . '</td>';
                                     echo '<td>' . $row['DeptName'] . '</td>';
                                     echo '<td>' . $row['Dept_Manager'] . '</td>';
-                                    echo '<td data-label="Edit"><a href="http://localhost/FINAL/HRmanager/showpage_manageDepartmentEditDelete"><i class="fa fa-pencil fa-lg" style="color:grey;" aria-hidden="true"></i></a></td>';
+                                    echo '<td data-label="Edit"><a href="http://localhost/FINAL/HRmanager/showpage_manageDepartmentEditDelete?dId='.$row['DeptName'].'&dname='.$row['Dept_Manager'].'&dmanager='.$row['DeptID'].'"><i class="fa fa-pencil fa-lg" style="color:grey;" aria-hidden="true"></i></a></td>';
                                     // echo '<td data-label="Terminate"><a href="#"><i class="fa fa-minus-circle fa-lg" style="color:grey;" aria-hidden="true"></i></a></td>';
                                 echo '</tr>';
                             }
