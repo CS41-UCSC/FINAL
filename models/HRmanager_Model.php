@@ -229,40 +229,39 @@ class HRmanager_Model extends Model{
     //     return $this->db->query($sql);
     // }
 
-    function insertTeam($teamName,$DeptId,$LeaderId){
+    function insertTeam($teamName,$DeptId){
 
-        try{
-            $this->db->beginTransaction();
+        // try{
+        //     $this->db->beginTransaction();
 
             $sql = "INSERT INTO `team`( `TeamName`, `DeptID`) VALUES ('$teamName','$DeptId') " ;
             $res = $this->db->query($sql);
 
-            $sqltid = "SELECT TeamID FROM team WHERE TeamName = '$teamName' ";
-            $gettid = $this->db->runQuery($sqltid);
+            // $sqltid = "SELECT TeamID FROM team WHERE TeamName = '$teamName' ";
+            // $gettid = $this->db->runQuery($sqltid);
 
-            $tid = $gettid[0][0];
+            // $tid = $gettid[0][0];
 
-            $sql1 = "INSERT INTO `team_leader`(`EmpID`, `TeamID`) VALUES ('$LeaderId','$tid')" ;
-            $res2 = $this->db->query($sql1);
+            // $sql1 = "INSERT INTO `team_leader`(`EmpID`, `TeamID`) VALUES ('$LeaderId','$tid')" ;
+            // $res2 = $this->db->query($sql1);
 
-            $sql2 = "DELETE FROM `team_member` WHERE EmpID='$LeaderId' ";
-            $res3 = $this->db->query($sql2);
+            // $sql2 = "DELETE FROM `team_member` WHERE EmpID='$LeaderId' ";
+            // $res3 = $this->db->query($sql2);
 
-            if($res && $res2 && $res3){
+            if($res){
                     $_SESSION['add-team'] = "yes";
-                    $this->db->commit();
+                    // $this->db->commit();
                     return true;
             }else{
                     $_SESSION['add-team'] = "no";
-                    $this->db->rollback();
+                    // $this->db->rollback();
                     return false;
             }
-        }
 
-        catch(PDOException $e){
-            $this->db->rollback();
-            return false;
-        }
+        // catch(PDOException $e){
+        //     $this->db->rollback();
+        //     return false;
+        // }
 
 
     }
@@ -384,6 +383,14 @@ class HRmanager_Model extends Model{
 
         return $this->db->runQuery($sql);
     }
+
+    function getDeptID(){
+
+        $sql = "SELECT DeptID, DeptName FROM dept";
+        return $this->db->runQuery($sql);
+
+    }
+
 
 
 }

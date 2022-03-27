@@ -163,6 +163,10 @@
             
             
                 <div class="flex-container">
+
+                    <?php
+                        $res = $this->deptid;
+                    ?>
                         <div>
                             <label for="tname">Team Name :</label>
                             <input type="text" id="tname" name="tname" placeholder="Team Name" required><br>
@@ -174,14 +178,22 @@
                        
                         <div>
                             <label for="dId">Department Id :</label>
-                            <input type="text" id="dId" name="dId" placeholder="Department Id" required><br>
+                            <select name="dId" id="role">
+                                <option value=""></option>;
+                                <?php
+                                $i=0;
+                                foreach ($res as $row) {
+                                    echo '<option value="' . $row[0] . '">' . $row[1] . '</option>';
+                                    $i=$i+1;
+                                } ?>
+                            </select><br>
                         </div>
                         <!-- <div></div> -->
 
-                        <div>
+                        <!-- <div>
                             <label for="lId">Leader Id :</label><br>
                             <input type="text" id="lId" name="lId" placeholder="Leader Id" required><br>
-                        </div>
+                        </div> -->
                         
                         <div>
                                 <!-- <input type="submit" value="Back" class="rectan"> -->

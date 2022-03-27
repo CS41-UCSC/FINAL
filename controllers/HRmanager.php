@@ -274,6 +274,9 @@ class HRmanager extends Manager{
 		$this->view->notificationCount = $this->model->getNotificationCount();
 
         $this->view->team=0;
+
+        $this->view->deptid = $this->model->getDeptID();
+        
         $this->view->render('manageTeamAdd');
 
     }
@@ -283,11 +286,11 @@ class HRmanager extends Manager{
       
         $teamName= $_POST['tname'];
         $DeptId = $_POST['dId'];
-        $LeaderId = $_POST['lId'];
+        //$LeaderId = $_POST['lId'];
 
         // $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        $this->model->insertTeam($teamName,$DeptId,$LeaderId);
+        $this->model->insertTeam($teamName,$DeptId);
 
         header('location: http://localhost/FINAL/HRmanager/showpage_manageTeamAdd');
 
