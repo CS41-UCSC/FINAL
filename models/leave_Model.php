@@ -117,8 +117,19 @@ class leave_Model extends Model{
 
 	function deptManagerID(){
 		$empID = $_SESSION['login_user'];
-		$sql = "SELECT dept_manager.EmpID FROM dept_manager, team_member, team 
-		WHERE team_member.EmpID = '$empID' AND team_member.TeamID = team.TeamID AND team.DeptID = dept_manager.DeptID";
+		$empRole = $_SESSION['emprole'];
+
+		if($empRole == "Team_Member"){
+			$sql = "SELECT dept_manager.EmpID FROM dept_manager, team_member, team 
+		WHERE team_member.EmpID = '$empID' AND team_member.TeamID = team.TeamID 
+		AND team.DeptID = dept_manager.DeptID";
+		}
+		else{
+			$sql = "SELECT dept_manager.EmpID FROM dept_manager, team_leader, team 
+		WHERE team_leader.EmpID = '$empID' AND team_leader.TeamID = team.TeamID 
+		AND team.DeptID = dept_manager.DeptID";
+		}
+		
 		return $this->db->runQuery($sql);
 	}
 
