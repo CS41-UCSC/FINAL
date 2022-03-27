@@ -189,6 +189,7 @@
 					if(!empty($data)){
 					foreach($data as $row){
 						echo '<tr id= ' . $row['0'] . '>';
+                        echo'<td class="row-data">'.$row['EmpID'].'</td>';
 						echo'<td class="row-data">'.$row['LeaveType'].'</td>';
 						echo '<td class="row-data">'.$row['StartDate'].' &nbsp - &nbsp '.$row['EndDate'].'</td>';
 						echo '<td class="row-data">'.$row['LStatus'].'</td>';

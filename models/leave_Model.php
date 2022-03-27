@@ -50,21 +50,26 @@ class leave_Model extends Model{
 	function getdeptLeave($status, $leaveId, $month){
 		$empID = $_SESSION['login_user'];
 		if($leaveId == NULL){
-		$sql="SELECT empleave.LeaveID, empleave.EmpID, empleave.LeaveType, empleave.StartDate, empleave.EndDate, empleave.LStatus 
-		FROM empleave, team_member, dept_manager, team 
-		WHERE empleave.EmpID = team_member.EmpID 
-		AND team_member.TeamID = team.TeamID AND team.DeptID = dept_manager.DeptID 
-		AND dept_manager.EmpID = '$empID' AND empleave.LStatus='$status'
-		AND DATE_FORMAT(empleave.StartDate, '%Y-%m')='$month'";
+		$sql="SELECT empleave.LeaveID, empleave.EmpID, systemuser.EmpName, empleave.LeaveType, empleave.StartDate, empleave.EndDate, empleave.LStatus 
+		FROM empleave, systemuser WHERE empleave.LStatus='$status' 
+		AND DATE_FORMAT(empleave.StartDate, '%Y-%m')='$month' 
+		AND empleave.EmpID = ANY ((SELECT team_member.EmpID FROM team_member, dept_manager, team 
+		WHERE team_member.TeamID = team.TeamID AND team.DeptID = dept_manager.DeptID 
+		AND dept_manager.EmpID = 'CM-HR-015') UNION (SELECT team_leader.EmpID 
+		FROM team_leader, dept_manager, team WHERE team_leader.TeamID = team.TeamID 
+		AND team.DeptID = dept_manager.DeptID AND dept_manager.EmpID = '$empID')) 
+		AND empleave.EmpID = systemuser.EmpID";
 		}
 		else{
-		$sql="SELECT empleave.LeaveID, empleave.EmpID, empleave.LeaveType, empleave.StartDate, 
-		empleave.EndDate, empleave.LStatus, systemuser.EmpName  
-		FROM empleave, team_member, dept_manager, team, systemuser 
-		WHERE empleave.EmpID = team_member.EmpID 
-		AND empleave.EmpID = systemuser.EmpID 
-		AND team_member.TeamID = team.TeamID AND team.DeptID = dept_manager.DeptID 
-		AND dept_manager.EmpID = '$empID' AND empleave.LStatus='$status' AND empleave.LeaveID='$leaveId'";
+		$sql="SELECT empleave.LeaveID, empleave.EmpID, systemuser.EmpName, empleave.LeaveType, empleave.StartDate, empleave.EndDate, empleave.LStatus 
+		FROM empleave, systemuser WHERE empleave.LStatus='$status' 
+		AND DATE_FORMAT(empleave.StartDate, '%Y-%m')='$month' AND empleave.LeaveID='$leaveId'
+		AND empleave.EmpID = ANY ((SELECT team_member.EmpID FROM team_member, dept_manager, team 
+		WHERE team_member.TeamID = team.TeamID AND team.DeptID = dept_manager.DeptID 
+		AND dept_manager.EmpID = 'CM-HR-015') UNION (SELECT team_leader.EmpID 
+		FROM team_leader, dept_manager, team WHERE team_leader.TeamID = team.TeamID 
+		AND team.DeptID = dept_manager.DeptID AND dept_manager.EmpID = '$empID')) 
+		AND empleave.EmpID = systemuser.EmpID";
 		}
 		return $this->db->runQuery($sql);
 	}
