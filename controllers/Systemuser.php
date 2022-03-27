@@ -7,6 +7,12 @@ class Systemuser extends controller{
         parent::__construct();
         session_start();
     }
+
+    function showpage_home(){
+
+        $this->view->render('home');
+
+    }
     
     function showpage_landingpage(){
 
