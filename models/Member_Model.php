@@ -33,7 +33,7 @@ class Member_Model extends Model{
 
         // $sql = "SELECT t.TaskName, tA.* FROM task t, task_assign tA where t.TaskID = tA.TaskID && tA.TaskStatus='Completed' && tA.AssignedTo=('$loginuser')";
         // $sql = "SELECT t.TaskName, tA.*, s.*, sA.* FROM task t, task_assign tA, subtask s, subtask_assign sA where  t.TaskID = tA.TaskID && s.SubTaskID = sA.SubTaskID  && (sA.Status='Completed' OR tA.TaskStatus='Completed') && tA.AssignedTo=('$loginuser')";
-        $sql = "SELECT t.TaskName, tA.*, sA.*, s.* FROM task t, task_assign tA, subtask_assign sA, subtask s where sA.SubTaskID = s.SubTaskID && sA.TaskID = t.TaskID &&  t.TaskID = tA.TaskID && (tA.TaskStatus='Completed' OR sA.Status='Completed') && tA.AssignedTo=('$loginuser')";
+        $sql = "SELECT t.TaskName, tA.*, sA.*, s.* FROM task t, task_assign tA, subtask_assign sA, subtask s where sA.SubTaskID = s.SubTaskID && sA.TaskID = t.TaskID &&  t.TaskID = tA.TaskID && (tA.TaskStatus='Completed' OR sA.Status='Completed') && tA.AssignedTo=('$loginuser') && tA.DueDate > tA.CompletedDate";
         return $this->db->runQuery($sql);
 
     }
@@ -51,7 +51,8 @@ class Member_Model extends Model{
 
     function getDataO($loginuser){
 
-        $sql = "SELECT t.TaskName, tA.* FROM task t, task_assign tA where t.TaskID = tA.TaskID && tA.TaskStatus='Approved' && tA.AssignedTo=('$loginuser')";
+        // $sql = "SELECT t.TaskName, tA.* FROM task t, task_assign tA where t.TaskID = tA.TaskID && tA.TaskStatus='Approved' && tA.AssignedTo=('$loginuser')";
+        $sql = "SELECT t.TaskName, tA.* FROM task t, task_assign tA where t.TaskID = tA.TaskID && tA.DueDate < tA.CompletedDate && tA.AssignedTo=('$loginuser')";
         return $this->db->runQuery($sql);
 
     }
@@ -80,6 +81,8 @@ class Member_Model extends Model{
     function acceptTask($taskId){
         $sql = "UPDATE task_assign SET TaskStatus='InProgress' WHERE TaskID=('$taskId') " ;
         return $this->db->runQuery($sql);
+
+        // $sql1 = INSERT INTO `task_assign`( `AcceptedDate`) VALUES (CURRENT_TIMESTAMP) WH;
     }
 
 
@@ -182,5 +185,10 @@ class Member_Model extends Model{
 		}
 
 	}
+
+    function getDataApproved($loginuser){
+        $sql = "SELECT t.TaskName, tA.* FROM task t, task_assign tA where t.TaskID = tA.TaskID && tA.TaskStatus='Approved' && tA.AssignedTo=('$loginuser')";
+        return $this->db->runQuery($sql);
+    }
 
 }

@@ -55,6 +55,9 @@ class Member extends controller{
     }
 
     function sortDate(){
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
         $sDate = $_POST['startDate'];
         $eDate = $_POST['endDate'];
 
@@ -67,7 +70,7 @@ class Member extends controller{
     //    $this->view->users =  $this->model->getOverdueData();
     //    $this->view->render('myprogressOverdue');
 
-    $this->view->notifications = $this->model->getNotifications();
+        $this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 
 
@@ -194,6 +197,19 @@ class Member extends controller{
             }
 
         }
+    }
+
+    function showpage_myprogressApproved(){
+
+        $this->view->notifications = $this->model->getNotifications();
+		$this->view->notificationCount = $this->model->getNotificationCount();
+
+
+        $loginuser = $_SESSION['login_user'];
+        $this->view->users =  $this->model->getDataApproved($loginuser);
+        $this->view->render('myprogressApproved');
+
+
     }
 
     

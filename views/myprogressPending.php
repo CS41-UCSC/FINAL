@@ -133,6 +133,7 @@
     <input id="nav-toggle" type="checkbox"> 
         <ul class="links">
             <li><a href="http://localhost/FINAL/Member/showpage_myprogressCompleted">Completed</a></li>
+            <li><a href="http://localhost/FINAL/Member/showpage_myprogressApproved">Approved</a></li>
             <li><a href="http://localhost/FINAL/Member/showpage_myprogressAccepted" >In Progress</a></li>
             <li><a href="http://localhost/FINAL/Member/showpage_myprogressOverdue">Overdue</a></li>
             <li><a href="http://localhost/FINAL/Member/showpage_myprogressPending" class="activelink">Pending</a></li>
