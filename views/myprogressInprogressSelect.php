@@ -104,10 +104,10 @@
     <nav>
     <input id="nav-toggle" type="checkbox"> 
         <ul class="links">
-            <li><a href="myprogressCompleted">Completed</a></li>
-            <li><a href="myprogressAccepted" class="activelink">In Progress</a></li>
-            <li><a href="myprogressOverdue">Overdue</a></li>
-            <li><a href="myprogressPending">Pending</a></li>
+            <li><a href="http://localhost/FINAL/Member/showpage_myprogressCompleted">Completed</a></li>
+            <li><a href="http://localhost/FINAL/Member/showpage_myprogressAccepted" class="activelink">In Progress</a></li>
+            <li><a href="http://localhost/FINAL/Member/showpage_myprogressOverdue">Overdue</a></li>
+            <li><a href="http://localhost/FINAL/Member/showpage_myprogressPending">Pending</a></li>
         </ul>
         <label for="nav-toggle" class="icon-burger">
             <div class="line"></div>
