@@ -55,7 +55,7 @@ class leave_Model extends Model{
 		AND DATE_FORMAT(empleave.StartDate, '%Y-%m')='$month' 
 		AND empleave.EmpID = ANY ((SELECT team_member.EmpID FROM team_member, dept_manager, team 
 		WHERE team_member.TeamID = team.TeamID AND team.DeptID = dept_manager.DeptID 
-		AND dept_manager.EmpID = 'CM-HR-015') UNION (SELECT team_leader.EmpID 
+		AND dept_manager.EmpID = '$empID') UNION (SELECT team_leader.EmpID 
 		FROM team_leader, dept_manager, team WHERE team_leader.TeamID = team.TeamID 
 		AND team.DeptID = dept_manager.DeptID AND dept_manager.EmpID = '$empID')) 
 		AND empleave.EmpID = systemuser.EmpID";
@@ -66,7 +66,7 @@ class leave_Model extends Model{
 		AND DATE_FORMAT(empleave.StartDate, '%Y-%m')='$month' AND empleave.LeaveID='$leaveId'
 		AND empleave.EmpID = ANY ((SELECT team_member.EmpID FROM team_member, dept_manager, team 
 		WHERE team_member.TeamID = team.TeamID AND team.DeptID = dept_manager.DeptID 
-		AND dept_manager.EmpID = 'CM-HR-015') UNION (SELECT team_leader.EmpID 
+		AND dept_manager.EmpID = '$empID') UNION (SELECT team_leader.EmpID 
 		FROM team_leader, dept_manager, team WHERE team_leader.TeamID = team.TeamID 
 		AND team.DeptID = dept_manager.DeptID AND dept_manager.EmpID = '$empID')) 
 		AND empleave.EmpID = systemuser.EmpID";
