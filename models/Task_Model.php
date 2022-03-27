@@ -159,12 +159,16 @@ class Task_Model extends Model{
 
     function getEmployeeProgress($eid){
 
-        $startdate = date('Y-m-01');
-        $enddate = date('Y-m-t');
+        // $startdate = date('Y-m-01');
+        // $enddate = date('Y-m-t');
+
+        // $sql = "SELECT task.TaskName, task_assign.AssignedTo, task_assign.RequiredTime, task_assign.DueDate, task_assign.TaskStatus 
+        // FROM task_assign INNER JOIN task ON task_assign.TaskID = task.TaskID WHERE task_assign.AssignedTo = '$eid' AND 
+        // TA.DueDate BETWEEN '$startdate' AND '$enddate'";
 
         $sql = "SELECT task.TaskName, task_assign.AssignedTo, task_assign.RequiredTime, task_assign.DueDate, task_assign.TaskStatus 
-        FROM task_assign INNER JOIN task ON task_assign.TaskID = task.TaskID WHERE task_assign.AssignedTo = '$eid' AND 
-        TA.DueDate BETWEEN '$startdate' AND '$enddate'";
+        FROM task_assign INNER JOIN task ON task_assign.TaskID = task.TaskID WHERE task_assign.AssignedTo = '$eid' ";
+
 
         return $this->db->runQuery($sql);
     }
