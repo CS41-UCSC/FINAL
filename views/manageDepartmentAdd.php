@@ -56,9 +56,9 @@
             <a href="http://localhost/FINAL/Systemuser/showpage_landingpage" class="nav-link" id="d_dashboard">
                 <i class="fa fa-tachometer fa-lg"><span>Dashboard</span></i>
             </a>
-            <!--<a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
+            <a href="http://localhost/FINAL/Task/showpage_teamProgress" class="nav-link" id="d_progress">
                 <i class="fa fa-tachometer fa-lg"><span>Department Progress</span></i>
-            </a>-->
+            </a>
             <a href="http://localhost/FINAL/Systemuser/showpage_myprofile" class="nav-link" id="my_profile">
                 <i class="fa fa-user fa-lg"><span>My Profile</span></i>
             </a>
@@ -132,12 +132,16 @@
     
     <main>
         <div class="container">
-            <form action="http://localhost/FINAL/HRmanager/showpage_manageDepartmentAdd/setDepartmentData" method="post">
+            <form action="http://localhost/FINAL/HRmanager/setDepartmentData" method="post">
                 <div class="flex-container1">
                     <div>Add New Department</div>
                    
                 </div>
-            
+            <?php 
+
+                $managers = $this->managers;
+
+            ?>
             
                 <div class="flex-container">
                         <div>
@@ -150,7 +154,15 @@
                         </div>
                         <div>
                             <label for="dMId">Department Manager Id :</label>
-                            <input type="text" id="dMId" name="dMId" placeholder="Department Manager Id"><br>
+                            <select name="format" id="format">
+                                <option selected disabled>Department Manager ID :</option>
+                                <?php
+                                    $result = $this->managers;
+                                        foreach ($result as $row){ ?>     
+                                            <option name="MId" value="<?php echo $row['EmpID'] ?>"><?php echo $row['EmpID']?></option>
+                                <?php }
+                                ?>  
+                            </select>
                         </div>
                         <div></div>
                         

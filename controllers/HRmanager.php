@@ -180,6 +180,8 @@ class HRmanager extends Manager{
 		$this->view->notificationCount = $this->model->getNotificationCount();
 
         $this->view->department = 0;
+
+        $this->view->managers = $this->model->getDepartmentManagers();
         
         // $this->view->users =  $this->model->getData();
         $this->view->render('manageDepartmentAdd');
@@ -207,7 +209,7 @@ class HRmanager extends Manager{
         //not push
         $dName = $_POST['dname'];
         $dId = $_POST['dId'];
-		$ManagerId = $_POST['mId'];
+		$ManagerId = $_POST['format'];
 		
         // if(!empty($_POST['dMId'])){
 		// 	$dManagerId = $_POST['dMId'];

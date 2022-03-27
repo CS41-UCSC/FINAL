@@ -143,17 +143,20 @@ class HRmanager_Model extends Model{
     function insertDepartment($dName,$dId,$dManagerId){
 		
 		$sql="";
+        $sql1="";
+
 		if($dManagerId == NULL){
 			$sql = "INSERT INTO `dept`( `DeptID`, `DeptName`) VALUES ('$dId','$dName')";
             
 		}
         else{
 			$sql = "INSERT INTO `dept`( `DeptID`, `DeptName`,`Dept_Manager`) VALUES ('$dId','$dName','$dManagerId')";
+            $sql1 = "INSERT INTO `dept_manager`(`EmpID`, `DeptID`) VALUES ('$dManagerId','$dId')";
             
 		}
 
 
-        if($this->db->query($sql) == true){
+        if($this->db->query($sql) == true && $this->db->query($sql1) == true){
                 $_SESSION['add-department'] = "yes";
         }else{
                 $_SESSION['add-department'] = "no";
@@ -373,6 +376,7 @@ class HRmanager_Model extends Model{
 		}
 
 	}
+
 	function getDepartmentManagers(){
 
         $sql = "SELECT systemuser.EmpID FROM systemuser LEFT JOIN dept_manager USING(EmpID) 
