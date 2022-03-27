@@ -217,8 +217,17 @@ class HRmanager_Model extends Model{
         // $sql = "SELECT * FROM team";
         // return $this->db->runQuery($sql);
 
-        $sql = "SELECT t.*,tl.* FROM team t,team_leader tl where t.TeamID = tl.TeamID  ";
+
+        $sql = "SELECT t.TeamID, t.TeamName, t.DeptID, tl.EmpID FROM team t LEFT JOIN  team_leader tl ON t.teamid=tl.teamid";
+
+        //$sql = "SELECT t.*,tl.* FROM team t,team_leader tl where t.TeamID = tl.TeamID  ";
+
         return $this->db->runQuery($sql);
+
+        // $sql = "SELECT t.*,tl.* FROM team t,team_leader tl ";
+        // return $this->db->runQuery($sql);
+
+        
 
 
     }

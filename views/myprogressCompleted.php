@@ -150,10 +150,10 @@
                         <?php
                             echo '<form action="http://localhost/FINAL/Member/sortDate" method="post">';
                             echo '<div>';
-                                echo '<input type="date" id="myDate" name="startDate" value="2014-02-09">';
+                                echo '<input type="date" id="myDate" name="startDate" value="'.$this->cur_date.'">';
                             echo '</div>';
                             echo '<div>';
-                                echo '<input type="date" id="myDate" name="endDate" value="2014-02-09">';
+                                echo '<input type="date" id="myDate" name="endDate" value="'.$this->cur_date.'">';
                             echo '</div>';
                             echo '<div>';
                                 echo '<button type="submit" name="submit" class="rectan">Search</button>';

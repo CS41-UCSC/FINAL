@@ -6,6 +6,8 @@ class Member extends controller{
     {
         parent::__construct();
         session_start();
+        $date = date_create();
+		$this->cur_date= date_format($date, "Y-m-d");
     }
     function showpage_myprogressAccepted(){
         // $this->view->users =  $this->model->getAcceptedData();
@@ -46,6 +48,7 @@ class Member extends controller{
         $this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
 
+        $this->view->cur_date = $this->cur_date;
 
          $loginuser = $_SESSION['login_user'];
          $this->view->users =  $this->model->getDataC($loginuser);
@@ -57,6 +60,7 @@ class Member extends controller{
     function sortDate(){
         $this->view->notifications = $this->model->getNotifications();
 		$this->view->notificationCount = $this->model->getNotificationCount();
+        $this->view->cur_date = $this->cur_date;
 
         $sDate = $_POST['startDate'];
         $eDate = $_POST['endDate'];
