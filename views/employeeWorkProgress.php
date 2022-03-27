@@ -138,7 +138,7 @@
                             echo '<td>' . $row['EmpName'] . '</td>';
                             echo '<td>' . $row['EmpID'] . '</td>';
                             echo '<td>' . $row['EmpRole'] . '</td>';
-                            //echo '<td data-label="View"><a href="http://localhost/FINAL/progressReport?ID=' . $row['EmpID'] . '"><i class="fa fa-eye fa-2x" style="color:grey;" aria-hidden="true"></i></a></td>';
+                            echo '<td data-label="View"><a href="http://localhost/FINAL/progressReport?ID=' . $row['EmpID'] . '"><i class="fa fa-eye fa-2x" style="color:grey;" aria-hidden="true"></i></a></td>';
                             echo '</tr>';
                         }
 
