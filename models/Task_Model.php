@@ -345,7 +345,7 @@ class Task_Model extends Model{
         /*$sql = "SELECT TaskID, SubTaskName, COUNT(SubTaskID) as tasks, COUNT(CASE WHEN subtask.status = 'Completed' THEN 1 END) AS completed
         FROM subtask GROUP BY TaskID  " ;*/
 
-        $sql = "SELECT SubTaskName, Status FROM subtask INNER JOIN subtask_assign 
+        $sql = "SELECT SubTaskName, subtask_assign.Status FROM subtask INNER JOIN subtask_assign 
         ON subtask.SubTaskID = subtask_assign.SubTaskID WHERE (subtask_assign.TaskID = '$taskid' AND subtask_assign.AssignedTO = '$assignedmember') ";
 
         return $this->db->runQuery($sql);
