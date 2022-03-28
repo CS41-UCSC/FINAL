@@ -33,14 +33,18 @@ class Member_Model extends Model{
 
         // $sql = "SELECT t.TaskName, tA.* FROM task t, task_assign tA where t.TaskID = tA.TaskID && tA.TaskStatus='Completed' && tA.AssignedTo=('$loginuser')";
         // $sql = "SELECT t.TaskName, tA.*, s.*, sA.* FROM task t, task_assign tA, subtask s, subtask_assign sA where  t.TaskID = tA.TaskID && s.SubTaskID = sA.SubTaskID  && (sA.Status='Completed' OR tA.TaskStatus='Completed') && tA.AssignedTo=('$loginuser')";
-        $sql = "SELECT t.TaskName, tA.*, sA.*, s.* FROM task t, task_assign tA, subtask_assign sA, subtask s where sA.SubTaskID = s.SubTaskID && sA.TaskID = t.TaskID &&  t.TaskID = tA.TaskID && (tA.TaskStatus='Completed' OR sA.Status='Completed') && tA.AssignedTo=('$loginuser') && tA.DueDate > tA.CompletedDate";
+        $sql = "SELECT t.TaskName, tA.*, sA.*, s.* FROM subtask_assign sA, task t, task_assign tA, subtask s 
+        where sA.SubTaskID = s.SubTaskID AND sA.TaskID = tA.TaskID AND tA.TaskID = t.TaskID AND sA.Status = 'Completed' 
+        AND tA.AssignedTo='$loginuser' AND tA.DueDate>=tA.CompletedDate";
         return $this->db->runQuery($sql);
 
     }
 
     function sortDate($sDate,$eDate){
         // $sql = "SELECT t.TaskName, tA.*, sA.*, s.* from task t, task_assign tA, subtask_assign sA, subtask s where tA.CompletedDate between '$sDate' and '$eDate' and t.TaskID = tA.TaskID && tA.TaskStatus='Completed'";
-        $sql = "SELECT t.TaskName, tA.*, sA.*, s.* from task t, task_assign tA, subtask_assign sA, subtask s where tA.CompletedDate between '$sDate' and '$eDate' and sA.SubTaskID = s.SubTaskID && sA.TaskID = t.TaskID && t.TaskID = tA.TaskID && (tA.TaskStatus='Completed' OR sA.Status='Completed')";
+        $sql = "SELECT t.TaskName, tA.*, sA.*, s.* FROM subtask_assign sA, task t, task_assign tA, subtask s 
+        where sA.SubTaskID = s.SubTaskID AND sA.TaskID = tA.TaskID AND tA.TaskID = t.TaskID AND sA.Status = 'Completed' 
+        AND tA.AssignedTo='CM-HR-101' AND tA.DueDate>=tA.CompletedDate AND tA.CompletedDate between '$sDate' and '$eDate'";
         return $this->db->runQuery($sql);
     }
 
